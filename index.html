@@ -197,6 +197,107 @@
     cursor:pointer; font-family:'JetBrains Mono', monospace;
   }
   .slide-tile.empty{ background:transparent; border:1.5px dashed var(--line); cursor:default; }
+
+  /* Arcade canvas games (Snake/Breakout/Pong/Jump) */
+  .arcade-canvas{
+    display:block; width:100%; max-width:480px; aspect-ratio:4/3; margin:0 auto;
+    background:#0c1120; border:1.5px solid var(--line); border-radius:16px; touch-action:none;
+  }
+  .touch-pad{
+    max-width:200px; margin:14px auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:6px;
+  }
+  .touch-pad button{
+    aspect-ratio:1/1; border-radius:12px; background:var(--bg-2); border:1.5px solid var(--line);
+    font-size:20px; cursor:pointer; color:var(--ink);
+  }
+
+  /* 2048 */
+  .g2048-board{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:340px; margin:0 auto;
+    background:var(--panel-2); padding:8px; border-radius:16px; border:1.5px solid var(--line);
+  }
+  .g2048-cell{
+    aspect-ratio:1/1; border-radius:10px; background:var(--bg-2); display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:clamp(16px,4.5vw,26px); font-family:'JetBrains Mono',monospace; color:var(--ink);
+  }
+  .g2048-cell[data-v="2"]{ background:#1e2a4a; }
+  .g2048-cell[data-v="4"]{ background:#233257; }
+  .g2048-cell[data-v="8"]{ background:#2c3e70; color:#fff; }
+  .g2048-cell[data-v="16"]{ background:var(--violet-dim); color:#fff; }
+  .g2048-cell[data-v="32"]{ background:#6a4fd6; color:#fff; }
+  .g2048-cell[data-v="64"]{ background:var(--violet); color:#fff; }
+  .g2048-cell[data-v="128"]{ background:#22a6b3; color:#fff; }
+  .g2048-cell[data-v="256"]{ background:var(--teal); color:#08101f; }
+  .g2048-cell[data-v="512"]{ background:var(--amber); color:#08101f; }
+  .g2048-cell[data-v="1024"], .g2048-cell[data-v="2048"]{ background:var(--pink); color:#08101f; }
+
+  /* Connect 4 */
+  .c4-board{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:6px; max-width:420px; margin:0 auto;
+    background:#0d2b4e; padding:10px; border-radius:16px; border:1.5px solid var(--line);
+  }
+  .c4-cell{
+    aspect-ratio:1/1; border-radius:50%; background:#0c1120; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .c4-cell.you{ background:#ff5c5c; }
+  .c4-cell.cpu{ background:#ffd60a; }
+
+  /* Whack-a-mole */
+  .mole-board{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-width:340px; margin:0 auto;
+  }
+  .mole-hole{
+    aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle at 50% 30%, #241a10, #0c0805);
+    border:1.5px solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-size:34px; cursor:pointer; overflow:hidden;
+  }
+  .mole-hole span{ transform:translateY(120%); transition:transform .12s ease; }
+  .mole-hole.up span{ transform:translateY(0); }
+
+  /* Number guess */
+  .guess-box{ max-width:380px; margin:0 auto; text-align:center; }
+
+  /* Hangman */
+  .hangman-word{
+    font-family:'JetBrains Mono', monospace; font-size:clamp(22px,6vw,34px); font-weight:800; letter-spacing:8px;
+    text-align:center; margin-bottom:20px; direction:ltr;
+  }
+  .hangman-keys{
+    display:flex; flex-wrap:wrap; gap:6px; justify-content:center; max-width:480px; margin:0 auto;
+  }
+  .hangman-key{
+    width:36px; height:40px; border-radius:8px; background:var(--bg-2); border:1.5px solid var(--line);
+    color:var(--ink); font-weight:800; cursor:pointer; font-family:'JetBrains Mono',monospace;
+  }
+  .hangman-key:disabled{ opacity:.3; cursor:default; }
+  .hangman-key.correct{ border-color:var(--teal); color:var(--teal); }
+  .hangman-key.wrong{ border-color:var(--pink); color:var(--pink); opacity:.5; }
+
+  /* Stroop */
+  .stroop-word{
+    text-align:center; font-size:clamp(30px,8vw,52px); font-weight:900; margin:20px 0 26px;
+  }
+  .stroop-choices{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; max-width:340px; margin:0 auto; }
+  .stroop-choices button{
+    padding:16px; border-radius:14px; border:1.5px solid var(--line); font-weight:800; font-size:15px;
+    cursor:pointer; color:#08101f;
+  }
+
+  /* Typing */
+  .typing-target{
+    max-width:600px; margin:0 auto 14px; background:var(--panel-2); border:1.5px solid var(--line);
+    border-radius:14px; padding:18px; font-family:'JetBrains Mono',monospace; font-size:17px; line-height:1.8;
+    direction:ltr; text-align:left;
+  }
+  .typing-target span.correct{ color:var(--teal); }
+  .typing-target span.wrong{ color:var(--pink); text-decoration:underline; }
+  .typing-input{
+    display:block; width:100%; max-width:600px; margin:0 auto; min-height:90px; padding:14px; border-radius:14px;
+    border:1.5px solid var(--line); background:var(--bg-2); color:var(--ink); font-size:15px;
+    font-family:'JetBrains Mono',monospace; direction:ltr; text-align:left; resize:none;
+  }
+  .typing-input:focus{ outline:none; border-color:var(--violet); }
   .stat-bar{
     display:flex; justify-content:space-between; align-items:center;
     background:var(--panel); border:1px solid var(--line); border-radius:14px;
@@ -811,6 +912,17 @@ const GAMES = [
   { id:'rps',    icon:'✊', label:'حجر ورقة مقص', desc:'العب ضد الكمبيوتر', locked:false },
   { id:'math',   icon:'🔢', label:'حساب سريع', desc:'حل أكبر عدد مسائل في دقيقة', locked:false },
   { id:'slide',  icon:'🧩', label:'البازل المنزلق', desc:'رتب الأرقام بالترتيب', locked:false },
+  { id:'snake',  icon:'🐍', label:'الثعبان', desc:'كل واكبر من غير ما تصطدم', locked:false },
+  { id:'breakout', icon:'🧱', label:'كسر الطوب', desc:'اكسر كل الطوب بالكورة', locked:false },
+  { id:'pong',   icon:'🏓', label:'بينج بونج', desc:'العب ضد الكمبيوتر لـ 5 نقط', locked:false },
+  { id:'jump',   icon:'🦘', label:'القفزة اللا نهائية', desc:'اقفز فوق العوائق أطول مسافة', locked:false },
+  { id:'g2048',  icon:'🧩', label:'2048', desc:'ادمج الأرقام لحد ما توصل 2048', locked:false },
+  { id:'connect4', icon:'⭕', label:'وصل 4', desc:'اعمل خط من 4 قبل الكمبيوتر', locked:false },
+  { id:'mole',   icon:'🔨', label:'اضرب الخلد', desc:'سرعة بديهة، اضرب اللي يطلع', locked:false },
+  { id:'guess',  icon:'🧮', label:'خمن الرقم', desc:'خمن الرقم بأقل عدد محاولات', locked:false },
+  { id:'hangman', icon:'🔤', label:'تخمين الكلمة', desc:'اعرف الكلمة قبل ما المحاولات تخلص', locked:false },
+  { id:'stroop', icon:'🎨', label:'اختبار الألوان', desc:'اختار اللون الحقيقي مش المكتوب', locked:false },
+  { id:'typing', icon:'⌨️', label:'سرعة الكتابة', desc:'اكتب الجملة بأسرع وقت وأقل أخطاء', locked:false },
 ];
 
 const gameGrid = document.getElementById('gameGrid');
@@ -828,12 +940,19 @@ GAMES.forEach(g => {
   gameGrid.appendChild(card);
 });
 
-const ALL_SCREENS = ['homeScreen','setupScreen','gameScreen','xoScreen','simonScreen','reactionScreen','rpsScreen','mathScreen','slideScreen'];
+const ALL_SCREENS = ['homeScreen','setupScreen','gameScreen','xoScreen','simonScreen','reactionScreen','rpsScreen','mathScreen','slideScreen',
+  'snakeScreen','breakoutScreen','pongScreen','jumpScreen','g2048Screen','connect4Screen','moleScreen','guessScreen','hangmanScreen','stroopScreen','typingScreen'];
 function hideAllScreens(){
   ALL_SCREENS.forEach(id => document.getElementById(id).style.display = 'none');
 }
 
+function stopAllLoops(){
+  stopTimer(); simonStopSequence(); mathStopTimer(); slideStopTimer();
+  snakeStop(); breakoutStop(); pongStop(); jumpStop(); moleStop(); stroopStop(); typingStop();
+}
+
 function openGame(id){
+  stopAllLoops();
   hideAllScreens();
   if(id === 'memory'){
     document.getElementById('setupScreen').style.display = 'block';
@@ -868,6 +987,61 @@ function openGame(id){
     document.getElementById('mainTitle').textContent = 'البازل المنزلق';
     document.getElementById('mainSub').textContent = 'حرك المربعات ورتب الأرقام من 1 لـ 15.';
     slideNewGame();
+  } else if(id === 'snake'){
+    document.getElementById('snakeScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'الثعبان';
+    document.getElementById('mainSub').textContent = 'كل الأكل وكبر، وابعد عن الحيطان وعن نفسك.';
+    snakeInit();
+  } else if(id === 'breakout'){
+    document.getElementById('breakoutScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'كسر الطوب';
+    document.getElementById('mainSub').textContent = 'حرك المضرب واكسر كل الطوب.';
+    breakoutInit();
+  } else if(id === 'pong'){
+    document.getElementById('pongScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'بينج بونج';
+    document.getElementById('mainSub').textContent = 'أول واحد يوصل 5 نقط يكسب.';
+    pongInit();
+  } else if(id === 'jump'){
+    document.getElementById('jumpScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'القفزة اللا نهائية';
+    document.getElementById('mainSub').textContent = 'اقفز فوق العوائق وشوف تعدي مسافة قد ايه.';
+    jumpInit();
+  } else if(id === 'g2048'){
+    document.getElementById('g2048Screen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = '2048';
+    document.getElementById('mainSub').textContent = 'ادمج الأرقام المتشابهة لحد ما توصل 2048.';
+    g2048New();
+  } else if(id === 'connect4'){
+    document.getElementById('connect4Screen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'وصل 4';
+    document.getElementById('mainSub').textContent = 'دوس على عمود عشان تنزل قطعتك فيه.';
+    connect4Reset();
+  } else if(id === 'mole'){
+    document.getElementById('moleScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'اضرب الخلد';
+    document.getElementById('mainSub').textContent = '30 ثانية، اضرب أكبر عدد خلد.';
+    moleReset();
+  } else if(id === 'guess'){
+    document.getElementById('guessScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'خمن الرقم';
+    document.getElementById('mainSub').textContent = 'فكرت في رقم من 1 لـ 100، خمنه بأقل عدد محاولات.';
+    guessNew();
+  } else if(id === 'hangman'){
+    document.getElementById('hangmanScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'تخمين الكلمة';
+    document.getElementById('mainSub').textContent = 'خمن حروف الكلمة قبل ما المحاولات تخلص.';
+    hangmanNew();
+  } else if(id === 'stroop'){
+    document.getElementById('stroopScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'اختبار الألوان';
+    document.getElementById('mainSub').textContent = 'دوس على اللون الحقيقي للكلمة، مش اللي هي مكتوبة بيه.';
+    stroopReset();
+  } else if(id === 'typing'){
+    document.getElementById('typingScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'سرعة الكتابة';
+    document.getElementById('mainSub').textContent = 'اكتب الجملة اللي قدامك بأسرع وقت وأقل أخطاء.';
+    typingNew();
   }
 }
 
@@ -878,12 +1052,20 @@ document.getElementById('reactionHomeBtn').addEventListener('click', goHome);
 document.getElementById('rpsHomeBtn').addEventListener('click', goHome);
 document.getElementById('mathHomeBtn').addEventListener('click', goHome);
 document.getElementById('slideHomeBtn').addEventListener('click', goHome);
+document.getElementById('snakeHomeBtn').addEventListener('click', goHome);
+document.getElementById('breakoutHomeBtn').addEventListener('click', goHome);
+document.getElementById('pongHomeBtn').addEventListener('click', goHome);
+document.getElementById('jumpHomeBtn').addEventListener('click', goHome);
+document.getElementById('g2048HomeBtn').addEventListener('click', goHome);
+document.getElementById('connect4HomeBtn').addEventListener('click', goHome);
+document.getElementById('moleHomeBtn').addEventListener('click', goHome);
+document.getElementById('guessHomeBtn').addEventListener('click', goHome);
+document.getElementById('hangmanHomeBtn').addEventListener('click', goHome);
+document.getElementById('stroopHomeBtn').addEventListener('click', goHome);
+document.getElementById('typingHomeBtn').addEventListener('click', goHome);
 
 function goHome(){
-  stopTimer();
-  simonStopSequence();
-  mathStopTimer();
-  slideStopTimer();
+  stopAllLoops();
   hideAllScreens();
   document.getElementById('homeScreen').style.display = 'block';
   document.getElementById('mainTitle').textContent = 'مركز الألعاب';
@@ -1242,6 +1424,899 @@ function slideClick(i){
     setTimeout(() => alert(`مبروك! حليت البازل في ${slideState.moves} حركة و ${formatTime(slideState.timer)}`), 200);
   }
 }
+
+function resizeCanvasToDisplay(canvas){
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+}
+
+/* ================= الثعبان ================= */
+let snakeState = { grid:20, cell:0, snake:[], dir:{x:1,y:0}, nextDir:{x:1,y:0}, food:null, score:0, interval:null, ctx:null, canvas:null, running:false };
+function snakeStop(){ if(snakeState.interval){ clearInterval(snakeState.interval); snakeState.interval=null; } snakeState.running=false; }
+function snakeBestKey(){ return 'snake_best'; }
+function snakeUpdateBest(){ document.getElementById('snakeBest').textContent = localStorage.getItem(snakeBestKey()) || '--'; }
+function snakeInit(){
+  snakeStop();
+  const canvas = document.getElementById('snakeCanvas');
+  snakeState.canvas = canvas;
+  snakeState.ctx = canvas.getContext('2d');
+  document.getElementById('snakeScore').textContent = '0';
+  snakeUpdateBest();
+  resizeCanvasToDisplay(canvas);
+  snakeDrawIdle();
+}
+function snakeDrawIdle(){
+  const {ctx,canvas} = snakeState;
+  ctx.fillStyle = '#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#8b93ab'; ctx.font = '16px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('دوس ابدأ', canvas.width/2, canvas.height/2);
+}
+document.getElementById('snakeStartBtn').addEventListener('click', snakeStart);
+function snakeStart(){
+  snakeStop();
+  const canvas = snakeState.canvas;
+  resizeCanvasToDisplay(canvas);
+  snakeState.cell = Math.floor(canvas.width / snakeState.grid);
+  const cols = Math.floor(canvas.width/snakeState.cell), rows = Math.floor(canvas.height/snakeState.cell);
+  const midx = Math.floor(cols/2), midy = Math.floor(rows/2);
+  snakeState.snake = [{x:midx,y:midy},{x:midx-1,y:midy},{x:midx-2,y:midy}];
+  snakeState.dir = {x:1,y:0}; snakeState.nextDir = {x:1,y:0};
+  snakeState.score = 0;
+  document.getElementById('snakeScore').textContent = '0';
+  snakePlaceFood();
+  snakeState.running = true;
+  snakeState.interval = setInterval(snakeTick, 130);
+}
+function snakePlaceFood(){
+  const cols = Math.floor(snakeState.canvas.width/snakeState.cell);
+  const rows = Math.floor(snakeState.canvas.height/snakeState.cell);
+  let pos;
+  do{ pos = {x:Math.floor(Math.random()*cols), y:Math.floor(Math.random()*rows)}; }
+  while(snakeState.snake.some(s=>s.x===pos.x && s.y===pos.y));
+  snakeState.food = pos;
+}
+function snakeTick(){
+  snakeState.dir = snakeState.nextDir;
+  const head = { x: snakeState.snake[0].x + snakeState.dir.x, y: snakeState.snake[0].y + snakeState.dir.y };
+  const cols = Math.floor(snakeState.canvas.width/snakeState.cell);
+  const rows = Math.floor(snakeState.canvas.height/snakeState.cell);
+  if(head.x<0||head.x>=cols||head.y<0||head.y>=rows || snakeState.snake.some(s=>s.x===head.x&&s.y===head.y)){
+    snakeGameOver(); return;
+  }
+  snakeState.snake.unshift(head);
+  if(head.x===snakeState.food.x && head.y===snakeState.food.y){
+    snakeState.score++;
+    document.getElementById('snakeScore').textContent = snakeState.score;
+    sfx.ding();
+    snakePlaceFood();
+  } else {
+    snakeState.snake.pop();
+  }
+  snakeDraw();
+}
+function snakeDraw(){
+  const {ctx,canvas,cell} = snakeState;
+  ctx.fillStyle = '#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#ff5c8a';
+  ctx.fillRect(snakeState.food.x*cell+1, snakeState.food.y*cell+1, cell-2, cell-2);
+  snakeState.snake.forEach((s,i)=>{
+    ctx.fillStyle = i===0 ? '#22d3ee' : '#7c5cff';
+    ctx.fillRect(s.x*cell+1, s.y*cell+1, cell-2, cell-2);
+  });
+}
+function snakeGameOver(){
+  snakeStop();
+  sfx.buzzer();
+  const best = parseInt(localStorage.getItem(snakeBestKey())||'0');
+  if(snakeState.score > best) localStorage.setItem(snakeBestKey(), snakeState.score);
+  snakeUpdateBest();
+  const {ctx,canvas} = snakeState;
+  ctx.fillStyle = 'rgba(0,0,0,.6)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#fff'; ctx.font='bold 18px Tajawal'; ctx.textAlign='center';
+  ctx.fillText(`خسرت! نقاطك: ${snakeState.score}`, canvas.width/2, canvas.height/2);
+}
+function snakeSetDir(x,y){
+  if(!snakeState.running) return;
+  if(snakeState.dir.x === -x && snakeState.dir.y === -y) return;
+  snakeState.nextDir = {x,y};
+}
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('snakeScreen').style.display === 'none') return;
+  if(e.key==='ArrowUp'){ e.preventDefault(); snakeSetDir(0,-1); }
+  else if(e.key==='ArrowDown'){ e.preventDefault(); snakeSetDir(0,1); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); snakeSetDir(-1,0); }
+  else if(e.key==='ArrowRight'){ e.preventDefault(); snakeSetDir(1,0); }
+});
+document.querySelectorAll('#snakeTouchPad button').forEach(btn=>{
+  btn.addEventListener('click', () => {
+    const d = btn.dataset.d;
+    if(d==='up') snakeSetDir(0,-1);
+    else if(d==='down') snakeSetDir(0,1);
+    else if(d==='left') snakeSetDir(-1,0);
+    else if(d==='right') snakeSetDir(1,0);
+  });
+});
+
+/* ================= كسر الطوب ================= */
+let breakoutState = { running:false, raf:null, paddleX:0, paddleW:70, ballX:0, ballY:0, vx:3, vy:-3, bricks:[], score:0, lives:3, canvas:null, ctx:null };
+function breakoutStop(){ if(breakoutState.raf) cancelAnimationFrame(breakoutState.raf); breakoutState.raf=null; breakoutState.running=false; }
+function breakoutBestKey(){ return 'breakout_best'; }
+function breakoutUpdateBest(){ document.getElementById('breakoutBest').textContent = localStorage.getItem(breakoutBestKey())||'--'; }
+function breakoutInit(){
+  breakoutStop();
+  const canvas = document.getElementById('breakoutCanvas');
+  breakoutState.canvas = canvas; breakoutState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  document.getElementById('breakoutScore').textContent='0';
+  document.getElementById('breakoutLives').textContent='3';
+  breakoutUpdateBest();
+  breakoutDrawIdle();
+}
+function breakoutDrawIdle(){
+  const {ctx,canvas} = breakoutState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#8b93ab'; ctx.font='16px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('دوس ابدأ', canvas.width/2, canvas.height/2);
+}
+document.getElementById('breakoutStartBtn').addEventListener('click', breakoutStart);
+function breakoutBuildBricks(){
+  const canvas = breakoutState.canvas;
+  const rows=5, cols=8, pad=4, top=30;
+  const bw = (canvas.width - pad*(cols+1))/cols;
+  const bh = 16;
+  const bricks = [];
+  const colors = ['#ff5c8a','#ffb454','#22d3ee','#7c5cff','#2a9d8f'];
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      bricks.push({x: pad + c*(bw+pad), y: top + r*(bh+pad), w:bw, h:bh, alive:true, color:colors[r%colors.length]});
+    }
+  }
+  return bricks;
+}
+function breakoutStart(){
+  breakoutStop();
+  const canvas = breakoutState.canvas;
+  resizeCanvasToDisplay(canvas);
+  breakoutState.paddleW = canvas.width*0.18;
+  breakoutState.paddleX = canvas.width/2 - breakoutState.paddleW/2;
+  breakoutState.ballX = canvas.width/2; breakoutState.ballY = canvas.height-40;
+  breakoutState.vx = 3.2; breakoutState.vy = -3.2;
+  breakoutState.bricks = breakoutBuildBricks();
+  breakoutState.score = 0; breakoutState.lives = 3;
+  document.getElementById('breakoutScore').textContent='0';
+  document.getElementById('breakoutLives').textContent='3';
+  breakoutState.running = true;
+  breakoutLoop();
+}
+function breakoutLoop(){
+  if(!breakoutState.running) return;
+  breakoutUpdate();
+  breakoutDraw();
+  breakoutState.raf = requestAnimationFrame(breakoutLoop);
+}
+function breakoutUpdate(){
+  const s = breakoutState; const canvas = s.canvas;
+  s.ballX += s.vx; s.ballY += s.vy;
+  if(s.ballX < 6 || s.ballX > canvas.width-6){ s.vx *= -1; }
+  if(s.ballY < 6){ s.vy *= -1; }
+  const paddleY = canvas.height - 14;
+  if(s.ballY > paddleY-8 && s.ballY < paddleY+10 && s.ballX > s.paddleX && s.ballX < s.paddleX + s.paddleW){
+    s.vy = -Math.abs(s.vy);
+    const hit = (s.ballX - (s.paddleX+s.paddleW/2)) / (s.paddleW/2);
+    s.vx = hit * 4;
+    sfx.flip();
+  }
+  if(s.ballY > canvas.height){
+    s.lives--;
+    document.getElementById('breakoutLives').textContent = s.lives;
+    sfx.wrong();
+    if(s.lives <= 0){ breakoutGameOver(); return; }
+    s.ballX = canvas.width/2; s.ballY = canvas.height-40; s.vx=3.2; s.vy=-3.2;
+  }
+  s.bricks.forEach(b => {
+    if(!b.alive) return;
+    if(s.ballX > b.x && s.ballX < b.x+b.w && s.ballY > b.y && s.ballY < b.y+b.h){
+      b.alive = false; s.vy *= -1; s.score += 10;
+      document.getElementById('breakoutScore').textContent = s.score;
+      sfx.match();
+    }
+  });
+  if(s.bricks.every(b=>!b.alive)){ breakoutWin(); }
+}
+function breakoutDraw(){
+  const {ctx,canvas} = breakoutState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  breakoutState.bricks.forEach(b=>{ if(b.alive){ ctx.fillStyle=b.color; ctx.fillRect(b.x,b.y,b.w,b.h); }});
+  ctx.fillStyle = '#7c5cff';
+  ctx.fillRect(breakoutState.paddleX, canvas.height-14, breakoutState.paddleW, 8);
+  ctx.beginPath(); ctx.fillStyle='#22d3ee';
+  ctx.arc(breakoutState.ballX, breakoutState.ballY, 6, 0, Math.PI*2); ctx.fill();
+}
+function breakoutGameOver(){
+  breakoutStop(); sfx.buzzer();
+  const best = parseInt(localStorage.getItem(breakoutBestKey())||'0');
+  if(breakoutState.score>best) localStorage.setItem(breakoutBestKey(), breakoutState.score);
+  breakoutUpdateBest();
+  const {ctx,canvas} = breakoutState;
+  ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#fff'; ctx.font='bold 18px Tajawal'; ctx.textAlign='center';
+  ctx.fillText(`خسرت! نقاطك: ${breakoutState.score}`, canvas.width/2, canvas.height/2);
+}
+function breakoutWin(){
+  breakoutStop(); sfx.win();
+  const best = parseInt(localStorage.getItem(breakoutBestKey())||'0');
+  if(breakoutState.score>best) localStorage.setItem(breakoutBestKey(), breakoutState.score);
+  breakoutUpdateBest();
+  const {ctx,canvas} = breakoutState;
+  ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#fff'; ctx.font='bold 18px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('مبروك! كسرت كل الطوب 🎉', canvas.width/2, canvas.height/2);
+}
+function breakoutMove(clientX){
+  const canvas = breakoutState.canvas;
+  const rect = canvas.getBoundingClientRect();
+  const x = clientX - rect.left;
+  breakoutState.paddleX = Math.min(Math.max(0, x - breakoutState.paddleW/2), canvas.width - breakoutState.paddleW);
+}
+document.getElementById('breakoutCanvas').addEventListener('mousemove', (e)=> breakoutMove(e.clientX));
+document.getElementById('breakoutCanvas').addEventListener('touchmove', (e)=> { breakoutMove(e.touches[0].clientX); e.preventDefault(); }, {passive:false});
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('breakoutScreen').style.display === 'none') return;
+  if(e.key==='ArrowLeft') breakoutState.paddleX = Math.max(0, breakoutState.paddleX-20);
+  else if(e.key==='ArrowRight') breakoutState.paddleX = Math.min(breakoutState.canvas.width-breakoutState.paddleW, breakoutState.paddleX+20);
+});
+
+/* ================= بينج بونج ================= */
+let pongState = { running:false, raf:null, youY:0, cpuY:0, ballX:0, ballY:0, vx:3, vy:3, youScore:0, cpuScore:0, canvas:null, ctx:null, paddleH:60, paddleW:8 };
+function pongStop(){ if(pongState.raf) cancelAnimationFrame(pongState.raf); pongState.raf=null; pongState.running=false; }
+function pongInit(){
+  pongStop();
+  const canvas = document.getElementById('pongCanvas');
+  pongState.canvas=canvas; pongState.ctx=canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  pongState.youScore=0; pongState.cpuScore=0;
+  document.getElementById('pongYou').textContent='0';
+  document.getElementById('pongCpu').textContent='0';
+  pongDrawIdle();
+}
+function pongDrawIdle(){
+  const {ctx,canvas}=pongState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#8b93ab'; ctx.font='16px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('دوس ابدأ', canvas.width/2, canvas.height/2);
+}
+document.getElementById('pongStartBtn').addEventListener('click', pongStart);
+function pongResetBall(dir){
+  const canvas = pongState.canvas;
+  pongState.ballX = canvas.width/2; pongState.ballY = canvas.height/2;
+  pongState.vx = 3.2 * (dir||1); pongState.vy = (Math.random()*4-2);
+}
+function pongStart(){
+  pongStop();
+  const canvas = pongState.canvas;
+  resizeCanvasToDisplay(canvas);
+  pongState.paddleH = canvas.height*0.22;
+  pongState.youY = canvas.height/2 - pongState.paddleH/2;
+  pongState.cpuY = canvas.height/2 - pongState.paddleH/2;
+  pongResetBall(1);
+  pongState.youScore=0; pongState.cpuScore=0;
+  document.getElementById('pongYou').textContent='0';
+  document.getElementById('pongCpu').textContent='0';
+  pongState.running = true;
+  pongLoop();
+}
+function pongLoop(){
+  if(!pongState.running) return;
+  pongUpdate(); pongDraw();
+  pongState.raf = requestAnimationFrame(pongLoop);
+}
+function pongUpdate(){
+  const s = pongState; const canvas = s.canvas;
+  s.ballX += s.vx; s.ballY += s.vy;
+  if(s.ballY < 5 || s.ballY > canvas.height-5) s.vy *= -1;
+  const cpuCenter = s.cpuY + s.paddleH/2;
+  if(cpuCenter < s.ballY - 10) s.cpuY += 2.6;
+  else if(cpuCenter > s.ballY + 10) s.cpuY -= 2.6;
+  s.cpuY = Math.max(0, Math.min(canvas.height - s.paddleH, s.cpuY));
+  if(s.ballX < 16 + s.paddleW && s.ballY > s.youY && s.ballY < s.youY + s.paddleH && s.vx < 0){
+    s.vx *= -1.05; sfx.flip();
+  }
+  if(s.ballX > canvas.width-16-s.paddleW && s.ballY > s.cpuY && s.ballY < s.cpuY + s.paddleH && s.vx > 0){
+    s.vx *= -1.05; sfx.flip();
+  }
+  if(s.ballX < 0){ s.cpuScore++; document.getElementById('pongCpu').textContent=s.cpuScore; sfx.wrong(); pongCheckEnd(); pongResetBall(1); }
+  if(s.ballX > canvas.width){ s.youScore++; document.getElementById('pongYou').textContent=s.youScore; sfx.ding(); pongCheckEnd(); pongResetBall(-1); }
+}
+function pongCheckEnd(){
+  if(pongState.youScore>=5){ pongStop(); sfx.win(); setTimeout(()=>alert('مبروك! كسبت 5-'+pongState.cpuScore),100); }
+  else if(pongState.cpuScore>=5){ pongStop(); sfx.lose(); setTimeout(()=>alert('خسرت، الكمبيوتر كسب 5-'+pongState.youScore),100); }
+}
+function pongDraw(){
+  const {ctx,canvas}=pongState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle='#232d47'; ctx.setLineDash([6,6]);
+  ctx.beginPath(); ctx.moveTo(canvas.width/2,0); ctx.lineTo(canvas.width/2,canvas.height); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle='#22d3ee'; ctx.fillRect(16, pongState.youY, pongState.paddleW, pongState.paddleH);
+  ctx.fillStyle='#ff5c8a'; ctx.fillRect(canvas.width-16-pongState.paddleW, pongState.cpuY, pongState.paddleW, pongState.paddleH);
+  ctx.beginPath(); ctx.fillStyle='#fff'; ctx.arc(pongState.ballX,pongState.ballY,6,0,Math.PI*2); ctx.fill();
+}
+function pongMove(clientY){
+  const canvas = pongState.canvas;
+  const rect = canvas.getBoundingClientRect();
+  const y = clientY - rect.top;
+  pongState.youY = Math.min(Math.max(0, y - pongState.paddleH/2), canvas.height - pongState.paddleH);
+}
+document.getElementById('pongCanvas').addEventListener('mousemove', (e)=>pongMove(e.clientY));
+document.getElementById('pongCanvas').addEventListener('touchmove', (e)=>{ pongMove(e.touches[0].clientY); e.preventDefault(); },{passive:false});
+document.addEventListener('keydown',(e)=>{
+  if(document.getElementById('pongScreen').style.display==='none') return;
+  if(e.key==='ArrowUp') pongState.youY = Math.max(0, pongState.youY-20);
+  else if(e.key==='ArrowDown') pongState.youY = Math.min(pongState.canvas.height-pongState.paddleH, pongState.youY+20);
+});
+
+/* ================= القفزة اللا نهائية ================= */
+let jumpState = { running:false, raf:null, y:0, vy:0, onGround:true, obstacles:[], speed:4, score:0, canvas:null, ctx:null, groundY:0, frame:0 };
+function jumpStop(){ if(jumpState.raf) cancelAnimationFrame(jumpState.raf); jumpState.raf=null; jumpState.running=false; }
+function jumpBestKey(){ return 'jump_best'; }
+function jumpUpdateBest(){ document.getElementById('jumpBest').textContent = localStorage.getItem(jumpBestKey())||'--'; }
+function jumpInit(){
+  jumpStop();
+  const canvas = document.getElementById('jumpCanvas');
+  jumpState.canvas=canvas; jumpState.ctx=canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  jumpUpdateBest();
+  jumpDrawIdle();
+}
+function jumpDrawIdle(){
+  const {ctx,canvas}=jumpState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#8b93ab'; ctx.font='16px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('دوس ابدأ', canvas.width/2, canvas.height/2);
+}
+document.getElementById('jumpStartBtn').addEventListener('click', jumpStart);
+function jumpStart(){
+  jumpStop();
+  const canvas = jumpState.canvas;
+  resizeCanvasToDisplay(canvas);
+  jumpState.groundY = canvas.height - 30;
+  jumpState.y = jumpState.groundY; jumpState.vy = 0; jumpState.onGround = true;
+  jumpState.obstacles = []; jumpState.speed = 4; jumpState.score = 0; jumpState.frame = 0;
+  document.getElementById('jumpScore').textContent = '0';
+  jumpState.running = true;
+  jumpLoop();
+}
+function jumpDo(){
+  if(!jumpState.running) return;
+  if(jumpState.onGround){ jumpState.vy = -9.5; jumpState.onGround = false; sfx.click(); }
+}
+function jumpLoop(){
+  if(!jumpState.running) return;
+  jumpUpdate(); jumpDraw();
+  jumpState.raf = requestAnimationFrame(jumpLoop);
+}
+function jumpUpdate(){
+  const s = jumpState; const canvas = s.canvas;
+  s.vy += 0.55; s.y += s.vy;
+  if(s.y > s.groundY){ s.y = s.groundY; s.vy = 0; s.onGround = true; }
+  s.frame++;
+  if(s.frame % Math.max(30, 70-Math.floor(s.speed*3)) === 0){
+    s.obstacles.push({x: canvas.width, w: 14+Math.random()*10, h: 20+Math.random()*20});
+  }
+  s.obstacles.forEach(o => o.x -= s.speed);
+  s.obstacles = s.obstacles.filter(o => o.x > -30);
+  s.score += 1;
+  document.getElementById('jumpScore').textContent = Math.floor(s.score/5);
+  s.speed = 4 + Math.floor(s.score/300)*0.5;
+  const px = 40, pw = 18, ph = 22;
+  const py = s.y - ph;
+  for(const o of s.obstacles){
+    const oy = s.groundY - o.h + 10;
+    if(px < o.x+o.w && px+pw > o.x && py < oy+o.h && py+ph > oy){
+      jumpGameOver(); return;
+    }
+  }
+}
+function jumpDraw(){
+  const {ctx,canvas} = jumpState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle='#232d47'; ctx.beginPath(); ctx.moveTo(0,jumpState.groundY+10); ctx.lineTo(canvas.width,jumpState.groundY+10); ctx.stroke();
+  ctx.fillStyle='#22d3ee';
+  ctx.fillRect(40, jumpState.y-22, 18, 22);
+  ctx.fillStyle='#ff5c8a';
+  jumpState.obstacles.forEach(o => ctx.fillRect(o.x, jumpState.groundY - o.h + 10, o.w, o.h));
+}
+function jumpGameOver(){
+  jumpStop(); sfx.buzzer();
+  const finalScore = Math.floor(jumpState.score/5);
+  const best = parseInt(localStorage.getItem(jumpBestKey())||'0');
+  if(finalScore>best) localStorage.setItem(jumpBestKey(), finalScore);
+  jumpUpdateBest();
+  const {ctx,canvas} = jumpState;
+  ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#fff'; ctx.font='bold 18px Tajawal'; ctx.textAlign='center';
+  ctx.fillText(`خسرت! المسافة: ${finalScore}`, canvas.width/2, canvas.height/2);
+}
+document.getElementById('jumpCanvas').addEventListener('click', jumpDo);
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('jumpScreen').style.display === 'none') return;
+  if(e.code === 'Space' || e.key==='ArrowUp'){ e.preventDefault(); jumpDo(); }
+});
+
+/* ================= 2048 ================= */
+let g2048State = { grid:[], score:0 };
+function g2048BestKey(){ return 'g2048_best'; }
+function g2048UpdateBest(){ document.getElementById('g2048Best').textContent = localStorage.getItem(g2048BestKey())||'--'; }
+function g2048New(){
+  g2048State.grid = Array.from({length:4},()=>Array(4).fill(0));
+  g2048State.score = 0;
+  document.getElementById('g2048Score').textContent = '0';
+  g2048UpdateBest();
+  g2048AddTile(); g2048AddTile();
+  g2048Render();
+}
+function g2048AddTile(){
+  const empties = [];
+  for(let r=0;r<4;r++) for(let c=0;c<4;c++) if(g2048State.grid[r][c]===0) empties.push([r,c]);
+  if(!empties.length) return;
+  const [r,c] = empties[Math.floor(Math.random()*empties.length)];
+  g2048State.grid[r][c] = Math.random()<0.9 ? 2 : 4;
+}
+function g2048Render(){
+  const board = document.getElementById('g2048Board');
+  board.innerHTML = '';
+  for(let r=0;r<4;r++) for(let c=0;c<4;c++){
+    const v = g2048State.grid[r][c];
+    const cell = document.createElement('div');
+    cell.className = 'g2048-cell';
+    if(v){ cell.dataset.v = v; cell.textContent = v; }
+    board.appendChild(cell);
+  }
+}
+function g2048Slide(row){
+  const arr = row.filter(v=>v!==0);
+  for(let i=0;i<arr.length-1;i++){
+    if(arr[i]===arr[i+1]){
+      arr[i]*=2; g2048State.score += arr[i];
+      arr.splice(i+1,1);
+    }
+  }
+  while(arr.length<4) arr.push(0);
+  return arr;
+}
+function g2048Move(dir){
+  const g = g2048State.grid;
+  let moved = false;
+  let newGrid = Array.from({length:4},()=>Array(4).fill(0));
+  if(dir==='left'){
+    for(let r=0;r<4;r++){ const res = g2048Slide(g[r]); newGrid[r]=res; if(res.join()!==g[r].join()) moved=true; }
+  } else if(dir==='right'){
+    for(let r=0;r<4;r++){ const rev = [...g[r]].reverse(); const res = g2048Slide(rev).reverse(); newGrid[r]=res; if(res.join()!==g[r].join()) moved=true; }
+  } else if(dir==='up'){
+    for(let c=0;c<4;c++){ const col=[g[0][c],g[1][c],g[2][c],g[3][c]]; const res=g2048Slide(col); for(let r=0;r<4;r++) newGrid[r][c]=res[r]; if(res.join()!==col.join()) moved=true; }
+  } else if(dir==='down'){
+    for(let c=0;c<4;c++){ const col=[g[3][c],g[2][c],g[1][c],g[0][c]]; const res=g2048Slide(col); for(let r=0;r<4;r++) newGrid[3-r][c]=res[r]; if(res.join()!==col.join()) moved=true; }
+  }
+  if(moved){
+    g2048State.grid = newGrid;
+    g2048AddTile();
+    document.getElementById('g2048Score').textContent = g2048State.score;
+    sfx.click();
+    g2048Render();
+    const best = parseInt(localStorage.getItem(g2048BestKey())||'0');
+    if(g2048State.score>best) localStorage.setItem(g2048BestKey(), g2048State.score);
+    g2048UpdateBest();
+    if(g2048State.grid.some(row=>row.includes(2048))){ sfx.win(); setTimeout(()=>alert('وصلت 2048! 🎉'),100); }
+    else if(g2048IsGameOver()){ sfx.buzzer(); setTimeout(()=>alert('خلصت الحركات! نقاطك: '+g2048State.score),100); }
+  }
+}
+function g2048IsGameOver(){
+  const g = g2048State.grid;
+  for(let r=0;r<4;r++) for(let c=0;c<4;c++){
+    if(g[r][c]===0) return false;
+    if(c<3 && g[r][c]===g[r][c+1]) return false;
+    if(r<3 && g[r][c]===g[r+1][c]) return false;
+  }
+  return true;
+}
+document.getElementById('g2048NewBtn').addEventListener('click', g2048New);
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('g2048Screen').style.display === 'none') return;
+  if(e.key==='ArrowLeft'){ e.preventDefault(); g2048Move('left'); }
+  else if(e.key==='ArrowRight'){ e.preventDefault(); g2048Move('right'); }
+  else if(e.key==='ArrowUp'){ e.preventDefault(); g2048Move('up'); }
+  else if(e.key==='ArrowDown'){ e.preventDefault(); g2048Move('down'); }
+});
+let g2048TouchStart = null;
+const g2048BoardEl = document.getElementById('g2048Board');
+g2048BoardEl.addEventListener('touchstart', (e) => { g2048TouchStart = {x:e.touches[0].clientX, y:e.touches[0].clientY}; });
+g2048BoardEl.addEventListener('touchend', (e) => {
+  if(!g2048TouchStart) return;
+  const dx = e.changedTouches[0].clientX - g2048TouchStart.x;
+  const dy = e.changedTouches[0].clientY - g2048TouchStart.y;
+  if(Math.abs(dx) > Math.abs(dy)){ g2048Move(dx>0?'right':'left'); } else { g2048Move(dy>0?'down':'up'); }
+  g2048TouchStart = null;
+});
+
+/* ================= وصل 4 ================= */
+let c4State = { grid:[], turn:'you', over:false, score:{you:0,cpu:0} };
+function connect4Reset(){
+  c4State.grid = Array.from({length:6},()=>Array(7).fill(null));
+  c4State.turn = 'you'; c4State.over = false;
+  document.getElementById('connect4Msg').textContent = 'دورك، دوس على أي عمود';
+  connect4Render();
+}
+function connect4Render(){
+  const board = document.getElementById('connect4Board');
+  board.innerHTML = '';
+  for(let r=0;r<6;r++) for(let c=0;c<7;c++){
+    const cell = document.createElement('div');
+    cell.className = 'c4-cell' + (c4State.grid[r][c] ? ' '+c4State.grid[r][c] : '');
+    cell.dataset.col = c;
+    cell.addEventListener('click', () => connect4Play(c));
+    board.appendChild(cell);
+  }
+}
+function connect4DropRow(col){
+  for(let r=5;r>=0;r--) if(!c4State.grid[r][col]) return r;
+  return -1;
+}
+function connect4Play(col){
+  if(c4State.over || c4State.turn !== 'you') return;
+  const row = connect4DropRow(col);
+  if(row===-1) return;
+  c4State.grid[row][col] = 'you';
+  sfx.click();
+  connect4Render();
+  if(connect4CheckWin(row,col,'you')){ connect4End('you'); return; }
+  if(connect4IsFull()){ connect4End('draw'); return; }
+  c4State.turn = 'cpu';
+  document.getElementById('connect4Msg').textContent = 'دور الكمبيوتر...';
+  setTimeout(connect4CpuMove, 500);
+}
+function connect4CpuMove(){
+  if(c4State.over) return;
+  let col = connect4FindWinningCol('cpu');
+  if(col===-1) col = connect4FindWinningCol('you');
+  if(col===-1){
+    const avail = [];
+    for(let c=0;c<7;c++) if(connect4DropRow(c)!==-1) avail.push(c);
+    avail.sort((a,b)=>Math.abs(a-3)-Math.abs(b-3));
+    col = avail[Math.floor(Math.random()*Math.min(3,avail.length))] ?? avail[0];
+  }
+  const row = connect4DropRow(col);
+  c4State.grid[row][col] = 'cpu';
+  sfx.click();
+  connect4Render();
+  if(connect4CheckWin(row,col,'cpu')){ connect4End('cpu'); return; }
+  if(connect4IsFull()){ connect4End('draw'); return; }
+  c4State.turn = 'you';
+  document.getElementById('connect4Msg').textContent = 'دورك، دوس على أي عمود';
+}
+function connect4FindWinningCol(player){
+  for(let c=0;c<7;c++){
+    const r = connect4DropRow(c);
+    if(r===-1) continue;
+    c4State.grid[r][c] = player;
+    const win = connect4CheckWin(r,c,player);
+    c4State.grid[r][c] = null;
+    if(win) return c;
+  }
+  return -1;
+}
+function connect4CheckWin(r,c,player){
+  const dirs = [[0,1],[1,0],[1,1],[1,-1]];
+  for(const [dr,dc] of dirs){
+    let count = 1;
+    for(let s=1;s<4;s++){ const rr=r+dr*s, cc=c+dc*s; if(rr>=0&&rr<6&&cc>=0&&cc<7&&c4State.grid[rr][cc]===player) count++; else break; }
+    for(let s=1;s<4;s++){ const rr=r-dr*s, cc=c-dc*s; if(rr>=0&&rr<6&&cc>=0&&cc<7&&c4State.grid[rr][cc]===player) count++; else break; }
+    if(count>=4) return true;
+  }
+  return false;
+}
+function connect4IsFull(){ return c4State.grid[0].every(v=>v); }
+function connect4End(result){
+  c4State.over = true;
+  if(result==='you'){ c4State.score.you++; document.getElementById('connect4Msg').textContent='كسبت! 🎉'; sfx.win(); }
+  else if(result==='cpu'){ c4State.score.cpu++; document.getElementById('connect4Msg').textContent='الكمبيوتر كسب 🤖'; sfx.lose(); }
+  else { document.getElementById('connect4Msg').textContent='تعادل!'; sfx.draw(); }
+  document.getElementById('c4ScoreYou').textContent = c4State.score.you;
+  document.getElementById('c4ScoreCpu').textContent = c4State.score.cpu;
+}
+document.getElementById('connect4ResetBtn').addEventListener('click', connect4Reset);
+
+/* ================= اضرب الخلد ================= */
+let moleState = { score:0, timeLeft:30, interval:null, moleTimeout:null, activeHole:-1, running:false };
+function moleStop(){ if(moleState.interval){clearInterval(moleState.interval); moleState.interval=null;} if(moleState.moleTimeout){clearTimeout(moleState.moleTimeout); moleState.moleTimeout=null;} moleState.running=false; }
+function moleBestKey(){ return 'mole_best'; }
+function moleUpdateBest(){ document.getElementById('moleBest').textContent = localStorage.getItem(moleBestKey())||'--'; }
+function moleReset(){
+  moleStop();
+  moleState.score=0; moleState.timeLeft=30; moleState.activeHole=-1;
+  document.getElementById('moleScore').textContent='0';
+  document.getElementById('moleTime').textContent='30';
+  moleUpdateBest();
+  const board = document.getElementById('moleBoard');
+  board.innerHTML = '';
+  for(let i=0;i<9;i++){
+    const hole = document.createElement('div');
+    hole.className = 'mole-hole';
+    hole.innerHTML = '<span>🐹</span>';
+    hole.dataset.i = i;
+    hole.addEventListener('click', () => moleWhack(i));
+    board.appendChild(hole);
+  }
+}
+document.getElementById('moleStartBtn').addEventListener('click', moleStart);
+function moleStart(){
+  moleStop();
+  moleReset();
+  moleState.running = true;
+  moleState.interval = setInterval(() => {
+    moleState.timeLeft--;
+    document.getElementById('moleTime').textContent = moleState.timeLeft;
+    if(moleState.timeLeft<=0) moleEnd();
+  }, 1000);
+  moleSpawn();
+}
+function moleSpawn(){
+  if(!moleState.running) return;
+  const holes = document.querySelectorAll('.mole-hole');
+  if(moleState.activeHole>=0) holes[moleState.activeHole].classList.remove('up');
+  let next;
+  do{ next = Math.floor(Math.random()*9); } while(next === moleState.activeHole);
+  moleState.activeHole = next;
+  holes[next].classList.add('up');
+  const delay = 500 + Math.random()*500;
+  moleState.moleTimeout = setTimeout(moleSpawn, delay);
+}
+function moleWhack(i){
+  if(!moleState.running) return;
+  if(i === moleState.activeHole){
+    moleState.score++;
+    document.getElementById('moleScore').textContent = moleState.score;
+    sfx.ding();
+    document.querySelectorAll('.mole-hole')[i].classList.remove('up');
+    moleState.activeHole = -1;
+  }
+}
+function moleEnd(){
+  moleStop();
+  sfx.buzzer();
+  const best = parseInt(localStorage.getItem(moleBestKey())||'0');
+  if(moleState.score>best) localStorage.setItem(moleBestKey(), moleState.score);
+  moleUpdateBest();
+  document.querySelectorAll('.mole-hole').forEach(h=>h.classList.remove('up'));
+}
+
+/* ================= خمن الرقم ================= */
+let guessState = { target:0, tries:0 };
+function guessBestKey(){ return 'guess_best'; }
+function guessUpdateBest(){ document.getElementById('guessBest').textContent = localStorage.getItem(guessBestKey())||'--'; }
+function guessNew(){
+  guessState.target = Math.floor(Math.random()*100)+1;
+  guessState.tries = 0;
+  document.getElementById('guessTries').textContent = '0';
+  document.getElementById('guessMsg').textContent = 'فكرت في رقم من 1 لـ 100، خمنه!';
+  document.getElementById('guessInput').value = '';
+  guessUpdateBest();
+}
+document.getElementById('guessNewBtn').addEventListener('click', guessNew);
+function guessSubmit(){
+  const input = document.getElementById('guessInput');
+  const val = parseInt(input.value);
+  if(isNaN(val)) return;
+  guessState.tries++;
+  document.getElementById('guessTries').textContent = guessState.tries;
+  if(val === guessState.target){
+    sfx.win();
+    document.getElementById('guessMsg').textContent = `🎉 صح! الرقم كان ${val}، خمنته في ${guessState.tries} محاولة`;
+    const best = parseInt(localStorage.getItem(guessBestKey())||'999');
+    if(guessState.tries<best) localStorage.setItem(guessBestKey(), guessState.tries);
+    guessUpdateBest();
+  } else if(val < guessState.target){
+    sfx.click();
+    document.getElementById('guessMsg').textContent = '⬆️ أكبر من كده';
+  } else {
+    sfx.click();
+    document.getElementById('guessMsg').textContent = '⬇️ أصغر من كده';
+  }
+  input.value = '';
+  input.focus();
+}
+document.getElementById('guessSubmitBtn').addEventListener('click', guessSubmit);
+document.getElementById('guessInput').addEventListener('keydown', (e) => { if(e.key==='Enter') guessSubmit(); });
+
+/* ================= تخمين الكلمة (هانج مان) ================= */
+const HANGMAN_WORDS = ['FOOTBALL','COMPUTER','GUITAR','ELEPHANT','PLANET','SANDWICH','LIBRARY','MOUNTAIN','KEYBOARD','JOURNEY','BALLOON','DIAMOND','ISLAND','TROPHY','CAMERA','BICYCLE','ORANGE','WINDOW','JACKET','PUZZLE'];
+let hangmanState = { word:'', guessed:[], wrong:0, wins:0, over:false };
+function hangmanNew(){
+  hangmanState.word = HANGMAN_WORDS[Math.floor(Math.random()*HANGMAN_WORDS.length)];
+  hangmanState.guessed = [];
+  hangmanState.wrong = 0;
+  hangmanState.over = false;
+  document.getElementById('hangmanWrong').textContent = '0/6';
+  hangmanRenderWord();
+  hangmanRenderKeys();
+}
+function hangmanRenderWord(){
+  const el = document.getElementById('hangmanWord');
+  el.textContent = hangmanState.word.split('').map(l => hangmanState.guessed.includes(l) ? l : '_').join(' ');
+}
+function hangmanRenderKeys(){
+  const el = document.getElementById('hangmanKeys');
+  el.innerHTML = '';
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(l => {
+    const btn = document.createElement('button');
+    btn.className = 'hangman-key';
+    btn.textContent = l;
+    btn.addEventListener('click', () => hangmanGuess(l, btn));
+    el.appendChild(btn);
+  });
+}
+function hangmanGuess(l, btn){
+  if(hangmanState.over || hangmanState.guessed.includes(l)) return;
+  hangmanState.guessed.push(l);
+  btn.disabled = true;
+  if(hangmanState.word.includes(l)){
+    btn.classList.add('correct');
+    sfx.click();
+    hangmanRenderWord();
+    if(!document.getElementById('hangmanWord').textContent.includes('_')){
+      hangmanState.over = true; hangmanState.wins++;
+      document.getElementById('hangmanWins').textContent = hangmanState.wins;
+      sfx.win();
+      setTimeout(()=>alert('مبروك! الكلمة كانت: '+hangmanState.word),100);
+    }
+  } else {
+    btn.classList.add('wrong');
+    hangmanState.wrong++;
+    document.getElementById('hangmanWrong').textContent = `${hangmanState.wrong}/6`;
+    sfx.wrong();
+    if(hangmanState.wrong>=6){
+      hangmanState.over = true;
+      sfx.buzzer();
+      setTimeout(()=>alert('خسرت! الكلمة كانت: '+hangmanState.word),100);
+    }
+  }
+}
+document.getElementById('hangmanNewBtn').addEventListener('click', hangmanNew);
+
+/* ================= اختبار الألوان (Stroop) ================= */
+const STROOP_COLORS = [
+  {name:'أحمر', hex:'#e63946'}, {name:'أزرق', hex:'#3a86ff'}, {name:'أخضر', hex:'#2a9d8f'},
+  {name:'أصفر', hex:'#ffd60a'}, {name:'بنفسجي', hex:'#8338ec'}, {name:'برتقالي', hex:'#fb8500'}
+];
+let stroopState = { score:0, timeLeft:30, interval:null, current:null, running:false };
+function stroopStop(){ if(stroopState.interval){clearInterval(stroopState.interval); stroopState.interval=null;} stroopState.running=false; }
+function stroopBestKey(){ return 'stroop_best'; }
+function stroopUpdateBest(){ document.getElementById('stroopBest').textContent = localStorage.getItem(stroopBestKey())||'--'; }
+function stroopReset(){
+  stroopStop();
+  stroopState.score = 0; stroopState.timeLeft = 30;
+  document.getElementById('stroopScore').textContent = '0';
+  document.getElementById('stroopTime').textContent = '30';
+  document.getElementById('stroopWord').textContent = 'جاهز؟';
+  document.getElementById('stroopWord').style.color = 'var(--ink)';
+  document.getElementById('stroopChoices').innerHTML = '';
+  stroopUpdateBest();
+}
+document.getElementById('stroopStartBtn').addEventListener('click', stroopStart);
+function stroopStart(){
+  stroopStop();
+  stroopState.score = 0; stroopState.timeLeft = 30;
+  document.getElementById('stroopScore').textContent = '0';
+  document.getElementById('stroopTime').textContent = '30';
+  stroopState.running = true;
+  stroopState.interval = setInterval(() => {
+    stroopState.timeLeft--;
+    document.getElementById('stroopTime').textContent = stroopState.timeLeft;
+    if(stroopState.timeLeft<=0) stroopEnd();
+  }, 1000);
+  stroopNext();
+}
+function stroopNext(){
+  const wordObj = STROOP_COLORS[Math.floor(Math.random()*STROOP_COLORS.length)];
+  let inkObj;
+  do{ inkObj = STROOP_COLORS[Math.floor(Math.random()*STROOP_COLORS.length)]; } while(inkObj.name===wordObj.name);
+  stroopState.current = inkObj;
+  const wordEl = document.getElementById('stroopWord');
+  wordEl.textContent = wordObj.name;
+  wordEl.style.color = inkObj.hex;
+  let choices = [...STROOP_COLORS].sort(()=>Math.random()-0.5).slice(0,4);
+  if(!choices.some(c=>c.name===inkObj.name)) choices[0] = inkObj;
+  choices = choices.sort(()=>Math.random()-0.5);
+  const box = document.getElementById('stroopChoices');
+  box.innerHTML = '';
+  choices.forEach(c => {
+    const btn = document.createElement('button');
+    btn.textContent = c.name;
+    btn.style.background = c.hex;
+    btn.addEventListener('click', () => stroopAnswer(c.name));
+    box.appendChild(btn);
+  });
+}
+function stroopAnswer(name){
+  if(!stroopState.running) return;
+  if(name === stroopState.current.name){
+    stroopState.score++;
+    document.getElementById('stroopScore').textContent = stroopState.score;
+    sfx.ding();
+  } else {
+    sfx.wrong();
+  }
+  stroopNext();
+}
+function stroopEnd(){
+  stroopStop();
+  sfx.buzzer();
+  const best = parseInt(localStorage.getItem(stroopBestKey())||'0');
+  if(stroopState.score>best) localStorage.setItem(stroopBestKey(), stroopState.score);
+  stroopUpdateBest();
+  document.getElementById('stroopWord').textContent = `خلص الوقت! نقاطك: ${stroopState.score}`;
+  document.getElementById('stroopWord').style.color = 'var(--ink)';
+  document.getElementById('stroopChoices').innerHTML = '';
+}
+
+/* ================= اختبار سرعة الكتابة ================= */
+const TYPING_SENTENCES = [
+  'The quick brown fox jumps over the lazy dog',
+  'Practice makes perfect every single day',
+  'Coding is fun when you build real projects',
+  'Success comes from consistent small efforts',
+  'A journey of a thousand miles begins with one step',
+  'Simple code is often the best code'
+];
+let typingState = { text:'', startTime:0, started:false };
+function typingStop(){ typingState.started = false; }
+function typingBestKey(){ return 'typing_best'; }
+function typingUpdateBest(){ document.getElementById('typingBest').textContent = localStorage.getItem(typingBestKey())||'--'; }
+function typingNew(){
+  typingState.text = TYPING_SENTENCES[Math.floor(Math.random()*TYPING_SENTENCES.length)];
+  typingState.started = false;
+  typingUpdateBest();
+  document.getElementById('typingWpm').textContent = '0';
+  document.getElementById('typingAcc').textContent = '100%';
+  const input = document.getElementById('typingInput');
+  input.value = '';
+  input.disabled = false;
+  typingRenderTarget('');
+}
+function typingRenderTarget(typed){
+  const el = document.getElementById('typingTarget');
+  el.innerHTML = '';
+  typingState.text.split('').forEach((ch,i) => {
+    const span = document.createElement('span');
+    span.textContent = ch;
+    if(i < typed.length){ span.className = typed[i]===ch ? 'correct' : 'wrong'; }
+    el.appendChild(span);
+  });
+}
+document.getElementById('typingInput').addEventListener('input', (e) => {
+  const val = e.target.value;
+  if(!typingState.started){ typingState.started = true; typingState.startTime = Date.now(); }
+  typingRenderTarget(val);
+  if(val.length >= typingState.text.length){
+    typingFinish(val);
+  }
+});
+function typingFinish(val){
+  const input = document.getElementById('typingInput');
+  input.disabled = true;
+  const elapsedMin = (Date.now() - typingState.startTime) / 60000;
+  const words = typingState.text.split(' ').length;
+  const wpm = Math.round(words / Math.max(elapsedMin, 0.02));
+  let correctChars = 0;
+  for(let i=0;i<typingState.text.length;i++) if(val[i]===typingState.text[i]) correctChars++;
+  const acc = Math.round((correctChars/typingState.text.length)*100);
+  document.getElementById('typingWpm').textContent = wpm;
+  document.getElementById('typingAcc').textContent = acc+'%';
+  sfx.win();
+  const best = parseInt(localStorage.getItem(typingBestKey())||'0');
+  if(wpm>best) localStorage.setItem(typingBestKey(), wpm);
+  typingUpdateBest();
+}
+document.getElementById('typingRestartBtn').addEventListener('click', typingNew);
 
 /* ================= بناء شاشة الإعدادات ================= */
 const catGrid = document.getElementById('catGrid');
