@@ -298,6 +298,239 @@
     font-family:'JetBrains Mono',monospace; direction:ltr; text-align:left; resize:none;
   }
   .typing-input:focus{ outline:none; border-color:var(--violet); }
+
+  /* Sudoku */
+  .sudoku-board{
+    display:grid; grid-template-columns:repeat(9,1fr); max-width:378px; margin:0 auto 16px;
+    border:2px solid var(--ink-dim); border-radius:8px; overflow:hidden;
+  }
+  .sudoku-cell{
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; cursor:pointer;
+    background:var(--bg-2); border:1px solid var(--line); font-size:16px; font-weight:700; color:var(--ink);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .sudoku-cell.given{ color:var(--ink-dim); background:var(--panel-2); cursor:default; }
+  .sudoku-cell.selected{ background:rgba(124,92,255,.25); }
+  .sudoku-cell.error{ color:var(--pink); }
+  .sudoku-cell:nth-child(3n){ border-left:2px solid var(--ink-dim); }
+  .sudoku-cell:nth-child(9n+1){ border-left:none; }
+  .sudoku-row-thick{ border-top:2px solid var(--ink-dim); }
+  .numpad{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; max-width:340px; margin:0 auto; }
+  .numpad button{
+    padding:12px 0; border-radius:10px; border:1.5px solid var(--line); background:var(--bg-2); color:var(--ink);
+    font-weight:800; font-size:16px; cursor:pointer; font-family:'JetBrains Mono',monospace;
+  }
+
+  /* Minesweeper */
+  .mine-board{
+    display:grid; grid-template-columns:repeat(9,1fr); max-width:378px; margin:0 auto; gap:2px;
+  }
+  .mine-cell{
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; cursor:pointer;
+    background:var(--bg-2); border:1px solid var(--line); border-radius:4px; font-size:14px; font-weight:800;
+    color:var(--teal); font-family:'JetBrains Mono',monospace;
+  }
+  .mine-cell.hidden-cell{ background:var(--panel-2); }
+  .mine-cell.flagged{ background:var(--panel-2); }
+  .mine-cell.mine{ background:var(--pink); }
+
+  /* Solitaire */
+  .solitaire-board{ max-width:600px; margin:0 auto; }
+  .sol-row{ display:flex; gap:6px; margin-bottom:14px; justify-content:space-between; }
+  .sol-tableau{ display:flex; gap:6px; justify-content:center; flex-wrap:wrap; }
+  .sol-pile{
+    width:42px; height:60px; border-radius:6px; border:1.5px dashed var(--line);
+    display:flex; align-items:center; justify-content:center; position:relative; background:rgba(255,255,255,.02);
+  }
+  .sol-col{ display:flex; flex-direction:column; min-height:60px; }
+  .sol-card{
+    width:42px; height:60px; border-radius:6px; background:#f1f1f1; color:#111; border:1.5px solid #ccc;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; cursor:pointer;
+    position:relative; margin-top:-42px; font-family:'JetBrains Mono',monospace;
+  }
+  .sol-col .sol-card:first-child{ margin-top:0; }
+  .sol-card.red{ color:#c0392b; }
+  .sol-card.black{ color:#1a1a1a; }
+  .sol-card.face-down{ background:linear-gradient(135deg,var(--violet),var(--teal)); color:transparent; }
+  .sol-card.selected{ outline:3px solid var(--teal); }
+
+  /* Hanoi */
+  .hanoi-board{ display:flex; justify-content:space-around; align-items:flex-end; max-width:420px; margin:0 auto; height:200px; }
+  .hanoi-peg{ width:30%; height:100%; display:flex; flex-direction:column-reverse; align-items:center; position:relative; cursor:pointer; border-bottom:4px solid var(--ink-dim); }
+  .hanoi-peg::before{ content:''; position:absolute; bottom:0; width:6px; height:170px; background:var(--ink-dim); border-radius:3px; }
+  .hanoi-disk{ height:20px; border-radius:6px; margin-bottom:4px; position:relative; z-index:1; }
+
+  /* Tetris */
+  .tetris-controls{ display:flex; gap:8px; justify-content:center; max-width:280px; margin:14px auto 0; }
+  .tetris-controls button{
+    flex:1; padding:14px 0; border-radius:12px; background:var(--bg-2); border:1.5px solid var(--line);
+    font-size:18px; cursor:pointer; color:var(--ink);
+  }
+
+  /* Water sort */
+  .watersort-board{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; max-width:500px; margin:0 auto; }
+  .water-tube{
+    width:46px; height:150px; border:3px solid var(--line); border-top:none; border-radius:0 0 14px 14px;
+    display:flex; flex-direction:column-reverse; cursor:pointer; overflow:hidden; background:rgba(255,255,255,.03);
+  }
+  .water-tube.selected{ border-color:var(--teal); }
+  .water-seg{ height:25%; }
+
+  /* Trivia */
+  .trivia-q{
+    text-align:center; font-size:clamp(17px,4vw,22px); font-weight:800; max-width:520px; margin:10px auto 22px;
+    background:var(--panel-2); border:1.5px solid var(--line); border-radius:14px; padding:20px;
+  }
+  .trivia-choices{ display:grid; grid-template-columns:1fr 1fr; gap:10px; max-width:520px; margin:0 auto; }
+  .trivia-choices button{
+    padding:16px 10px; border-radius:12px; border:1.5px solid var(--line); background:var(--bg-2); color:var(--ink);
+    font-weight:700; cursor:pointer; font-size:14px;
+  }
+  .trivia-choices button.correct{ border-color:var(--teal); background:rgba(34,211,238,.15); }
+  .trivia-choices button.wrong{ border-color:var(--pink); background:rgba(255,92,138,.15); }
+
+  /* Wordle */
+  .wordle-grid{ display:grid; grid-template-rows:repeat(6,1fr); gap:6px; max-width:280px; margin:0 auto 20px; }
+  .wordle-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:6px; }
+  .wordle-cell{
+    aspect-ratio:1/1; border:2px solid var(--line); border-radius:6px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:20px; text-transform:uppercase; color:var(--ink); font-family:'JetBrains Mono',monospace;
+  }
+  .wordle-cell.correct{ background:var(--teal); border-color:var(--teal); color:#08101f; }
+  .wordle-cell.present{ background:var(--amber); border-color:var(--amber); color:#08101f; }
+  .wordle-cell.absent{ background:var(--panel-2); border-color:var(--line); color:var(--ink-dim); }
+  .wordle-keys{ display:flex; flex-direction:column; gap:6px; max-width:480px; margin:0 auto; align-items:center; }
+  .wordle-keyrow{ display:flex; gap:5px; }
+  .wordle-key{
+    padding:10px 8px; min-width:26px; border-radius:6px; background:var(--bg-2); border:1.5px solid var(--line);
+    color:var(--ink); font-weight:700; font-size:12px; cursor:pointer; text-transform:uppercase;
+  }
+  .wordle-key.correct{ background:var(--teal); color:#08101f; }
+  .wordle-key.present{ background:var(--amber); color:#08101f; }
+  .wordle-key.absent{ opacity:.35; }
+
+  /* Chess */
+  .chess-board{
+    display:grid; grid-template-columns:repeat(8,1fr); max-width:400px; margin:0 auto;
+    border:2px solid var(--ink-dim); direction:ltr;
+  }
+  .chess-cell{
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; cursor:pointer;
+    font-size:clamp(18px,5vw,30px); position:relative;
+  }
+  .chess-cell.light{ background:#2a3350; }
+  .chess-cell.dark{ background:#171e33; }
+  .chess-cell.selected{ outline:3px solid var(--teal); outline-offset:-3px; }
+  .chess-cell.move-hint::after{
+    content:''; position:absolute; width:22%; height:22%; border-radius:50%; background:rgba(34,211,238,.6);
+  }
+  .chess-cell.white-piece{ color:#f4f4f4; text-shadow:0 0 3px #000; }
+  .chess-cell.black-piece{ color:#111; text-shadow:0 0 3px #fff8; }
+
+  /* Checkers */
+  .checkers-board{
+    display:grid; grid-template-columns:repeat(8,1fr); max-width:400px; margin:0 auto;
+    border:2px solid var(--ink-dim); direction:ltr;
+  }
+  .checkers-cell{ aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; }
+  .checkers-cell.light{ background:#2a3350; }
+  .checkers-cell.dark{ background:#171e33; }
+  .checkers-cell.selected{ outline:3px solid var(--teal); outline-offset:-3px; }
+  .checkers-cell.move-hint::after{ content:''; position:absolute; width:22%; height:22%; border-radius:50%; background:rgba(34,211,238,.6); }
+  .checkers-piece{ width:72%; height:72%; border-radius:50%; box-shadow:inset 0 -3px 6px rgba(0,0,0,.4); }
+  .checkers-piece.you{ background:radial-gradient(circle at 35% 30%, #ff8fa8, #ff5c8a); }
+  .checkers-piece.cpu{ background:radial-gradient(circle at 35% 30%, #ffe08a, #ffb454); }
+  .checkers-piece.king::after{ content:'♛'; display:flex; align-items:center; justify-content:center; font-size:16px; color:#3a2a00; }
+
+  /* Othello */
+  .othello-board{
+    display:grid; grid-template-columns:repeat(8,1fr); max-width:400px; margin:0 auto; gap:2px;
+    background:#0d2b4e; padding:6px; border-radius:8px; direction:ltr;
+  }
+  .othello-cell{ aspect-ratio:1/1; background:#123a2b; display:flex; align-items:center; justify-content:center; cursor:pointer; border-radius:3px; position:relative; }
+  .othello-cell.hint::after{ content:''; position:absolute; width:22%; height:22%; border-radius:50%; background:rgba(255,255,255,.35); }
+  .othello-disc{ width:78%; height:78%; border-radius:50%; }
+  .othello-disc.you{ background:radial-gradient(circle at 35% 30%, #333, #000); }
+  .othello-disc.cpu{ background:radial-gradient(circle at 35% 30%, #fff, #ccc); }
+
+  /* Battleship */
+  .battleship-boards{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+  .bs-label{ text-align:center; font-size:12px; color:var(--ink-dim); margin-bottom:6px; font-weight:700; }
+  .battleship-board{
+    display:grid; grid-template-columns:repeat(7,1fr); max-width:245px; gap:2px; direction:ltr;
+  }
+  .bs-cell{
+    aspect-ratio:1/1; background:var(--bg-2); border:1px solid var(--line); border-radius:3px;
+    display:flex; align-items:center; justify-content:center; font-size:13px; cursor:pointer;
+  }
+  .bs-cell.ship{ background:var(--violet-dim); }
+  .bs-cell.hit{ background:var(--pink); }
+  .bs-cell.miss{ background:var(--panel-2); color:var(--ink-dim); }
+  .bs-cell.sunk{ background:#7f1d1d; }
+
+  /* Match 3 */
+  .match3-board{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:5px; max-width:380px; margin:0 auto;
+  }
+  .match3-cell{
+    aspect-ratio:1/1; border-radius:9px; display:flex; align-items:center; justify-content:center;
+    font-size:clamp(16px,5vw,24px); cursor:pointer; transition:transform .1s ease; background:var(--bg-2);
+  }
+  .match3-cell.selected{ outline:3px solid #fff; transform:scale(0.92); }
+
+  /* Basketball / Darts / Bowling share arcade-canvas already defined */
+
+  /* Anagram */
+  .anagram-hint{ text-align:center; color:var(--ink-dim); font-size:13px; margin-bottom:8px; }
+  .anagram-answer{
+    display:flex; gap:8px; justify-content:center; min-height:52px; margin-bottom:20px; flex-wrap:wrap;
+  }
+  .anagram-answer .slot{
+    width:42px; height:48px; border:2px dashed var(--line); border-radius:8px; display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:20px; font-family:'JetBrains Mono',monospace; cursor:pointer;
+  }
+  .anagram-letters{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .anagram-letters .tile{
+    width:42px; height:48px; border-radius:8px; background:var(--violet); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:20px; cursor:pointer; font-family:'JetBrains Mono',monospace;
+  }
+  .anagram-letters .tile.used{ opacity:0; pointer-events:none; }
+
+  /* Crossword */
+  .crossword-board{
+    display:grid; gap:2px; max-width:320px; margin:0 auto 16px; direction:ltr;
+  }
+  .cw-cell{
+    aspect-ratio:1/1; background:var(--bg-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:15px; color:var(--ink); text-transform:uppercase; font-family:'JetBrains Mono',monospace;
+  }
+  .cw-cell.blocked{ background:transparent; border:none; }
+  .cw-cell input{
+    width:100%; height:100%; background:transparent; border:none; color:var(--teal); text-align:center;
+    font-weight:800; font-size:15px; text-transform:uppercase; font-family:'JetBrains Mono',monospace;
+  }
+  .cw-cell input:focus{ outline:none; background:rgba(124,92,255,.2); }
+  .cw-cell.correct input{ color:var(--teal); }
+  .crossword-clues{ max-width:420px; margin:0 auto; font-size:13px; color:var(--ink-dim); line-height:1.9; }
+  .crossword-clues b{ color:var(--ink); }
+
+  /* Yahtzee */
+  .yahtzee-dice{ display:flex; gap:10px; justify-content:center; margin-bottom:16px; flex-wrap:wrap; }
+  .yahtzee-die{
+    width:56px; height:56px; border-radius:12px; background:var(--panel-2); border:2px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:26px; cursor:pointer;
+  }
+  .yahtzee-die.held{ border-color:var(--teal); background:rgba(34,211,238,.15); }
+  .yahtzee-scores{
+    display:grid; grid-template-columns:1fr 1fr; gap:8px; max-width:480px; margin:0 auto;
+  }
+  .yz-score-btn{
+    display:flex; justify-content:space-between; padding:10px 12px; border-radius:10px; background:var(--bg-2);
+    border:1.5px solid var(--line); cursor:pointer; font-size:12.5px; color:var(--ink);
+  }
+  .yz-score-btn .val{ font-weight:800; color:var(--teal); font-family:'JetBrains Mono',monospace; }
+  .yz-score-btn.used{ opacity:.4; cursor:default; }
+  .yz-score-btn.used .val{ color:var(--ink-dim); }
   .stat-bar{
     display:flex; justify-content:space-between; align-items:center;
     background:var(--panel); border:1px solid var(--line); border-radius:14px;
@@ -380,6 +613,22 @@
     .stat-bar{ padding:10px 12px; }
     .stat .v{ font-size:16px; }
   }
+  /* ===== إصلاح انعكاس ترتيب عناصر التحكم بسبب RTL ===== */
+  .diff-row, .cat-grid, .game-grid, .touch-pad, .tetris-controls, .sudoku-board, .numpad,
+  .mine-board, .g2048-board, .c4-board, .wordle-grid, .wordle-keys, .wordle-keyrow,
+  .hanoi-board, .sol-row, .sol-tableau, .watersort-board, .stroop-choices, .trivia-choices, .rps-choices{
+    direction: ltr;
+  }
+
+  /* ===== اختيار مستوى الصعوبة (موحد لكل الألعاب) ===== */
+  .mini-diff{
+    display:flex; gap:8px; justify-content:center; max-width:360px; margin:0 auto 14px; direction:ltr;
+  }
+  .mini-diff-btn{
+    flex:1; padding:9px 6px; border-radius:10px; border:1.5px solid var(--line); background:var(--bg-2);
+    color:var(--ink-dim); font-weight:700; font-size:12.5px; cursor:pointer; font-family:inherit;
+  }
+  .mini-diff-btn.active{ border-color:var(--violet); background:rgba(124,92,255,.15); color:#fff; }
 </style>
 </head>
 <body>
@@ -450,6 +699,7 @@
       <div class="stat"><div class="v" id="xoScoreCpu">0</div><div class="k">الكمبيوتر</div></div>
       <button class="back-link" id="xoResetBtn">لعبة جديدة</button>
     </div>
+    <div class="mini-diff" data-game="xo"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <p class="sub" id="xoMsg" style="margin-bottom:14px;">دورك، انت X</p>
     <div id="xoBoard" class="xo-board"></div>
   </div>
@@ -462,6 +712,7 @@
       <div class="stat"><div class="v" id="simonBest">--</div><div class="k">أفضل مستوى</div></div>
       <button class="back-link" id="simonStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="simon"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <p class="sub" id="simonMsg" style="margin-bottom:14px;">دوس "ابدأ" وبص للنمط كويس</p>
     <div class="simon-board" id="simonBoard">
       <div class="simon-pad" data-i="0" style="--c:#7c5cff"></div>
@@ -478,6 +729,7 @@
       <div class="stat"><div class="v" id="reactionBest">--</div><div class="k">أفضل وقت</div></div>
       <div class="stat"><div class="v" id="reactionLast">--</div><div class="k">آخر محاولة</div></div>
     </div>
+    <div class="mini-diff" data-game="reaction"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div id="reactionBox" class="reaction-box">دوس عشان تبدأ</div>
   </div>
 
@@ -489,6 +741,7 @@
       <div class="stat"><div class="v" id="rpsScoreDraw">0</div><div class="k">تعادل</div></div>
       <div class="stat"><div class="v" id="rpsScoreCpu">0</div><div class="k">الكمبيوتر</div></div>
     </div>
+    <div class="mini-diff" data-game="rps"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <p class="sub" id="rpsMsg" style="margin-bottom:14px;">اختار سلاحك</p>
     <div class="rps-row">
       <div class="rps-side"><div class="rps-emoji" id="rpsYouEmoji">❔</div><div class="k">أنت</div></div>
@@ -511,6 +764,7 @@
       <div class="stat"><div class="v" id="mathBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="mathStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="math"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div class="math-box" id="mathBox">
       <div class="math-q" id="mathQ">جاهز؟</div>
       <input type="number" id="mathInput" class="math-input" placeholder="اكتب الناتج" disabled>
@@ -526,6 +780,7 @@
       <div class="stat"><div class="v" id="slideBest">--</div><div class="k">أفضل حركات</div></div>
       <button class="back-link" id="slideShuffleBtn">خلط جديد</button>
     </div>
+    <div class="mini-diff" data-game="slide"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div id="slideBoard" class="slide-board"></div>
   </div>
 
@@ -537,6 +792,7 @@
       <div class="stat"><div class="v" id="snakeBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="snakeStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="snake"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <canvas id="snakeCanvas" class="arcade-canvas"></canvas>
     <div class="touch-pad" id="snakeTouchPad">
       <div></div><button data-d="up">⬆️</button><div></div>
@@ -554,6 +810,7 @@
       <div class="stat"><div class="v" id="breakoutBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="breakoutStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="breakout"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <canvas id="breakoutCanvas" class="arcade-canvas"></canvas>
     <p class="sub" style="text-align:center;margin-top:10px;">حرك بالماوس أو اللمس / أسهم لوحة المفاتيح</p>
   </div>
@@ -566,6 +823,7 @@
       <div class="stat"><div class="v" id="pongCpu">0</div><div class="k">الكمبيوتر</div></div>
       <button class="back-link" id="pongStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="pong"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <canvas id="pongCanvas" class="arcade-canvas"></canvas>
     <p class="sub" style="text-align:center;margin-top:10px;">حرك بالماوس أو اللمس / أسهم لوحة المفاتيح</p>
   </div>
@@ -578,6 +836,7 @@
       <div class="stat"><div class="v" id="jumpBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="jumpStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="jump"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <canvas id="jumpCanvas" class="arcade-canvas"></canvas>
     <p class="sub" style="text-align:center;margin-top:10px;">دوس مسافة أو اضغط الشاشة عشان تقفز</p>
   </div>
@@ -590,6 +849,7 @@
       <div class="stat"><div class="v" id="g2048Best">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="g2048NewBtn">لعبة جديدة</button>
     </div>
+    <div class="mini-diff" data-game="g2048"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div id="g2048Board" class="g2048-board"></div>
     <p class="sub" style="text-align:center;margin-top:10px;">استخدم الأسهم أو اسحب بإصبعك</p>
   </div>
@@ -602,6 +862,7 @@
       <div class="stat"><div class="v" id="c4ScoreCpu">0</div><div class="k">الكمبيوتر 🟡</div></div>
       <button class="back-link" id="connect4ResetBtn">لعبة جديدة</button>
     </div>
+    <div class="mini-diff" data-game="connect4"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <p class="sub" id="connect4Msg" style="text-align:center;margin-bottom:10px;">دورك، دوس على أي عمود</p>
     <div id="connect4Board" class="c4-board"></div>
   </div>
@@ -615,6 +876,7 @@
       <div class="stat"><div class="v" id="moleBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="moleStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="mole"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div id="moleBoard" class="mole-board"></div>
   </div>
 
@@ -626,6 +888,7 @@
       <div class="stat"><div class="v" id="guessBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="guessNewBtn">رقم جديد</button>
     </div>
+    <div class="mini-diff" data-game="guess"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div class="guess-box">
       <div class="math-q" id="guessMsg">فكرت في رقم من 1 لـ 100، خمنه!</div>
       <input type="number" id="guessInput" class="math-input" placeholder="اكتب رقمك هنا" min="1" max="100">
@@ -641,6 +904,7 @@
       <div class="stat"><div class="v" id="hangmanWins">0</div><div class="k">فوز</div></div>
       <button class="back-link" id="hangmanNewBtn">كلمة جديدة</button>
     </div>
+    <div class="mini-diff" data-game="hangman"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div class="hangman-word" id="hangmanWord"></div>
     <div class="hangman-keys" id="hangmanKeys"></div>
   </div>
@@ -654,6 +918,7 @@
       <div class="stat"><div class="v" id="stroopBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="stroopStartBtn">ابدأ</button>
     </div>
+    <div class="mini-diff" data-game="stroop"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div class="stroop-word" id="stroopWord">جاهز؟</div>
     <div class="stroop-choices" id="stroopChoices"></div>
   </div>
@@ -667,8 +932,308 @@
       <div class="stat"><div class="v" id="typingBest">--</div><div class="k">أفضل نتيجة</div></div>
       <button class="back-link" id="typingRestartBtn">جملة جديدة</button>
     </div>
+    <div class="mini-diff" data-game="typing"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
     <div class="typing-target" id="typingTarget"></div>
     <textarea id="typingInput" class="typing-input" placeholder="ابدأ الكتابة هنا..." dir="ltr"></textarea>
+  </div>
+
+  <!-- سودوكو -->
+  <div id="sudokuScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="sudokuHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="sudokuMistakes">0/3</div><div class="k">أخطاء</div></div>
+      <div class="stat"><div class="v" id="sudokuTime">00:00</div><div class="k">الوقت</div></div>
+      <div class="stat"><div class="v" id="sudokuBest">--</div><div class="k">أفضل وقت</div></div>
+      <button class="back-link" id="sudokuNewBtn">لغز جديد</button>
+    </div>
+    <div class="mini-diff" data-game="sudoku"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <div id="sudokuBoard" class="sudoku-board"></div>
+    <div class="numpad" id="sudokuPad"></div>
+  </div>
+
+  <!-- كشف الألغام -->
+  <div id="mineScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="mineHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="mineLeft">10</div><div class="k">ألغام</div></div>
+      <div class="stat"><div class="v" id="mineTime">00:00</div><div class="k">الوقت</div></div>
+      <div class="stat"><div class="v" id="mineBest">--</div><div class="k">أفضل وقت</div></div>
+      <button class="back-link" id="mineFlagBtn">🚩 وضع العلم</button>
+    </div>
+    <div class="mini-diff" data-game="mine"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <div id="mineBoard" class="mine-board"></div>
+    <button class="start-btn" id="mineNewBtn" style="margin-top:14px;max-width:340px;margin-inline:auto;">لعبة جديدة</button>
+  </div>
+
+  <!-- سوليتير -->
+  <div id="solitaireScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="solitaireHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="solitaireMoves">0</div><div class="k">حركات</div></div>
+      <button class="back-link" id="solitaireNewBtn">لعبة جديدة</button>
+    </div>
+    <div class="mini-diff" data-game="solitaire"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <p class="sub" style="text-align:center;margin-bottom:10px;">دوس على ورقة، وبعدين دوس على المكان اللي عايز تنقلها له</p>
+    <div id="solitaireBoard" class="solitaire-board"></div>
+  </div>
+
+  <!-- برج هانوي -->
+  <div id="hanoiScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="hanoiHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="hanoiMoves">0</div><div class="k">حركات</div></div>
+      <div class="stat"><div class="v" id="hanoiMin">--</div><div class="k">أقل عدد حركات</div></div>
+      <button class="back-link" id="hanoiNewBtn">لعبة جديدة</button>
+    </div>
+    <div class="mini-diff" data-game="hanoi"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <div id="hanoiBoard" class="hanoi-board"></div>
+  </div>
+
+  <!-- تتريس -->
+  <div id="tetrisScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="tetrisHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="tetrisScore">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="tetrisLines">0</div><div class="k">خطوط</div></div>
+      <div class="stat"><div class="v" id="tetrisBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="tetrisStartBtn">ابدأ</button>
+    </div>
+    <div class="mini-diff" data-game="tetris"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <canvas id="tetrisCanvas" class="arcade-canvas" style="aspect-ratio:1/2;max-width:280px;"></canvas>
+    <div class="tetris-controls">
+      <button data-a="left">⬅️</button><button data-a="rotate">🔄</button><button data-a="right">➡️</button><button data-a="down">⬇️</button>
+    </div>
+  </div>
+
+  <!-- هوكي هوائي -->
+  <div id="airhockeyScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="airhockeyHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="airYou">0</div><div class="k">أنت</div></div>
+      <div class="stat"><div class="v" id="airCpu">0</div><div class="k">الكمبيوتر</div></div>
+      <button class="back-link" id="airStartBtn">ابدأ</button>
+    </div>
+    <div class="mini-diff" data-game="airhockey"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <canvas id="airhockeyCanvas" class="arcade-canvas" style="aspect-ratio:3/4;"></canvas>
+    <p class="sub" style="text-align:center;margin-top:10px;">حرك المضرب بتاعك في نصك بالماوس أو اللمس</p>
+  </div>
+
+  <!-- مدفع الفقاعات -->
+  <div id="bubbleScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="bubbleHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="bubbleScore">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="bubbleBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="bubbleNewBtn">لعبة جديدة</button>
+    </div>
+    <div class="mini-diff" data-game="bubble"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <canvas id="bubbleCanvas" class="arcade-canvas" style="aspect-ratio:3/4;"></canvas>
+    <p class="sub" style="text-align:center;margin-top:10px;">دوس في مكان عشان تصوّب وتطلق الفقاعة</p>
+  </div>
+
+  <!-- ترتيب الألوان -->
+  <div id="watersortScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="watersortHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="watersortMoves">0</div><div class="k">حركات</div></div>
+      <div class="stat"><div class="v" id="watersortBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="watersortNewBtn">لعبة جديدة</button>
+    </div>
+    <div class="mini-diff" data-game="watersort"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <div id="watersortBoard" class="watersort-board"></div>
+  </div>
+
+  <!-- أسئلة معلومات عامة -->
+  <div id="triviaScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="triviaHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="triviaNum">0/10</div><div class="k">السؤال</div></div>
+      <div class="stat"><div class="v" id="triviaScore">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="triviaBest">--</div><div class="k">أفضل نتيجة</div></div>
+    </div>
+    <div class="mini-diff" data-game="trivia"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <div class="trivia-q" id="triviaQ">جاهز؟</div>
+    <div class="trivia-choices" id="triviaChoices"></div>
+  </div>
+
+  <!-- خمن الكلمة (Wordle) -->
+  <div id="wordleScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="wordleHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="wordleTries">0/6</div><div class="k">محاولات</div></div>
+      <div class="stat"><div class="v" id="wordleWins">0</div><div class="k">فوز</div></div>
+      <button class="back-link" id="wordleNewBtn">كلمة جديدة</button>
+    </div>
+    <div class="mini-diff" data-game="wordle"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <div id="wordleGrid" class="wordle-grid"></div>
+    <div id="wordleKeys" class="wordle-keys"></div>
+  </div>
+
+  <!-- المتاهة -->
+  <div id="mazeScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="mazeHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="mazeTime">00:00</div><div class="k">الوقت</div></div>
+      <div class="stat"><div class="v" id="mazeBest">--</div><div class="k">أفضل وقت</div></div>
+      <button class="back-link" id="mazeNewBtn">متاهة جديدة</button>
+    </div>
+    <div class="mini-diff" data-game="maze"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <canvas id="mazeCanvas" class="arcade-canvas" style="aspect-ratio:1/1;max-width:360px;"></canvas>
+    <div class="touch-pad" id="mazeTouchPad">
+      <div></div><button data-d="up">⬆️</button><div></div>
+      <button data-d="left">⬅️</button><div></div><button data-d="right">➡️</button>
+      <div></div><button data-d="down">⬇️</button><div></div>
+    </div>
+  </div>
+
+  <!-- شطرنج مبسط -->
+  <div id="chessScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="chessHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="chessTurn">أنت</div><div class="k">الدور</div></div>
+      <button class="back-link" id="chessNewBtn">لعبة جديدة</button>
+    </div>
+        <div class="mini-diff" data-game="chess"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <p class="sub" id="chessMsg" style="text-align:center;margin-bottom:10px;">إنت الأبيض، دوس على قطعة وبعدين المكان</p>
+    <div id="chessBoard" class="chess-board"></div>
+  </div>
+
+  <!-- دامة -->
+  <div id="checkersScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="checkersHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="checkersYou">12</div><div class="k">أنت</div></div>
+      <div class="stat"><div class="v" id="checkersCpu">12</div><div class="k">الكمبيوتر</div></div>
+      <button class="back-link" id="checkersNewBtn">لعبة جديدة</button>
+    </div>
+        <div class="mini-diff" data-game="checkers"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <p class="sub" id="checkersMsg" style="text-align:center;margin-bottom:10px;">دورك</p>
+    <div id="checkersBoard" class="checkers-board"></div>
+  </div>
+
+  <!-- أوثيلو -->
+  <div id="othelloScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="othelloHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="othelloYou">2</div><div class="k">أنت ⚫</div></div>
+      <div class="stat"><div class="v" id="othelloCpu">2</div><div class="k">الكمبيوتر ⚪</div></div>
+      <button class="back-link" id="othelloNewBtn">لعبة جديدة</button>
+    </div>
+        <div class="mini-diff" data-game="othello"><button class="mini-diff-btn" data-level="easy">سهل</button><button class="mini-diff-btn active" data-level="medium">متوسط</button><button class="mini-diff-btn" data-level="hard">صعب</button></div>
+    <p class="sub" id="othelloMsg" style="text-align:center;margin-bottom:10px;">دورك</p>
+    <div id="othelloBoard" class="othello-board"></div>
+  </div>
+
+  <!-- حرب السفن -->
+  <div id="battleshipScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="battleshipHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="battleshipYouHits">0</div><div class="k">ضرباتك</div></div>
+      <div class="stat"><div class="v" id="battleshipCpuHits">0</div><div class="k">ضربات الكمبيوتر</div></div>
+      <button class="back-link" id="battleshipNewBtn">لعبة جديدة</button>
+    </div>
+    <p class="sub" id="battleshipMsg" style="text-align:center;margin-bottom:10px;">دوس على شبكة الكمبيوتر عشان تضرب</p>
+    <div class="battleship-boards">
+      <div>
+        <div class="bs-label">شبكتك</div>
+        <div id="battleshipYouBoard" class="battleship-board"></div>
+      </div>
+      <div>
+        <div class="bs-label">شبكة الكمبيوتر</div>
+        <div id="battleshipCpuBoard" class="battleship-board"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ماتش 3 -->
+  <div id="match3Screen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="match3HomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="match3Score">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="match3Moves">20</div><div class="k">حركات متبقية</div></div>
+      <div class="stat"><div class="v" id="match3Best">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="match3NewBtn">لعبة جديدة</button>
+    </div>
+    <div id="match3Board" class="match3-board"></div>
+  </div>
+
+  <!-- تصويب كورة السلة -->
+  <div id="basketballScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="basketballHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="basketballScore">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="basketballTries">10</div><div class="k">رميات متبقية</div></div>
+      <div class="stat"><div class="v" id="basketballBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="basketballStartBtn">ابدأ</button>
+    </div>
+    <canvas id="basketballCanvas" class="arcade-canvas" style="aspect-ratio:3/4;"></canvas>
+    <p class="sub" style="text-align:center;margin-top:10px;">اسحب من الكورة للخلف وسيب عشان ترمي</p>
+  </div>
+
+  <!-- سهام -->
+  <div id="dartsScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="dartsHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="dartsScore">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="dartsTries">5</div><div class="k">رميات متبقية</div></div>
+      <div class="stat"><div class="v" id="dartsBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="dartsStartBtn">ابدأ</button>
+    </div>
+    <canvas id="dartsCanvas" class="arcade-canvas" style="aspect-ratio:1/1;max-width:340px;"></canvas>
+    <p class="sub" style="text-align:center;margin-top:10px;">دوس على اللوحة عشان ترمي السهم</p>
+  </div>
+
+  <!-- بولينج -->
+  <div id="bowlingScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="bowlingHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="bowlingScore">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="bowlingFrame">1/10</div><div class="k">الشوط</div></div>
+      <div class="stat"><div class="v" id="bowlingBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="bowlingStartBtn">ابدأ</button>
+    </div>
+    <canvas id="bowlingCanvas" class="arcade-canvas" style="aspect-ratio:3/4;"></canvas>
+    <p class="sub" style="text-align:center;margin-top:10px;">حرك الماوس/إصبعك يمين وشمال، ودوس عشان ترمي</p>
+  </div>
+
+  <!-- ترتيب الحروف -->
+  <div id="anagramScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="anagramHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="anagramTime">60</div><div class="k">الوقت</div></div>
+      <div class="stat"><div class="v" id="anagramScore">0</div><div class="k">النقاط</div></div>
+      <div class="stat"><div class="v" id="anagramBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="anagramStartBtn">ابدأ</button>
+    </div>
+    <div class="anagram-hint" id="anagramHint"></div>
+    <div class="anagram-answer" id="anagramAnswer"></div>
+    <div class="anagram-letters" id="anagramLetters"></div>
+    <button class="start-btn" id="anagramSkipBtn" style="margin-top:14px;max-width:200px;margin-inline:auto;">تخطي</button>
+  </div>
+
+  <!-- كلمات متقاطعة -->
+  <div id="crosswordScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="crosswordHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="crosswordFound">0/5</div><div class="k">كلمات صح</div></div>
+      <button class="back-link" id="crosswordNewBtn">لغز جديد</button>
+    </div>
+    <div id="crosswordBoard" class="crossword-board"></div>
+    <div id="crosswordClues" class="crossword-clues"></div>
+  </div>
+
+  <!-- يمين النرد -->
+  <div id="yahtzeeScreen" class="game-screen">
+    <div class="stat-bar">
+      <button class="back-link" id="yahtzeeHomeBtn">← مركز الألعاب</button>
+      <div class="stat"><div class="v" id="yahtzeeRolls">3</div><div class="k">رميات متبقية</div></div>
+      <div class="stat"><div class="v" id="yahtzeeTotal">0</div><div class="k">المجموع</div></div>
+      <div class="stat"><div class="v" id="yahtzeeBest">--</div><div class="k">أفضل نتيجة</div></div>
+      <button class="back-link" id="yahtzeeNewBtn">لعبة جديدة</button>
+    </div>
+    <div class="yahtzee-dice" id="yahtzeeDice"></div>
+    <button class="start-btn" id="yahtzeeRollBtn" style="max-width:220px;margin:0 auto 16px;display:block;">ارمي النرد 🎲</button>
+    <div class="yahtzee-scores" id="yahtzeeScores"></div>
   </div>
 
   <footer>اصنعها في متصفحك — بدون تحميل أي تطبيق. الصور من ويكيبيديا وflagcdn.</footer>
@@ -753,6 +1318,34 @@ function updateSoundBtn(){
 }
 document.getElementById('soundBtn').addEventListener('click', toggleSound);
 updateSoundBtn();
+
+/* ================= نظام الصعوبة الموحد لكل الألعاب ================= */
+const GAME_DIFFICULTY = {};
+function wireMiniDiff(){
+  document.querySelectorAll('.mini-diff').forEach(row => {
+    const game = row.dataset.game;
+    if(!GAME_DIFFICULTY[game]) GAME_DIFFICULTY[game] = 'medium';
+    row.querySelectorAll('.mini-diff-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.level === GAME_DIFFICULTY[game]);
+      btn.addEventListener('click', () => {
+        if(btn.classList.contains('active')) return;
+        row.querySelectorAll('.mini-diff-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        GAME_DIFFICULTY[game] = btn.dataset.level;
+        sfx.click();
+      });
+    });
+  });
+}
+wireMiniDiff();
+function diffOf(game){ return GAME_DIFFICULTY[game] || 'medium'; }
+function miniDiffHTML(game){
+  return `<div class="mini-diff" data-game="${game}">
+    <button class="mini-diff-btn" data-level="easy">سهل</button>
+    <button class="mini-diff-btn active" data-level="medium">متوسط</button>
+    <button class="mini-diff-btn" data-level="hard">صعب</button>
+  </div>`;
+}
 
 /* ================= بيانات الفئات (عناوين ويكيبيديا لصور حقيقية) ================= */
 const CATEGORIES = {
@@ -923,6 +1516,28 @@ const GAMES = [
   { id:'hangman', icon:'🔤', label:'تخمين الكلمة', desc:'اعرف الكلمة قبل ما المحاولات تخلص', locked:false },
   { id:'stroop', icon:'🎨', label:'اختبار الألوان', desc:'اختار اللون الحقيقي مش المكتوب', locked:false },
   { id:'typing', icon:'⌨️', label:'سرعة الكتابة', desc:'اكتب الجملة بأسرع وقت وأقل أخطاء', locked:false },
+  { id:'sudoku', icon:'🧮', label:'سودوكو', desc:'املأ الشبكة بالأرقام من غير تكرار', locked:false },
+  { id:'mine',   icon:'💣', label:'كشف الألغام', desc:'اكتشف الخانات الآمنة وابعد عن الألغام', locked:false },
+  { id:'solitaire', icon:'🃏', label:'سوليتير', desc:'رتب الورق بالترتيب حسب النوع', locked:false },
+  { id:'hanoi',  icon:'🗼', label:'برج هانوي', desc:'انقل الحلقات كلها بأقل عدد حركات', locked:false },
+  { id:'tetris', icon:'🧱', label:'تتريس', desc:'رتب القطع النازلة وامسح الصفوف', locked:false },
+  { id:'airhockey', icon:'🎯', label:'هوكي هوائي', desc:'بينج بونج بقرص وحواف', locked:false },
+  { id:'bubble', icon:'🫧', label:'مدفع الفقاعات', desc:'اضرب فقاعات بنفس اللون تمسحهم', locked:false },
+  { id:'watersort', icon:'🌊', label:'ترتيب الألوان', desc:'رتب السوائل بنفس اللون في أنبوبة واحدة', locked:false },
+  { id:'trivia', icon:'❓', label:'أسئلة معلومات عامة', desc:'كويز سريع بمواضيع متنوعة', locked:false },
+  { id:'wordle', icon:'🟩', label:'خمن الكلمة', desc:'خمن كلمة من 5 حروف بألوان تلميحية', locked:false },
+  { id:'maze',   icon:'🧭', label:'المتاهة', desc:'اوصل من البداية للنهاية بأسرع وقت', locked:false },
+  { id:'chess',  icon:'♟️', label:'شطرنج مبسط', desc:'تحدي ضد الكمبيوتر بقواعد الشطرنج', locked:false },
+  { id:'checkers', icon:'⚫', label:'دامة', desc:'نط على قطع الخصم وامسحها', locked:false },
+  { id:'othello', icon:'🔴', label:'أوثيلو', desc:'حاصر قطع خصمك بلونك تقلبها', locked:false },
+  { id:'battleship', icon:'🚢', label:'حرب السفن', desc:'خمن مكان سفن خصمك واضربها', locked:false },
+  { id:'match3', icon:'🍬', label:'ماتش 3', desc:'بدّل الحلويات لعمل صفوف متطابقة', locked:false },
+  { id:'basketball', icon:'🏀', label:'تصويب كورة السلة', desc:'اسحب واضبط زاوية الرمي وسجل', locked:false },
+  { id:'darts',  icon:'🎯', label:'سهام', desc:'صوب على اللوحة وسجل أعلى نقاط', locked:false },
+  { id:'bowling', icon:'🎳', label:'بولينج', desc:'ارمي الكورة واكسر أكبر عدد قوالب', locked:false },
+  { id:'anagram', icon:'🔠', label:'ترتيب الحروف', desc:'رتب حروف مبعثرة عشان تطلع كلمة', locked:false },
+  { id:'crossword', icon:'🧩', label:'كلمات متقاطعة', desc:'حل ألغاز كلمات متقاطعة بسيطة', locked:false },
+  { id:'yahtzee', icon:'🎲', label:'يمين النرد', desc:'ارمي النرد واعمل أعلى تشكيلة نقط', locked:false },
 ];
 
 const gameGrid = document.getElementById('gameGrid');
@@ -941,7 +1556,9 @@ GAMES.forEach(g => {
 });
 
 const ALL_SCREENS = ['homeScreen','setupScreen','gameScreen','xoScreen','simonScreen','reactionScreen','rpsScreen','mathScreen','slideScreen',
-  'snakeScreen','breakoutScreen','pongScreen','jumpScreen','g2048Screen','connect4Screen','moleScreen','guessScreen','hangmanScreen','stroopScreen','typingScreen'];
+  'snakeScreen','breakoutScreen','pongScreen','jumpScreen','g2048Screen','connect4Screen','moleScreen','guessScreen','hangmanScreen','stroopScreen','typingScreen',
+  'sudokuScreen','mineScreen','solitaireScreen','hanoiScreen','tetrisScreen','airhockeyScreen','bubbleScreen','watersortScreen','triviaScreen','wordleScreen','mazeScreen',
+  'chessScreen','checkersScreen','othelloScreen','battleshipScreen','match3Screen','basketballScreen','dartsScreen','bowlingScreen','anagramScreen','crosswordScreen','yahtzeeScreen'];
 function hideAllScreens(){
   ALL_SCREENS.forEach(id => document.getElementById(id).style.display = 'none');
 }
@@ -949,6 +1566,8 @@ function hideAllScreens(){
 function stopAllLoops(){
   stopTimer(); simonStopSequence(); mathStopTimer(); slideStopTimer();
   snakeStop(); breakoutStop(); pongStop(); jumpStop(); moleStop(); stroopStop(); typingStop();
+  sudokuStop(); mineStop(); hanoiStop(); tetrisStop(); airhockeyStop(); bubbleStop(); triviaStop(); mazeStop();
+  basketballStop(); dartsStop(); bowlingStop(); anagramStop();
 }
 
 function openGame(id){
@@ -1042,6 +1661,116 @@ function openGame(id){
     document.getElementById('mainTitle').textContent = 'سرعة الكتابة';
     document.getElementById('mainSub').textContent = 'اكتب الجملة اللي قدامك بأسرع وقت وأقل أخطاء.';
     typingNew();
+  } else if(id === 'sudoku'){
+    document.getElementById('sudokuScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'سودوكو';
+    document.getElementById('mainSub').textContent = 'املأ كل صف وعمود ومربع 3×3 بالأرقام من 1 لـ 9 من غير تكرار.';
+    sudokuNew();
+  } else if(id === 'mine'){
+    document.getElementById('mineScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'كشف الألغام';
+    document.getElementById('mainSub').textContent = 'اكشف كل الخانات الآمنة من غير ما تدوس على لغم.';
+    mineNew();
+  } else if(id === 'solitaire'){
+    document.getElementById('solitaireScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'سوليتير';
+    document.getElementById('mainSub').textContent = 'رتب الورق في الأساسات حسب النوع من الآص للملك.';
+    solitaireNew();
+  } else if(id === 'hanoi'){
+    document.getElementById('hanoiScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'برج هانوي';
+    document.getElementById('mainSub').textContent = 'انقل كل الحلقات للعمود الأخير، حلقة كبيرة ما تقعدش فوق حلقة صغيرة.';
+    hanoiNew();
+  } else if(id === 'tetris'){
+    document.getElementById('tetrisScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'تتريس';
+    document.getElementById('mainSub').textContent = 'رتب القطع النازلة وامسح الصفوف الكاملة.';
+    tetrisInit();
+  } else if(id === 'airhockey'){
+    document.getElementById('airhockeyScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'هوكي هوائي';
+    document.getElementById('mainSub').textContent = 'أول واحد يوصل 7 نقط يكسب.';
+    airhockeyInit();
+  } else if(id === 'bubble'){
+    document.getElementById('bubbleScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'مدفع الفقاعات';
+    document.getElementById('mainSub').textContent = 'اضرب 3 فقاعات بنفس اللون أو أكتر عشان تمسحهم.';
+    bubbleInit();
+  } else if(id === 'watersort'){
+    document.getElementById('watersortScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'ترتيب الألوان';
+    document.getElementById('mainSub').textContent = 'رتب كل لون في أنبوبة واحدة لوحده.';
+    watersortNew();
+  } else if(id === 'trivia'){
+    document.getElementById('triviaScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'أسئلة معلومات عامة';
+    document.getElementById('mainSub').textContent = '10 أسئلة متنوعة، شوف تجاوب صح في كام.';
+    triviaNew();
+  } else if(id === 'wordle'){
+    document.getElementById('wordleScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'خمن الكلمة';
+    document.getElementById('mainSub').textContent = 'عندك 6 محاولات تخمن كلمة من 5 حروف.';
+    wordleNew();
+  } else if(id === 'maze'){
+    document.getElementById('mazeScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'المتاهة';
+    document.getElementById('mainSub').textContent = 'اوصل من النقطة الخضرا للنقطة الحمرا بأسرع وقت.';
+    mazeNew();
+  } else if(id === 'chess'){
+    document.getElementById('chessScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'شطرنج مبسط';
+    document.getElementById('mainSub').textContent = 'اكسب باللي تاكل شاه الكمبيوتر الأول.';
+    chessNew();
+  } else if(id === 'checkers'){
+    document.getElementById('checkersScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'دامة';
+    document.getElementById('mainSub').textContent = 'نط على قطع الكمبيوتر وامسحها كلها.';
+    checkersNew();
+  } else if(id === 'othello'){
+    document.getElementById('othelloScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'أوثيلو';
+    document.getElementById('mainSub').textContent = 'حاصر قطع الكمبيوتر بلونك عشان تقلبها.';
+    othelloNew();
+  } else if(id === 'battleship'){
+    document.getElementById('battleshipScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'حرب السفن';
+    document.getElementById('mainSub').textContent = 'اضرب كل سفن الكمبيوتر قبل ما يضرب سفنك.';
+    battleshipNew();
+  } else if(id === 'match3'){
+    document.getElementById('match3Screen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'ماتش 3';
+    document.getElementById('mainSub').textContent = 'بدّل حلويتين جنب بعض عشان تعمل صف من 3.';
+    match3New();
+  } else if(id === 'basketball'){
+    document.getElementById('basketballScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'تصويب كورة السلة';
+    document.getElementById('mainSub').textContent = 'اسحب الكورة للخلف وسيبها عشان ترميها.';
+    basketballInit();
+  } else if(id === 'darts'){
+    document.getElementById('dartsScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'سهام';
+    document.getElementById('mainSub').textContent = 'دوس بدقة قد ما تقدر جوه اللوحة.';
+    dartsInit();
+  } else if(id === 'bowling'){
+    document.getElementById('bowlingScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'بولينج';
+    document.getElementById('mainSub').textContent = 'حرك الكورة يمين وشمال وارميها على القوالب.';
+    bowlingInit();
+  } else if(id === 'anagram'){
+    document.getElementById('anagramScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'ترتيب الحروف';
+    document.getElementById('mainSub').textContent = 'رتب الحروف عشان تطلعلك كلمة صحيحة.';
+    anagramInit();
+  } else if(id === 'crossword'){
+    document.getElementById('crosswordScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'كلمات متقاطعة';
+    document.getElementById('mainSub').textContent = 'استخدم التلميحات واملأ كل الكلمات.';
+    crosswordNew();
+  } else if(id === 'yahtzee'){
+    document.getElementById('yahtzeeScreen').style.display = 'block';
+    document.getElementById('mainTitle').textContent = 'يمين النرد';
+    document.getElementById('mainSub').textContent = 'ارمي النرد لحد 3 مرات واختار أعلى تسجيل.';
+    yahtzeeNew();
   }
 }
 
@@ -1063,6 +1792,28 @@ document.getElementById('guessHomeBtn').addEventListener('click', goHome);
 document.getElementById('hangmanHomeBtn').addEventListener('click', goHome);
 document.getElementById('stroopHomeBtn').addEventListener('click', goHome);
 document.getElementById('typingHomeBtn').addEventListener('click', goHome);
+document.getElementById('sudokuHomeBtn').addEventListener('click', goHome);
+document.getElementById('mineHomeBtn').addEventListener('click', goHome);
+document.getElementById('solitaireHomeBtn').addEventListener('click', goHome);
+document.getElementById('hanoiHomeBtn').addEventListener('click', goHome);
+document.getElementById('tetrisHomeBtn').addEventListener('click', goHome);
+document.getElementById('airhockeyHomeBtn').addEventListener('click', goHome);
+document.getElementById('bubbleHomeBtn').addEventListener('click', goHome);
+document.getElementById('watersortHomeBtn').addEventListener('click', goHome);
+document.getElementById('triviaHomeBtn').addEventListener('click', goHome);
+document.getElementById('wordleHomeBtn').addEventListener('click', goHome);
+document.getElementById('mazeHomeBtn').addEventListener('click', goHome);
+document.getElementById('chessHomeBtn').addEventListener('click', goHome);
+document.getElementById('checkersHomeBtn').addEventListener('click', goHome);
+document.getElementById('othelloHomeBtn').addEventListener('click', goHome);
+document.getElementById('battleshipHomeBtn').addEventListener('click', goHome);
+document.getElementById('match3HomeBtn').addEventListener('click', goHome);
+document.getElementById('basketballHomeBtn').addEventListener('click', goHome);
+document.getElementById('dartsHomeBtn').addEventListener('click', goHome);
+document.getElementById('bowlingHomeBtn').addEventListener('click', goHome);
+document.getElementById('anagramHomeBtn').addEventListener('click', goHome);
+document.getElementById('crosswordHomeBtn').addEventListener('click', goHome);
+document.getElementById('yahtzeeHomeBtn').addEventListener('click', goHome);
 
 function goHome(){
   stopAllLoops();
@@ -1126,11 +1877,40 @@ function xoPlay(i){
 function xoCpuMove(){
   const b = xoState.board;
   const empty = b.map((v,i)=>v?null:i).filter(v=>v!==null);
+  const level = diffOf('xo');
+  if(level === 'easy'){
+    // سهل: يفوز فورًا لو لقى فرصة، وبيسيب فرص فوز للاعب كتير، غير كده عشوائي بالكامل
+    for(const i of empty){ b[i]='O'; if(xoWinner(b)==='O'){ b[i]=null; return i; } b[i]=null; }
+    return empty[Math.floor(Math.random()*empty.length)] ?? -1;
+  }
   // فوز فوري
   for(const i of empty){ b[i]='O'; if(xoWinner(b)==='O'){ b[i]=null; return i; } b[i]=null; }
+  if(level === 'medium' && Math.random() < 0.25){
+    // متوسط: أحيانًا مش بيمنع فوزك عشان يبقى فيه فرصة حقيقية تكسب
+    return empty[Math.floor(Math.random()*empty.length)] ?? -1;
+  }
   // منع فوز اللاعب
   for(const i of empty){ b[i]='X'; if(xoWinner(b)==='X'){ b[i]=null; return i; } b[i]=null; }
-  // ياخد النص لو فاضي
+  if(level === 'hard'){
+    if(Math.random() < 0.15){
+      // صعب: نسبة بسيطة يغلط فيها عشان يفضل ممكن تكسب أحيانًا
+      return empty[Math.floor(Math.random()*empty.length)] ?? -1;
+    }
+    // صعب: يتجنب أي حركة تسيب للاعب فرصة فوز في الدور اللي بعده
+    const safe = empty.filter(i => {
+      b[i]='O';
+      const stillEmpty = b.map((v,idx)=>v?null:idx).filter(v=>v!==null);
+      const givesWin = stillEmpty.some(j => { b[j]='X'; const w = xoWinner(b)==='X'; b[j]=null; return w; });
+      b[i]=null;
+      return !givesWin;
+    });
+    const pool = safe.length ? safe : empty;
+    if(!b[4] && pool.includes(4)) return 4;
+    const corners = [0,2,6,8].filter(i => pool.includes(i));
+    if(corners.length) return corners[Math.floor(Math.random()*corners.length)];
+    return pool[Math.floor(Math.random()*pool.length)];
+  }
+  // متوسط
   if(!b[4]) return 4;
   return empty[Math.floor(Math.random()*empty.length)] ?? -1;
 }
@@ -1207,10 +1987,13 @@ function simonNextRound(){
   simonState.userIdx = 0;
   simonState.seq.push(Math.floor(Math.random()*4));
   document.getElementById('simonMsg').textContent = 'بص كويس...';
+  const level = diffOf('simon');
+  const flashDur = level==='easy' ? 500 : level==='hard' ? 260 : 380;
+  const gap = level==='easy' ? 750 : level==='hard' ? 380 : 600;
   let delay = 500;
   simonState.seq.forEach((padIdx) => {
-    simonState.timeouts.push(setTimeout(() => simonFlashPad(padIdx, 380), delay));
-    delay += 600;
+    simonState.timeouts.push(setTimeout(() => simonFlashPad(padIdx, flashDur), delay));
+    delay += gap;
   });
   simonState.timeouts.push(setTimeout(() => {
     document.getElementById('simonMsg').textContent = 'دورك، كرر النمط';
@@ -1237,7 +2020,8 @@ document.getElementById('reactionBox').addEventListener('click', () => {
     reactionState.stage = 'waiting';
     box.className = 'reaction-box wait';
     box.textContent = 'استنى اللون يبقى أخضر...';
-    const delay = 1000 + Math.random()*2500;
+    const level = diffOf('reaction');
+    const delay = level==='easy' ? 1500 + Math.random()*2000 : level==='hard' ? 400 + Math.random()*1600 : 1000 + Math.random()*2500;
     reactionState.timeoutId = setTimeout(() => {
       reactionState.stage = 'go';
       reactionState.startAt = Date.now();
@@ -1267,12 +2051,30 @@ document.getElementById('reactionBox').addEventListener('click', () => {
 const RPS_ICON = { rock:'✊', paper:'✋', scissors:'✌️' };
 const RPS_AR = { rock:'حجر', paper:'ورقة', scissors:'مقص' };
 let rpsScore = { you:0, draw:0, cpu:0 };
+let rpsHistory = [];
+function rpsPickCpu(you){
+  const options = ['rock','paper','scissors'];
+  const beats = { rock:'paper', paper:'scissors', scissors:'rock' };   // beats[x] = الحركة اللي تهزم x
+  const losesTo = { rock:'scissors', paper:'rock', scissors:'paper' }; // losesTo[x] = الحركة اللي x بيهزمها
+  const level = diffOf('rps');
+  rpsHistory.push(you);
+  if(level === 'easy'){
+    if(Math.random() < 0.55) return losesTo[you];
+    return options[Math.floor(Math.random()*3)];
+  }
+  if(level === 'hard' && rpsHistory.length >= 3){
+    const counts = {rock:0,paper:0,scissors:0};
+    rpsHistory.forEach(m => counts[m]++);
+    const predicted = Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0];
+    if(Math.random() < 0.55) return beats[predicted];
+  }
+  return options[Math.floor(Math.random()*3)];
+}
 document.querySelectorAll('.rps-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const you = btn.dataset.c;
     sfx.click();
-    const options = ['rock','paper','scissors'];
-    const cpu = options[Math.floor(Math.random()*3)];
+    const cpu = rpsPickCpu(you);
     document.getElementById('rpsYouEmoji').textContent = RPS_ICON[you];
     document.getElementById('rpsCpuEmoji').textContent = RPS_ICON[cpu];
     let result;
@@ -1312,12 +2114,27 @@ function mathStopTimer(){
   if(mathState.interval){ clearInterval(mathState.interval); mathState.interval = null; }
 }
 function mathNewQuestion(){
-  const ops = ['+','-','×'];
-  const op = ops[Math.floor(Math.random()*ops.length)];
-  let a, b;
-  if(op === '+'){ a = Math.floor(Math.random()*50)+1; b = Math.floor(Math.random()*50)+1; mathState.answer = a+b; }
-  else if(op === '-'){ a = Math.floor(Math.random()*50)+10; b = Math.floor(Math.random()*a); mathState.answer = a-b; }
-  else { a = Math.floor(Math.random()*12)+1; b = Math.floor(Math.random()*12)+1; mathState.answer = a*b; }
+  const level = diffOf('math');
+  let ops, a, b, op;
+  if(level === 'easy'){
+    ops = ['+','-'];
+    op = ops[Math.floor(Math.random()*ops.length)];
+    if(op === '+'){ a = Math.floor(Math.random()*15)+1; b = Math.floor(Math.random()*15)+1; mathState.answer = a+b; }
+    else { a = Math.floor(Math.random()*20)+5; b = Math.floor(Math.random()*a); mathState.answer = a-b; }
+  } else if(level === 'hard'){
+    ops = ['+','-','×','÷'];
+    op = ops[Math.floor(Math.random()*ops.length)];
+    if(op === '+'){ a = Math.floor(Math.random()*90)+10; b = Math.floor(Math.random()*90)+10; mathState.answer = a+b; }
+    else if(op === '-'){ a = Math.floor(Math.random()*90)+20; b = Math.floor(Math.random()*a); mathState.answer = a-b; }
+    else if(op === '×'){ a = Math.floor(Math.random()*15)+2; b = Math.floor(Math.random()*15)+2; mathState.answer = a*b; }
+    else { b = Math.floor(Math.random()*10)+2; mathState.answer = Math.floor(Math.random()*12)+1; a = b*mathState.answer; }
+  } else {
+    ops = ['+','-','×'];
+    op = ops[Math.floor(Math.random()*ops.length)];
+    if(op === '+'){ a = Math.floor(Math.random()*50)+1; b = Math.floor(Math.random()*50)+1; mathState.answer = a+b; }
+    else if(op === '-'){ a = Math.floor(Math.random()*50)+10; b = Math.floor(Math.random()*a); mathState.answer = a-b; }
+    else { a = Math.floor(Math.random()*12)+1; b = Math.floor(Math.random()*12)+1; mathState.answer = a*b; }
+  }
   document.getElementById('mathQ').textContent = `${a} ${op} ${b} = ?`;
 }
 document.getElementById('mathStartBtn').addEventListener('click', () => {
@@ -1366,20 +2183,26 @@ function slideUpdateBest(){
 function slideStopTimer(){
   if(slideState.interval){ clearInterval(slideState.interval); slideState.interval = null; }
 }
-function slideIsSolvable(arr){
+function slideIsSolvable(arr, size){
   const nums = arr.filter(n => n !== 0);
   let inv = 0;
   for(let i=0;i<nums.length;i++) for(let j=i+1;j<nums.length;j++) if(nums[i]>nums[j]) inv++;
-  const blankRow = Math.floor(arr.indexOf(0) / 4);
+  const blankRow = Math.floor(arr.indexOf(0) / size);
+  if(size % 2 === 1){
+    return inv % 2 === 0;
+  }
   return (inv + blankRow) % 2 === 1;
 }
 function slideNewGame(){
   slideStopTimer();
+  const level = diffOf('slide');
+  const size = level==='easy' ? 3 : level==='hard' ? 5 : 4;
+  const total = size*size;
   let arr;
   do{
-    arr = shuffle([...Array(15).keys()].map(n=>n+1).concat(0));
-  }while(!slideIsSolvable(arr));
-  slideState = { tiles:arr, moves:0, timer:0, interval:null, size:4 };
+    arr = shuffle([...Array(total-1).keys()].map(n=>n+1).concat(0));
+  }while(!slideIsSolvable(arr, size));
+  slideState = { tiles:arr, moves:0, timer:0, interval:null, size };
   document.getElementById('slideMoves').textContent = '0';
   document.getElementById('slideTime').textContent = '00:00';
   slideUpdateBest();
@@ -1393,6 +2216,7 @@ document.getElementById('slideShuffleBtn').addEventListener('click', slideNewGam
 
 function renderSlide(){
   const board = document.getElementById('slideBoard');
+  board.style.gridTemplateColumns = `repeat(${slideState.size}, 1fr)`;
   board.innerHTML = '';
   slideState.tiles.forEach((v, i) => {
     const t = document.createElement('div');
@@ -1403,7 +2227,7 @@ function renderSlide(){
   });
 }
 function slideClick(i){
-  const size = 4;
+  const size = slideState.size;
   const blank = slideState.tiles.indexOf(0);
   const row = Math.floor(i/size), col = i%size;
   const brow = Math.floor(blank/size), bcol = blank%size;
@@ -1414,7 +2238,8 @@ function slideClick(i){
   sfx.click();
   document.getElementById('slideMoves').textContent = slideState.moves;
   renderSlide();
-  const solved = slideState.tiles.slice(0,15).every((v,idx) => v === idx+1) && slideState.tiles[15] === 0;
+  const total = size*size;
+  const solved = slideState.tiles.slice(0,total-1).every((v,idx) => v === idx+1) && slideState.tiles[total-1] === 0;
   if(solved){
     slideStopTimer();
     sfx.win();
@@ -1434,7 +2259,7 @@ function resizeCanvasToDisplay(canvas){
 /* ================= الثعبان ================= */
 let snakeState = { grid:20, cell:0, snake:[], dir:{x:1,y:0}, nextDir:{x:1,y:0}, food:null, score:0, interval:null, ctx:null, canvas:null, running:false };
 function snakeStop(){ if(snakeState.interval){ clearInterval(snakeState.interval); snakeState.interval=null; } snakeState.running=false; }
-function snakeBestKey(){ return 'snake_best'; }
+function snakeBestKey(){ return 'snake_best_' + diffOf('snake'); }
 function snakeUpdateBest(){ document.getElementById('snakeBest').textContent = localStorage.getItem(snakeBestKey()) || '--'; }
 function snakeInit(){
   snakeStop();
@@ -1466,7 +2291,9 @@ function snakeStart(){
   document.getElementById('snakeScore').textContent = '0';
   snakePlaceFood();
   snakeState.running = true;
-  snakeState.interval = setInterval(snakeTick, 130);
+  const snakeLevel = diffOf('snake');
+  const snakeSpeed = snakeLevel==='easy' ? 190 : snakeLevel==='hard' ? 85 : 130;
+  snakeState.interval = setInterval(snakeTick, snakeSpeed);
 }
 function snakePlaceFood(){
   const cols = Math.floor(snakeState.canvas.width/snakeState.cell);
@@ -1541,7 +2368,7 @@ document.querySelectorAll('#snakeTouchPad button').forEach(btn=>{
 /* ================= كسر الطوب ================= */
 let breakoutState = { running:false, raf:null, paddleX:0, paddleW:70, ballX:0, ballY:0, vx:3, vy:-3, bricks:[], score:0, lives:3, canvas:null, ctx:null };
 function breakoutStop(){ if(breakoutState.raf) cancelAnimationFrame(breakoutState.raf); breakoutState.raf=null; breakoutState.running=false; }
-function breakoutBestKey(){ return 'breakout_best'; }
+function breakoutBestKey(){ return 'breakout_best_' + diffOf('breakout'); }
 function breakoutUpdateBest(){ document.getElementById('breakoutBest').textContent = localStorage.getItem(breakoutBestKey())||'--'; }
 function breakoutInit(){
   breakoutStop();
@@ -1578,10 +2405,12 @@ function breakoutStart(){
   breakoutStop();
   const canvas = breakoutState.canvas;
   resizeCanvasToDisplay(canvas);
-  breakoutState.paddleW = canvas.width*0.18;
+  const level = diffOf('breakout');
+  const speed = level==='easy' ? 2.3 : level==='hard' ? 4.3 : 3.2;
+  breakoutState.paddleW = canvas.width * (level==='easy' ? 0.24 : level==='hard' ? 0.13 : 0.18);
   breakoutState.paddleX = canvas.width/2 - breakoutState.paddleW/2;
   breakoutState.ballX = canvas.width/2; breakoutState.ballY = canvas.height-40;
-  breakoutState.vx = 3.2; breakoutState.vy = -3.2;
+  breakoutState.vx = speed; breakoutState.vy = -speed;
   breakoutState.bricks = breakoutBuildBricks();
   breakoutState.score = 0; breakoutState.lives = 3;
   document.getElementById('breakoutScore').textContent='0';
@@ -1612,7 +2441,9 @@ function breakoutUpdate(){
     document.getElementById('breakoutLives').textContent = s.lives;
     sfx.wrong();
     if(s.lives <= 0){ breakoutGameOver(); return; }
-    s.ballX = canvas.width/2; s.ballY = canvas.height-40; s.vx=3.2; s.vy=-3.2;
+    const lvl = diffOf('breakout');
+    const spd = lvl==='easy' ? 2.3 : lvl==='hard' ? 4.3 : 3.2;
+    s.ballX = canvas.width/2; s.ballY = canvas.height-40; s.vx=spd; s.vy=-spd;
   }
   s.bricks.forEach(b => {
     if(!b.alive) return;
@@ -1690,7 +2521,9 @@ document.getElementById('pongStartBtn').addEventListener('click', pongStart);
 function pongResetBall(dir){
   const canvas = pongState.canvas;
   pongState.ballX = canvas.width/2; pongState.ballY = canvas.height/2;
-  pongState.vx = 3.2 * (dir||1); pongState.vy = (Math.random()*4-2);
+  pongState.vx = 3.2 * (dir||1);
+  const mag = 1 + Math.random()*2;
+  pongState.vy = mag * (Math.random()<0.5 ? -1 : 1);
 }
 function pongStart(){
   pongStop();
@@ -1714,16 +2547,29 @@ function pongLoop(){
 function pongUpdate(){
   const s = pongState; const canvas = s.canvas;
   s.ballX += s.vx; s.ballY += s.vy;
-  if(s.ballY < 5 || s.ballY > canvas.height-5) s.vy *= -1;
-  const cpuCenter = s.cpuY + s.paddleH/2;
-  if(cpuCenter < s.ballY - 10) s.cpuY += 2.6;
-  else if(cpuCenter > s.ballY + 10) s.cpuY -= 2.6;
+  if(s.ballY < 5){ s.ballY = 5; if(s.vy < 0) s.vy *= -1; }
+  if(s.ballY > canvas.height-5){ s.ballY = canvas.height-5; if(s.vy > 0) s.vy *= -1; }
+  const pongLvl = diffOf('pong');
+  const cpuSpeed = pongLvl==='easy' ? 1.6 : pongLvl==='hard' ? 3.8 : 2.6;
+  const missChance = pongLvl==='easy' ? 0.35 : pongLvl==='hard' ? 0.05 : 0.15;
+  const maxBallSpeed = pongLvl==='easy' ? 5 : pongLvl==='hard' ? 8 : 6.5;
+  if(Math.random() >= missChance){
+    const targetY = s.ballY - s.paddleH/2;
+    const diff = targetY - s.cpuY;
+    if(Math.abs(diff) > 1){
+      s.cpuY += Math.sign(diff) * Math.min(cpuSpeed, Math.abs(diff));
+    }
+  }
   s.cpuY = Math.max(0, Math.min(canvas.height - s.paddleH, s.cpuY));
   if(s.ballX < 16 + s.paddleW && s.ballY > s.youY && s.ballY < s.youY + s.paddleH && s.vx < 0){
-    s.vx *= -1.05; sfx.flip();
+    s.vx *= -1.05;
+    s.vx = Math.sign(s.vx) * Math.min(Math.abs(s.vx), maxBallSpeed);
+    sfx.flip();
   }
   if(s.ballX > canvas.width-16-s.paddleW && s.ballY > s.cpuY && s.ballY < s.cpuY + s.paddleH && s.vx > 0){
-    s.vx *= -1.05; sfx.flip();
+    s.vx *= -1.05;
+    s.vx = Math.sign(s.vx) * Math.min(Math.abs(s.vx), maxBallSpeed);
+    sfx.flip();
   }
   if(s.ballX < 0){ s.cpuScore++; document.getElementById('pongCpu').textContent=s.cpuScore; sfx.wrong(); pongCheckEnd(); pongResetBall(1); }
   if(s.ballX > canvas.width){ s.youScore++; document.getElementById('pongYou').textContent=s.youScore; sfx.ding(); pongCheckEnd(); pongResetBall(-1); }
@@ -1758,7 +2604,7 @@ document.addEventListener('keydown',(e)=>{
 /* ================= القفزة اللا نهائية ================= */
 let jumpState = { running:false, raf:null, y:0, vy:0, onGround:true, obstacles:[], speed:4, score:0, canvas:null, ctx:null, groundY:0, frame:0 };
 function jumpStop(){ if(jumpState.raf) cancelAnimationFrame(jumpState.raf); jumpState.raf=null; jumpState.running=false; }
-function jumpBestKey(){ return 'jump_best'; }
+function jumpBestKey(){ return 'jump_best_' + diffOf('jump'); }
 function jumpUpdateBest(){ document.getElementById('jumpBest').textContent = localStorage.getItem(jumpBestKey())||'--'; }
 function jumpInit(){
   jumpStop();
@@ -1779,9 +2625,11 @@ function jumpStart(){
   jumpStop();
   const canvas = jumpState.canvas;
   resizeCanvasToDisplay(canvas);
+  const level = diffOf('jump');
+  jumpState.baseSpeed = level==='easy' ? 3 : level==='hard' ? 5.5 : 4;
   jumpState.groundY = canvas.height - 30;
   jumpState.y = jumpState.groundY; jumpState.vy = 0; jumpState.onGround = true;
-  jumpState.obstacles = []; jumpState.speed = 4; jumpState.score = 0; jumpState.frame = 0;
+  jumpState.obstacles = []; jumpState.speed = jumpState.baseSpeed; jumpState.score = 0; jumpState.frame = 0;
   document.getElementById('jumpScore').textContent = '0';
   jumpState.running = true;
   jumpLoop();
@@ -1807,7 +2655,7 @@ function jumpUpdate(){
   s.obstacles = s.obstacles.filter(o => o.x > -30);
   s.score += 1;
   document.getElementById('jumpScore').textContent = Math.floor(s.score/5);
-  s.speed = 4 + Math.floor(s.score/300)*0.5;
+  s.speed = s.baseSpeed + Math.floor(s.score/300)*0.5;
   const px = 40, pw = 18, ph = 22;
   const py = s.y - ph;
   for(const o of s.obstacles){
@@ -1845,7 +2693,7 @@ document.addEventListener('keydown', (e) => {
 
 /* ================= 2048 ================= */
 let g2048State = { grid:[], score:0 };
-function g2048BestKey(){ return 'g2048_best'; }
+function g2048BestKey(){ return 'g2048_best_' + diffOf('g2048'); }
 function g2048UpdateBest(){ document.getElementById('g2048Best').textContent = localStorage.getItem(g2048BestKey())||'--'; }
 function g2048New(){
   g2048State.grid = Array.from({length:4},()=>Array(4).fill(0));
@@ -1860,7 +2708,9 @@ function g2048AddTile(){
   for(let r=0;r<4;r++) for(let c=0;c<4;c++) if(g2048State.grid[r][c]===0) empties.push([r,c]);
   if(!empties.length) return;
   const [r,c] = empties[Math.floor(Math.random()*empties.length)];
-  g2048State.grid[r][c] = Math.random()<0.9 ? 2 : 4;
+  const level = diffOf('g2048');
+  const fourChance = level==='easy' ? 0.05 : level==='hard' ? 0.25 : 0.1;
+  g2048State.grid[r][c] = Math.random()<(1-fourChance) ? 2 : 4;
 }
 function g2048Render(){
   const board = document.getElementById('g2048Board');
@@ -1976,14 +2826,40 @@ function connect4Play(col){
 }
 function connect4CpuMove(){
   if(c4State.over) return;
-  let col = connect4FindWinningCol('cpu');
-  if(col===-1) col = connect4FindWinningCol('you');
-  if(col===-1){
-    const avail = [];
-    for(let c=0;c<7;c++) if(connect4DropRow(c)!==-1) avail.push(c);
-    avail.sort((a,b)=>Math.abs(a-3)-Math.abs(b-3));
-    col = avail[Math.floor(Math.random()*Math.min(3,avail.length))] ?? avail[0];
+  const level = diffOf('connect4');
+  const avail = [];
+  for(let c=0;c<7;c++) if(connect4DropRow(c)!==-1) avail.push(c);
+  let col = -1;
+
+  if(level === 'easy'){
+    if(Math.random() < 0.35) col = connect4FindWinningCol('cpu');
+    if(col===-1) col = avail[Math.floor(Math.random()*avail.length)];
+  } else if(level === 'medium' && Math.random() < 0.2){
+    // متوسط: أحيانًا مش بيمنع فوزك عشان يبقى فيه فرصة حقيقية تكسب
+    col = connect4FindWinningCol('cpu');
+    if(col===-1) col = avail[Math.floor(Math.random()*avail.length)];
+  } else {
+    col = connect4FindWinningCol('cpu');
+    if(col===-1) col = connect4FindWinningCol('you');
+    if(col===-1 && level==='hard' && Math.random() < 0.85){
+      // صعب: يتجنب أي عمود يفتح فرصة فوز للاعب في الدور اللي بعده (85% من الوقت مش دايمًا)
+      const safe = avail.filter(c => {
+        const r = connect4DropRow(c);
+        c4State.grid[r][c] = 'cpu';
+        const risky = connect4FindWinningCol('you') !== -1;
+        c4State.grid[r][c] = null;
+        return !risky;
+      });
+      const pool = safe.length ? safe : avail;
+      pool.sort((a,b)=>Math.abs(a-3)-Math.abs(b-3));
+      col = pool[Math.floor(Math.random()*Math.min(2,pool.length))] ?? pool[0];
+    }
+    if(col===-1){
+      avail.sort((a,b)=>Math.abs(a-3)-Math.abs(b-3));
+      col = avail[Math.floor(Math.random()*Math.min(3,avail.length))] ?? avail[0];
+    }
   }
+
   const row = connect4DropRow(col);
   c4State.grid[row][col] = 'cpu';
   sfx.click();
@@ -2028,7 +2904,7 @@ document.getElementById('connect4ResetBtn').addEventListener('click', connect4Re
 /* ================= اضرب الخلد ================= */
 let moleState = { score:0, timeLeft:30, interval:null, moleTimeout:null, activeHole:-1, running:false };
 function moleStop(){ if(moleState.interval){clearInterval(moleState.interval); moleState.interval=null;} if(moleState.moleTimeout){clearTimeout(moleState.moleTimeout); moleState.moleTimeout=null;} moleState.running=false; }
-function moleBestKey(){ return 'mole_best'; }
+function moleBestKey(){ return 'mole_best_' + diffOf('mole'); }
 function moleUpdateBest(){ document.getElementById('moleBest').textContent = localStorage.getItem(moleBestKey())||'--'; }
 function moleReset(){
   moleStop();
@@ -2067,7 +2943,8 @@ function moleSpawn(){
   do{ next = Math.floor(Math.random()*9); } while(next === moleState.activeHole);
   moleState.activeHole = next;
   holes[next].classList.add('up');
-  const delay = 500 + Math.random()*500;
+  const level = diffOf('mole');
+  const delay = level==='easy' ? 700 + Math.random()*600 : level==='hard' ? 280 + Math.random()*380 : 500 + Math.random()*500;
   moleState.moleTimeout = setTimeout(moleSpawn, delay);
 }
 function moleWhack(i){
@@ -2091,13 +2968,16 @@ function moleEnd(){
 
 /* ================= خمن الرقم ================= */
 let guessState = { target:0, tries:0 };
-function guessBestKey(){ return 'guess_best'; }
+function guessBestKey(){ return 'guess_best_' + diffOf('guess'); }
 function guessUpdateBest(){ document.getElementById('guessBest').textContent = localStorage.getItem(guessBestKey())||'--'; }
 function guessNew(){
-  guessState.target = Math.floor(Math.random()*100)+1;
+  const level = diffOf('guess');
+  guessState.max = level==='easy' ? 50 : level==='hard' ? 500 : 100;
+  guessState.target = Math.floor(Math.random()*guessState.max)+1;
   guessState.tries = 0;
   document.getElementById('guessTries').textContent = '0';
-  document.getElementById('guessMsg').textContent = 'فكرت في رقم من 1 لـ 100، خمنه!';
+  document.getElementById('guessMsg').textContent = `فكرت في رقم من 1 لـ ${guessState.max}، خمنه!`;
+  document.getElementById('guessInput').max = guessState.max;
   document.getElementById('guessInput').value = '';
   guessUpdateBest();
 }
@@ -2129,13 +3009,19 @@ document.getElementById('guessInput').addEventListener('keydown', (e) => { if(e.
 
 /* ================= تخمين الكلمة (هانج مان) ================= */
 const HANGMAN_WORDS = ['FOOTBALL','COMPUTER','GUITAR','ELEPHANT','PLANET','SANDWICH','LIBRARY','MOUNTAIN','KEYBOARD','JOURNEY','BALLOON','DIAMOND','ISLAND','TROPHY','CAMERA','BICYCLE','ORANGE','WINDOW','JACKET','PUZZLE'];
+const HANGMAN_WORDS_EASY = ['CAT','DOG','SUN','BOOK','TREE','FISH','MOON','STAR','CAKE','DOOR','SHOE','LAMP','RAIN','SNOW','GAME','BALL','KING','SHIP','FIRE','ROAD'];
+const HANGMAN_WORDS_HARD = ['ASTRONAUT','TELEVISION','ADVENTURE','CHOCOLATE','UNIVERSITY','MICROSCOPE','WATERFALL','BUTTERFLY','SKYSCRAPER','TELESCOPE','CROCODILE','VOLCANO','ORCHESTRA','HELICOPTER','DINOSAUR'];
+function hangmanMaxWrong(){ const l = diffOf('hangman'); return l==='easy' ? 8 : l==='hard' ? 5 : 6; }
+function hangmanWordList(){ const l = diffOf('hangman'); return l==='easy' ? HANGMAN_WORDS_EASY : l==='hard' ? HANGMAN_WORDS_HARD : HANGMAN_WORDS; }
 let hangmanState = { word:'', guessed:[], wrong:0, wins:0, over:false };
 function hangmanNew(){
-  hangmanState.word = HANGMAN_WORDS[Math.floor(Math.random()*HANGMAN_WORDS.length)];
+  const wordList = hangmanWordList();
+  hangmanState.word = wordList[Math.floor(Math.random()*wordList.length)];
   hangmanState.guessed = [];
   hangmanState.wrong = 0;
+  hangmanState.maxWrong = hangmanMaxWrong();
   hangmanState.over = false;
-  document.getElementById('hangmanWrong').textContent = '0/6';
+  document.getElementById('hangmanWrong').textContent = `0/${hangmanState.maxWrong}`;
   hangmanRenderWord();
   hangmanRenderKeys();
 }
@@ -2171,9 +3057,9 @@ function hangmanGuess(l, btn){
   } else {
     btn.classList.add('wrong');
     hangmanState.wrong++;
-    document.getElementById('hangmanWrong').textContent = `${hangmanState.wrong}/6`;
+    document.getElementById('hangmanWrong').textContent = `${hangmanState.wrong}/${hangmanState.maxWrong}`;
     sfx.wrong();
-    if(hangmanState.wrong>=6){
+    if(hangmanState.wrong>=hangmanState.maxWrong){
       hangmanState.over = true;
       sfx.buzzer();
       setTimeout(()=>alert('خسرت! الكلمة كانت: '+hangmanState.word),100);
@@ -2193,9 +3079,10 @@ function stroopBestKey(){ return 'stroop_best'; }
 function stroopUpdateBest(){ document.getElementById('stroopBest').textContent = localStorage.getItem(stroopBestKey())||'--'; }
 function stroopReset(){
   stroopStop();
-  stroopState.score = 0; stroopState.timeLeft = 30;
+  const timeLimit = diffOf('stroop')==='easy' ? 45 : diffOf('stroop')==='hard' ? 20 : 30;
+  stroopState.score = 0; stroopState.timeLeft = timeLimit;
   document.getElementById('stroopScore').textContent = '0';
-  document.getElementById('stroopTime').textContent = '30';
+  document.getElementById('stroopTime').textContent = timeLimit;
   document.getElementById('stroopWord').textContent = 'جاهز؟';
   document.getElementById('stroopWord').style.color = 'var(--ink)';
   document.getElementById('stroopChoices').innerHTML = '';
@@ -2204,9 +3091,11 @@ function stroopReset(){
 document.getElementById('stroopStartBtn').addEventListener('click', stroopStart);
 function stroopStart(){
   stroopStop();
-  stroopState.score = 0; stroopState.timeLeft = 30;
+  const level = diffOf('stroop');
+  const timeLimit = level==='easy' ? 45 : level==='hard' ? 20 : 30;
+  stroopState.score = 0; stroopState.timeLeft = timeLimit;
   document.getElementById('stroopScore').textContent = '0';
-  document.getElementById('stroopTime').textContent = '30';
+  document.getElementById('stroopTime').textContent = timeLimit;
   stroopState.running = true;
   stroopState.interval = setInterval(() => {
     stroopState.timeLeft--;
@@ -2216,6 +3105,8 @@ function stroopStart(){
   stroopNext();
 }
 function stroopNext(){
+  const level = diffOf('stroop');
+  const numChoices = level==='easy' ? 3 : level==='hard' ? 6 : 4;
   const wordObj = STROOP_COLORS[Math.floor(Math.random()*STROOP_COLORS.length)];
   let inkObj;
   do{ inkObj = STROOP_COLORS[Math.floor(Math.random()*STROOP_COLORS.length)]; } while(inkObj.name===wordObj.name);
@@ -2223,7 +3114,7 @@ function stroopNext(){
   const wordEl = document.getElementById('stroopWord');
   wordEl.textContent = wordObj.name;
   wordEl.style.color = inkObj.hex;
-  let choices = [...STROOP_COLORS].sort(()=>Math.random()-0.5).slice(0,4);
+  let choices = [...STROOP_COLORS].sort(()=>Math.random()-0.5).slice(0,numChoices);
   if(!choices.some(c=>c.name===inkObj.name)) choices[0] = inkObj;
   choices = choices.sort(()=>Math.random()-0.5);
   const box = document.getElementById('stroopChoices');
@@ -2267,12 +3158,33 @@ const TYPING_SENTENCES = [
   'A journey of a thousand miles begins with one step',
   'Simple code is often the best code'
 ];
+const TYPING_SENTENCES_EASY = [
+  'I like my cat',
+  'The sun is hot',
+  'She can run fast',
+  'We play games',
+  'This is fun',
+  'He has a dog'
+];
+const TYPING_SENTENCES_HARD = [
+  'Extraordinary achievements require unwavering dedication and relentless perseverance every single day',
+  'The mysterious ancient manuscript contained knowledge that scholars had searched for centuries to uncover',
+  'Quantum mechanics fundamentally challenges our everyday understanding of reality and causality',
+  'Entrepreneurs who embrace uncertainty often discover opportunities that others completely overlook',
+  'The intricate architecture of the cathedral reflected centuries of meticulous craftsmanship and devotion',
+  'Sustainable development requires balancing economic growth with environmental responsibility and social equity'
+];
+function typingSentenceList(){
+  const l = diffOf('typing');
+  return l==='easy' ? TYPING_SENTENCES_EASY : l==='hard' ? TYPING_SENTENCES_HARD : TYPING_SENTENCES;
+}
 let typingState = { text:'', startTime:0, started:false };
 function typingStop(){ typingState.started = false; }
-function typingBestKey(){ return 'typing_best'; }
+function typingBestKey(){ return 'typing_best_' + diffOf('typing'); }
 function typingUpdateBest(){ document.getElementById('typingBest').textContent = localStorage.getItem(typingBestKey())||'--'; }
 function typingNew(){
-  typingState.text = TYPING_SENTENCES[Math.floor(Math.random()*TYPING_SENTENCES.length)];
+  const list = typingSentenceList();
+  typingState.text = list[Math.floor(Math.random()*list.length)];
   typingState.started = false;
   typingUpdateBest();
   document.getElementById('typingWpm').textContent = '0';
@@ -2317,6 +3229,2422 @@ function typingFinish(val){
   typingUpdateBest();
 }
 document.getElementById('typingRestartBtn').addEventListener('click', typingNew);
+
+/* ================= سودوكو ================= */
+const SUDOKU_PUZZLES = [
+  { p:'530070000600195000098000060800060003400803001700020006060000280000419005000080',
+    s:'534678912672195348198342567859761423426853791713924856961537284287419635345286' },
+  { p:'003020600900305001001806400008102900700000008006708200002609500800203009005010',
+    s:'483921657967345821251876493548132976729564138136798245392417568674859312815263' }
+];
+let sudokuState = { puzzle:'', solution:'', board:[], selected:-1, mistakes:0, timer:0, interval:null };
+function sudokuStop(){ if(sudokuState.interval){clearInterval(sudokuState.interval); sudokuState.interval=null;} }
+function sudokuBestKey(){ return 'sudoku_best_' + diffOf('sudoku'); }
+function sudokuUpdateBest(){ const b = localStorage.getItem(sudokuBestKey()); document.getElementById('sudokuBest').textContent = b ? formatTime(parseInt(b)) : '--'; }
+function sudokuNew(){
+  sudokuStop();
+  const pick = SUDOKU_PUZZLES[Math.floor(Math.random()*SUDOKU_PUZZLES.length)];
+  sudokuState.puzzle = pick.p; sudokuState.solution = pick.s;
+  sudokuState.board = pick.p.split('');
+  const level = diffOf('sudoku');
+  sudokuState.maxMistakes = level==='easy' ? 6 : level==='hard' ? 1 : 3;
+  sudokuState.selected = -1; sudokuState.mistakes = 0; sudokuState.timer = 0;
+  document.getElementById('sudokuMistakes').textContent = `0/${sudokuState.maxMistakes}`;
+  document.getElementById('sudokuTime').textContent = '00:00';
+  sudokuUpdateBest();
+  sudokuRender();
+  sudokuRenderPad();
+  sudokuState.interval = setInterval(()=>{ sudokuState.timer++; document.getElementById('sudokuTime').textContent = formatTime(sudokuState.timer); },1000);
+}
+function sudokuRender(){
+  const board = document.getElementById('sudokuBoard');
+  board.innerHTML = '';
+  for(let i=0;i<81;i++){
+    const row = Math.floor(i/9);
+    const cell = document.createElement('div');
+    cell.className = 'sudoku-cell';
+    const given = sudokuState.puzzle[i] !== '0';
+    if(given) cell.classList.add('given');
+    if(row % 3 === 0 && row > 0) cell.classList.add('sudoku-row-thick');
+    const val = sudokuState.board[i];
+    cell.textContent = val==='0' ? '' : val;
+    if(i===sudokuState.selected) cell.classList.add('selected');
+    if(!given && val!=='0' && val!==sudokuState.solution[i]) cell.classList.add('error');
+    cell.addEventListener('click', () => { if(!given){ sudokuState.selected = i; sudokuRender(); } });
+    board.appendChild(cell);
+  }
+}
+function sudokuRenderPad(){
+  const pad = document.getElementById('sudokuPad');
+  pad.innerHTML = '';
+  for(let n=1;n<=9;n++){
+    const btn = document.createElement('button');
+    btn.textContent = n;
+    btn.addEventListener('click', () => sudokuInput(String(n)));
+    pad.appendChild(btn);
+  }
+  const eraseBtn = document.createElement('button');
+  eraseBtn.textContent = '✖';
+  eraseBtn.addEventListener('click', () => sudokuInput('0'));
+  pad.appendChild(eraseBtn);
+}
+function sudokuInput(val){
+  if(sudokuState.selected===-1) return;
+  const i = sudokuState.selected;
+  if(sudokuState.puzzle[i] !== '0') return;
+  sudokuState.board[i] = val;
+  if(val !== '0' && val !== sudokuState.solution[i]){
+    sudokuState.mistakes++;
+    document.getElementById('sudokuMistakes').textContent = `${sudokuState.mistakes}/${sudokuState.maxMistakes}`;
+    sfx.wrong();
+    if(sudokuState.mistakes>=sudokuState.maxMistakes){
+      sudokuStop(); sfx.buzzer();
+      setTimeout(()=>alert(`خسرت! وصلت لـ ${sudokuState.maxMistakes} أخطاء`),100);
+    }
+  } else if(val !== '0'){
+    sfx.click();
+  }
+  sudokuRender();
+  if(sudokuState.board.join('') === sudokuState.solution){
+    sudokuStop(); sfx.win();
+    const best = parseInt(localStorage.getItem(sudokuBestKey())||'999999');
+    if(sudokuState.timer<best) localStorage.setItem(sudokuBestKey(), sudokuState.timer);
+    sudokuUpdateBest();
+    setTimeout(()=>alert('مبروك! خلصت السودوكو في '+formatTime(sudokuState.timer)),100);
+  }
+}
+document.getElementById('sudokuNewBtn').addEventListener('click', sudokuNew);
+
+/* ================= كشف الألغام ================= */
+let mineState = { grid:[], revealed:[], flagged:[], mines:10, size:9, flagMode:false, timer:0, interval:null, over:false, firstClick:true };
+function mineStop(){ if(mineState.interval){clearInterval(mineState.interval); mineState.interval=null;} }
+function mineBestKey(){ return 'mine_best'; }
+function mineUpdateBest(){ const b = localStorage.getItem(mineBestKey()); document.getElementById('mineBest').textContent = b? formatTime(parseInt(b)):'--'; }
+function mineNew(){
+  mineStop();
+  const level = diffOf('mine');
+  mineState.size = level==='easy' ? 8 : level==='hard' ? 11 : 9;
+  mineState.mines = level==='easy' ? 8 : level==='hard' ? 20 : 10;
+  const size = mineState.size;
+  mineState.grid = Array(size*size).fill(0);
+  mineState.revealed = Array(size*size).fill(false);
+  mineState.flagged = Array(size*size).fill(false);
+  mineState.timer = 0; mineState.over = false; mineState.firstClick = true;
+  document.getElementById('mineLeft').textContent = mineState.mines;
+  document.getElementById('mineTime').textContent = '00:00';
+  mineUpdateBest();
+  mineRender();
+}
+function minePlaceMines(exclude){
+  const size = mineState.size;
+  let placed = 0;
+  while(placed < mineState.mines){
+    const idx = Math.floor(Math.random()*size*size);
+    if(idx===exclude || mineState.grid[idx]===-1) continue;
+    mineState.grid[idx] = -1;
+    placed++;
+  }
+  for(let i=0;i<size*size;i++){
+    if(mineState.grid[i]===-1) continue;
+    const {r,c} = mineRC(i);
+    let count = 0;
+    mineNeighbors(r,c).forEach(n => { if(mineState.grid[n]===-1) count++; });
+    mineState.grid[i] = count;
+  }
+}
+function mineRC(i){ return { r: Math.floor(i/mineState.size), c: i % mineState.size }; }
+function mineIdx(r,c){ return r*mineState.size + c; }
+function mineNeighbors(r,c){
+  const res = [];
+  for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++){
+    if(dr===0&&dc===0) continue;
+    const nr=r+dr, nc=c+dc;
+    if(nr>=0&&nr<mineState.size&&nc>=0&&nc<mineState.size) res.push(mineIdx(nr,nc));
+  }
+  return res;
+}
+function mineRender(){
+  const board = document.getElementById('mineBoard');
+  board.style.gridTemplateColumns = `repeat(${mineState.size}, 1fr)`;
+  board.innerHTML = '';
+  for(let i=0;i<mineState.size*mineState.size;i++){
+    const cell = document.createElement('div');
+    cell.className = 'mine-cell';
+    if(!mineState.revealed[i]){
+      cell.classList.add('hidden-cell');
+      if(mineState.flagged[i]){ cell.classList.add('flagged'); cell.textContent = '🚩'; }
+    } else {
+      if(mineState.grid[i]===-1){ cell.classList.add('mine'); cell.textContent='💣'; }
+      else if(mineState.grid[i]>0){ cell.textContent = mineState.grid[i]; }
+    }
+    cell.addEventListener('click', () => mineClick(i));
+    board.appendChild(cell);
+  }
+}
+function mineClick(i){
+  if(mineState.over || mineState.revealed[i]) return;
+  if(mineState.flagMode){
+    mineState.flagged[i] = !mineState.flagged[i];
+    const left = mineState.mines - mineState.flagged.filter(Boolean).length;
+    document.getElementById('mineLeft').textContent = left;
+    sfx.click();
+    mineRender();
+    return;
+  }
+  if(mineState.flagged[i]) return;
+  if(mineState.firstClick){
+    minePlaceMines(i);
+    mineState.firstClick = false;
+    mineState.interval = setInterval(()=>{ mineState.timer++; document.getElementById('mineTime').textContent = formatTime(mineState.timer); },1000);
+  }
+  mineReveal(i);
+  mineRender();
+  mineCheckWin();
+}
+function mineReveal(i){
+  if(mineState.revealed[i] || mineState.flagged[i]) return;
+  mineState.revealed[i] = true;
+  if(mineState.grid[i]===-1){
+    mineState.over = true;
+    mineStop(); sfx.buzzer();
+    mineState.revealed = mineState.revealed.map(()=>true);
+    setTimeout(()=>{ mineRender(); alert('خسرت! دست على لغم 💣'); },50);
+    return;
+  }
+  if(mineState.grid[i]===0){
+    const {r,c} = mineRC(i);
+    mineNeighbors(r,c).forEach(n => mineReveal(n));
+  }
+}
+function mineCheckWin(){
+  const size = mineState.size;
+  const total = size*size;
+  const revealedCount = mineState.revealed.filter(Boolean).length;
+  if(!mineState.over && revealedCount === total - mineState.mines){
+    mineState.over = true;
+    mineStop(); sfx.win();
+    const best = parseInt(localStorage.getItem(mineBestKey())||'999999');
+    if(mineState.timer<best) localStorage.setItem(mineBestKey(), mineState.timer);
+    mineUpdateBest();
+    setTimeout(()=>alert('مبروك! كشفت كل الخانات الآمنة في '+formatTime(mineState.timer)),100);
+  }
+}
+document.getElementById('mineFlagBtn').addEventListener('click', () => {
+  mineState.flagMode = !mineState.flagMode;
+  document.getElementById('mineFlagBtn').textContent = mineState.flagMode ? '👆 وضع الكشف' : '🚩 وضع العلم';
+  sfx.click();
+});
+document.getElementById('mineNewBtn').addEventListener('click', mineNew);
+
+/* ================= سوليتير ================= */
+const SUITS = ['♠','♥','♦','♣'];
+const SUIT_COLOR = {'♠':'black','♣':'black','♥':'red','♦':'red'};
+const RANKS = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+let solState = { tableau:[], foundations:{'♠':[],'♥':[],'♦':[],'♣':[]}, stock:[], waste:[], selected:null, moves:0 };
+function solitaireNew(){
+  let deck = [];
+  SUITS.forEach(s => RANKS.forEach((r,i) => deck.push({suit:s, rank:r, val:i+1, faceUp:false})));
+  deck = shuffle(deck);
+  solState.tableau = [];
+  for(let c=0;c<7;c++){
+    const col = [];
+    for(let n=0;n<=c;n++){
+      const card = deck.pop();
+      card.faceUp = (n===c);
+      col.push(card);
+    }
+    solState.tableau.push(col);
+  }
+  solState.stock = deck;
+  solState.waste = [];
+  solState.foundations = {'♠':[],'♥':[],'♦':[],'♣':[]};
+  solState.selected = null;
+  solState.moves = 0;
+  document.getElementById('solitaireMoves').textContent = '0';
+  solitaireRender();
+}
+function solitaireRender(){
+  const board = document.getElementById('solitaireBoard');
+  board.innerHTML = '';
+
+  const topRow = document.createElement('div');
+  topRow.className = 'sol-row';
+
+  const stockPile = document.createElement('div');
+  stockPile.className = 'sol-pile';
+  stockPile.textContent = solState.stock.length ? '🂠' : '↺';
+  stockPile.addEventListener('click', solitaireStockClick);
+  topRow.appendChild(stockPile);
+
+  const wastePile = document.createElement('div');
+  wastePile.className = 'sol-pile';
+  if(solState.waste.length){
+    const top = solState.waste[solState.waste.length-1];
+    wastePile.appendChild(solitaireCardEl(top, 'waste', solState.waste.length-1));
+  }
+  topRow.appendChild(wastePile);
+
+  const spacer = document.createElement('div'); spacer.style.flex='1'; topRow.appendChild(spacer);
+
+  SUITS.forEach(s => {
+    const f = document.createElement('div');
+    f.className = 'sol-pile';
+    const pile = solState.foundations[s];
+    if(!pile.length){ f.textContent = s; f.style.color = SUIT_COLOR[s]==='red' ? '#ff5c8a' : '#8b93ab'; }
+    else { f.appendChild(solitaireCardEl(pile[pile.length-1], 'foundation-'+s, pile.length-1)); }
+    f.addEventListener('click', () => solitaireTryMoveToFoundation(s));
+    topRow.appendChild(f);
+  });
+
+  board.appendChild(topRow);
+
+  const tableauRow = document.createElement('div');
+  tableauRow.className = 'sol-tableau';
+  solState.tableau.forEach((col, ci) => {
+    const colEl = document.createElement('div');
+    colEl.className = 'sol-col';
+    if(!col.length){
+      const empty = document.createElement('div');
+      empty.className = 'sol-pile';
+      empty.addEventListener('click', () => solitaireTryMoveToTableau(ci));
+      colEl.appendChild(empty);
+    } else {
+      col.forEach((card, idx) => {
+        if(card.faceUp){ colEl.appendChild(solitaireCardEl(card, 'tableau-'+ci, idx)); }
+        else { const back = document.createElement('div'); back.className = 'sol-card face-down'; colEl.appendChild(back); }
+      });
+    }
+    colEl.addEventListener('click', (e) => { if(e.target === colEl) solitaireTryMoveToTableau(ci); });
+    tableauRow.appendChild(colEl);
+  });
+  board.appendChild(tableauRow);
+}
+function solitaireCardEl(card, source, idx){
+  const el = document.createElement('div');
+  el.className = 'sol-card ' + SUIT_COLOR[card.suit];
+  el.textContent = card.rank + card.suit;
+  if(solState.selected && solState.selected.source===source && solState.selected.idx===idx) el.classList.add('selected');
+  el.addEventListener('click', (e) => { e.stopPropagation(); solitaireCardClick(card, source, idx); });
+  return el;
+}
+function solitaireStockClick(){
+  const level = diffOf('solitaire');
+  const drawCount = level==='hard' ? 3 : 1;
+  if(solState.stock.length){
+    for(let i=0;i<drawCount && solState.stock.length;i++){
+      const card = solState.stock.pop();
+      card.faceUp = true;
+      solState.waste.push(card);
+    }
+    sfx.click();
+  } else {
+    solState.stock = solState.waste.reverse().map(c => { c.faceUp=false; return c; });
+    solState.waste = [];
+    sfx.flip();
+  }
+  solitaireRender();
+}
+function solitaireCardClick(card, source, idx){
+  if(source==='waste'){ if(idx !== solState.waste.length-1) return; }
+  else if(source.startsWith('tableau-')){
+    const ci = parseInt(source.split('-')[1]);
+    if(idx !== solState.tableau[ci].length-1) return;
+  } else { return; }
+
+  if(solState.selected && solState.selected.source===source && solState.selected.idx===idx){ solState.selected = null; }
+  else { solState.selected = { card, source, idx }; }
+  solitaireRender();
+}
+function solitaireRemoveSelected(){
+  const sel = solState.selected;
+  if(sel.source==='waste'){ solState.waste.pop(); }
+  else if(sel.source.startsWith('tableau-')){
+    const ci = parseInt(sel.source.split('-')[1]);
+    solState.tableau[ci].pop();
+    const col = solState.tableau[ci];
+    if(col.length) col[col.length-1].faceUp = true;
+  }
+}
+function solitaireTryMoveToFoundation(suit){
+  if(!solState.selected) return;
+  const card = solState.selected.card;
+  if(card.suit !== suit) return;
+  const pile = solState.foundations[suit];
+  const topVal = pile.length ? pile[pile.length-1].val : 0;
+  if(card.val === topVal+1){
+    solitaireRemoveSelected();
+    pile.push(card);
+    solState.selected = null;
+    solState.moves++;
+    document.getElementById('solitaireMoves').textContent = solState.moves;
+    sfx.match();
+    solitaireRender();
+    solitaireCheckWin();
+  } else { sfx.wrong(); }
+}
+function solitaireTryMoveToTableau(ci){
+  if(!solState.selected) return;
+  const card = solState.selected.card;
+  const col = solState.tableau[ci];
+  const top = col.length ? col[col.length-1] : null;
+  const valid = top ? (SUIT_COLOR[top.suit] !== SUIT_COLOR[card.suit] && card.val === top.val-1) : (card.rank === 'K');
+  if(valid){
+    solitaireRemoveSelected();
+    col.push(card);
+    solState.selected = null;
+    solState.moves++;
+    document.getElementById('solitaireMoves').textContent = solState.moves;
+    sfx.click();
+    solitaireRender();
+  } else { sfx.wrong(); }
+}
+function solitaireCheckWin(){
+  const total = SUITS.reduce((sum,s)=>sum+solState.foundations[s].length,0);
+  if(total===52){ sfx.win(); setTimeout(()=>alert('مبروك! كسبت السوليتير 🎉'),100); }
+}
+document.getElementById('solitaireNewBtn').addEventListener('click', solitaireNew);
+
+/* ================= برج هانوي ================= */
+let hanoiState = { pegs:[[],[],[]], moves:0, n:5, selected:-1 };
+function hanoiStop(){}
+function hanoiNew(){
+  const level = diffOf('hanoi');
+  hanoiState.n = level==='easy' ? 3 : level==='hard' ? 7 : 5;
+  hanoiState.pegs = [[],[],[]];
+  for(let i=hanoiState.n;i>=1;i--) hanoiState.pegs[0].push(i);
+  hanoiState.moves = 0;
+  hanoiState.selected = -1;
+  document.getElementById('hanoiMoves').textContent = '0';
+  document.getElementById('hanoiMin').textContent = Math.pow(2,hanoiState.n)-1;
+  hanoiRender();
+}
+function hanoiRender(){
+  const board = document.getElementById('hanoiBoard');
+  board.innerHTML = '';
+  const colors = ['#ff5c8a','#ffb454','#22d3ee','#7c5cff','#2a9d8f','#f1f1f1'];
+  hanoiState.pegs.forEach((peg, pi) => {
+    const pegEl = document.createElement('div');
+    pegEl.className = 'hanoi-peg';
+    if(pi === hanoiState.selected) pegEl.style.outline = '2px solid var(--teal)';
+    peg.forEach(diskSize => {
+      const disk = document.createElement('div');
+      disk.className = 'hanoi-disk';
+      const widthPct = 30 + diskSize * (60/hanoiState.n);
+      disk.style.width = widthPct + '%';
+      disk.style.background = colors[diskSize % colors.length];
+      pegEl.appendChild(disk);
+    });
+    pegEl.addEventListener('click', () => hanoiClick(pi));
+    board.appendChild(pegEl);
+  });
+}
+function hanoiClick(pi){
+  if(hanoiState.selected === -1){
+    if(hanoiState.pegs[pi].length){ hanoiState.selected = pi; sfx.click(); }
+  } else {
+    if(pi === hanoiState.selected){ hanoiState.selected = -1; }
+    else {
+      const from = hanoiState.pegs[hanoiState.selected];
+      const to = hanoiState.pegs[pi];
+      const disk = from[from.length-1];
+      if(!to.length || to[to.length-1] > disk){
+        to.push(from.pop());
+        hanoiState.moves++;
+        document.getElementById('hanoiMoves').textContent = hanoiState.moves;
+        sfx.flip();
+        if(hanoiState.pegs[2].length === hanoiState.n){
+          sfx.win();
+          setTimeout(()=>alert('مبروك! خلصت في '+hanoiState.moves+' حركة (أقل عدد ممكن: '+(Math.pow(2,hanoiState.n)-1)+')'),100);
+        }
+      } else { sfx.wrong(); }
+      hanoiState.selected = -1;
+    }
+  }
+  hanoiRender();
+}
+document.getElementById('hanoiNewBtn').addEventListener('click', hanoiNew);
+
+/* ================= تتريس ================= */
+const TETROMINOES = {
+  I: {shape:[[1,1,1,1]], color:'#22d3ee'},
+  O: {shape:[[1,1],[1,1]], color:'#ffd60a'},
+  T: {shape:[[0,1,0],[1,1,1]], color:'#8338ec'},
+  S: {shape:[[0,1,1],[1,1,0]], color:'#2a9d8f'},
+  Z: {shape:[[1,1,0],[0,1,1]], color:'#e63946'},
+  J: {shape:[[1,0,0],[1,1,1]], color:'#3a86ff'},
+  L: {shape:[[0,0,1],[1,1,1]], color:'#fb8500'}
+};
+let tetrisState = { grid:[], cur:null, x:0, y:0, score:0, lines:0, interval:null, cell:0, canvas:null, ctx:null, running:false, cols:10, rows:20 };
+function tetrisStop(){ if(tetrisState.interval){ clearInterval(tetrisState.interval); tetrisState.interval=null; } tetrisState.running=false; }
+function tetrisBestKey(){ return 'tetris_best_' + diffOf('tetris'); }
+function tetrisUpdateBest(){ document.getElementById('tetrisBest').textContent = localStorage.getItem(tetrisBestKey())||'--'; }
+function tetrisInit(){
+  tetrisStop();
+  const canvas = document.getElementById('tetrisCanvas');
+  tetrisState.canvas = canvas; tetrisState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  tetrisState.cell = canvas.width / tetrisState.cols;
+  document.getElementById('tetrisScore').textContent='0';
+  document.getElementById('tetrisLines').textContent='0';
+  tetrisUpdateBest();
+  tetrisDrawIdle();
+}
+function tetrisDrawIdle(){
+  const {ctx,canvas} = tetrisState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#8b93ab'; ctx.font='14px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('دوس ابدأ', canvas.width/2, canvas.height/2);
+}
+document.getElementById('tetrisStartBtn').addEventListener('click', tetrisStart);
+function tetrisRandomPiece(){
+  const keys = Object.keys(TETROMINOES);
+  const key = keys[Math.floor(Math.random()*keys.length)];
+  const t = TETROMINOES[key];
+  return { shape: t.shape.map(r=>[...r]), color: t.color };
+}
+function tetrisStart(){
+  tetrisStop();
+  const canvas = tetrisState.canvas;
+  resizeCanvasToDisplay(canvas);
+  tetrisState.cell = canvas.width / tetrisState.cols;
+  tetrisState.grid = Array.from({length:tetrisState.rows}, ()=>Array(tetrisState.cols).fill(null));
+  tetrisState.score = 0; tetrisState.lines = 0;
+  document.getElementById('tetrisScore').textContent='0';
+  document.getElementById('tetrisLines').textContent='0';
+  tetrisSpawn();
+  tetrisState.running = true;
+  const tetrisLevel = diffOf('tetris');
+  const tetrisSpeed = tetrisLevel==='easy' ? 800 : tetrisLevel==='hard' ? 320 : 550;
+  tetrisState.interval = setInterval(tetrisTick, tetrisSpeed);
+  tetrisDraw();
+}
+function tetrisSpawn(){
+  tetrisState.cur = tetrisRandomPiece();
+  tetrisState.x = Math.floor((tetrisState.cols - tetrisState.cur.shape[0].length)/2);
+  tetrisState.y = 0;
+  if(tetrisCollide(tetrisState.x, tetrisState.y, tetrisState.cur.shape)){ tetrisGameOver(); }
+}
+function tetrisCollide(x,y,shape){
+  for(let r=0;r<shape.length;r++) for(let c=0;c<shape[r].length;c++){
+    if(!shape[r][c]) continue;
+    const gx = x+c, gy = y+r;
+    if(gx<0||gx>=tetrisState.cols||gy>=tetrisState.rows) return true;
+    if(gy>=0 && tetrisState.grid[gy][gx]) return true;
+  }
+  return false;
+}
+function tetrisRotate(shape){
+  const rows = shape.length, cols = shape[0].length;
+  const res = Array.from({length:cols},()=>Array(rows).fill(0));
+  for(let r=0;r<rows;r++) for(let c=0;c<cols;c++) res[c][rows-1-r] = shape[r][c];
+  return res;
+}
+function tetrisTick(){ if(!tetrisMove(0,1)){ tetrisLock(); } }
+function tetrisMove(dx,dy){
+  const nx = tetrisState.x+dx, ny = tetrisState.y+dy;
+  if(!tetrisCollide(nx,ny,tetrisState.cur.shape)){
+    tetrisState.x = nx; tetrisState.y = ny;
+    tetrisDraw();
+    return true;
+  }
+  return false;
+}
+function tetrisDoRotate(){
+  const rotated = tetrisRotate(tetrisState.cur.shape);
+  if(!tetrisCollide(tetrisState.x, tetrisState.y, rotated)){
+    tetrisState.cur.shape = rotated;
+    sfx.click();
+    tetrisDraw();
+  }
+}
+function tetrisLock(){
+  const {shape,color} = tetrisState.cur;
+  for(let r=0;r<shape.length;r++) for(let c=0;c<shape[r].length;c++){
+    if(shape[r][c]){
+      const gy = tetrisState.y+r, gx = tetrisState.x+c;
+      if(gy>=0) tetrisState.grid[gy][gx] = color;
+    }
+  }
+  sfx.flip();
+  let cleared = 0;
+  for(let r=tetrisState.rows-1;r>=0;r--){
+    if(tetrisState.grid[r].every(cell=>cell)){
+      tetrisState.grid.splice(r,1);
+      tetrisState.grid.unshift(Array(tetrisState.cols).fill(null));
+      cleared++; r++;
+    }
+  }
+  if(cleared){
+    tetrisState.lines += cleared;
+    tetrisState.score += [0,100,300,500,800][cleared] || 1000;
+    document.getElementById('tetrisScore').textContent = tetrisState.score;
+    document.getElementById('tetrisLines').textContent = tetrisState.lines;
+    sfx.match();
+    const best = parseInt(localStorage.getItem(tetrisBestKey())||'0');
+    if(tetrisState.score>best) localStorage.setItem(tetrisBestKey(), tetrisState.score);
+    tetrisUpdateBest();
+  }
+  tetrisSpawn();
+  tetrisDraw();
+}
+function tetrisDraw(){
+  const {ctx,canvas,cell} = tetrisState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  for(let r=0;r<tetrisState.rows;r++) for(let c=0;c<tetrisState.cols;c++){
+    if(tetrisState.grid[r][c]){ ctx.fillStyle = tetrisState.grid[r][c]; ctx.fillRect(c*cell+1, r*cell+1, cell-2, cell-2); }
+  }
+  if(tetrisState.cur){
+    ctx.fillStyle = tetrisState.cur.color;
+    tetrisState.cur.shape.forEach((row,r)=>row.forEach((v,c)=>{
+      if(v) ctx.fillRect((tetrisState.x+c)*cell+1, (tetrisState.y+r)*cell+1, cell-2, cell-2);
+    }));
+  }
+}
+function tetrisGameOver(){
+  tetrisStop(); sfx.buzzer();
+  const {ctx,canvas} = tetrisState;
+  ctx.fillStyle='rgba(0,0,0,.6)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#fff'; ctx.font='bold 15px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('خسرت! نقاطك: '+tetrisState.score, canvas.width/2, canvas.height/2);
+}
+document.querySelectorAll('.tetris-controls button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if(!tetrisState.running) return;
+    const a = btn.dataset.a;
+    if(a==='left') tetrisMove(-1,0);
+    else if(a==='right') tetrisMove(1,0);
+    else if(a==='down') tetrisMove(0,1);
+    else if(a==='rotate') tetrisDoRotate();
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('tetrisScreen').style.display === 'none') return;
+  if(!tetrisState.running) return;
+  if(e.key==='ArrowLeft'){ e.preventDefault(); tetrisMove(-1,0); }
+  else if(e.key==='ArrowRight'){ e.preventDefault(); tetrisMove(1,0); }
+  else if(e.key==='ArrowDown'){ e.preventDefault(); tetrisMove(0,1); }
+  else if(e.key==='ArrowUp'){ e.preventDefault(); tetrisDoRotate(); }
+});
+
+/* ================= هوكي هوائي ================= */
+let airState = { running:false, raf:null, youX:0, youY:0, cpuX:0, cpuY:0, puckX:0, puckY:0, vx:2, vy:2, youScore:0, cpuScore:0, canvas:null, ctx:null, r:14, goalW:0 };
+function airhockeyStop(){ if(airState.raf) cancelAnimationFrame(airState.raf); airState.raf=null; airState.running=false; }
+function airhockeyInit(){
+  airhockeyStop();
+  const canvas = document.getElementById('airhockeyCanvas');
+  airState.canvas = canvas; airState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  airState.youScore=0; airState.cpuScore=0;
+  document.getElementById('airYou').textContent='0';
+  document.getElementById('airCpu').textContent='0';
+  airhockeyDrawIdle();
+}
+function airhockeyDrawIdle(){
+  const {ctx,canvas}=airState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#8b93ab'; ctx.font='16px Tajawal'; ctx.textAlign='center';
+  ctx.fillText('دوس ابدأ', canvas.width/2, canvas.height/2);
+}
+document.getElementById('airStartBtn').addEventListener('click', airhockeyStart);
+function airhockeyResetPuck(dir){
+  const canvas = airState.canvas;
+  airState.puckX = canvas.width/2; airState.puckY = canvas.height/2;
+  airState.vx = (Math.random()*2-1)*2; airState.vy = 2.4*(dir||1);
+}
+function airhockeyStart(){
+  airhockeyStop();
+  const canvas = airState.canvas;
+  resizeCanvasToDisplay(canvas);
+  airState.goalW = canvas.width*0.34;
+  airState.youX = canvas.width/2; airState.youY = canvas.height - 40;
+  airState.cpuX = canvas.width/2; airState.cpuY = 40;
+  airhockeyResetPuck(1);
+  airState.youScore=0; airState.cpuScore=0;
+  document.getElementById('airYou').textContent='0';
+  document.getElementById('airCpu').textContent='0';
+  airState.running = true;
+  airhockeyLoop();
+}
+function airhockeyLoop(){
+  if(!airState.running) return;
+  airhockeyUpdate(); airhockeyDraw();
+  airState.raf = requestAnimationFrame(airhockeyLoop);
+}
+function airhockeyUpdate(){
+  const s = airState; const canvas = s.canvas;
+  s.puckX += s.vx; s.puckY += s.vy;
+  if(s.puckX < s.r || s.puckX > canvas.width - s.r) s.vx *= -1;
+  if(s.puckY < s.r){
+    if(s.puckX > canvas.width/2 - s.goalW/2 && s.puckX < canvas.width/2 + s.goalW/2){
+      s.youScore++; document.getElementById('airYou').textContent=s.youScore; sfx.ding(); airhockeyCheckEnd(); airhockeyResetPuck(1); return;
+    } else { s.vy *= -1; }
+  }
+  if(s.puckY > canvas.height - s.r){
+    if(s.puckX > canvas.width/2 - s.goalW/2 && s.puckX < canvas.width/2 + s.goalW/2){
+      s.cpuScore++; document.getElementById('airCpu').textContent=s.cpuScore; sfx.wrong(); airhockeyCheckEnd(); airhockeyResetPuck(-1); return;
+    } else { s.vy *= -1; }
+  }
+  const dY = Math.hypot(s.puckX-s.youX, s.puckY-s.youY);
+  const airLevel = diffOf('airhockey');
+  const maxPuckSpeed = airLevel==='easy' ? 4.5 : airLevel==='hard' ? 7.5 : 6;
+  function clampPuckSpeed(){
+    const spd = Math.hypot(s.vx, s.vy);
+    if(spd > maxPuckSpeed){ s.vx = s.vx/spd*maxPuckSpeed; s.vy = s.vy/spd*maxPuckSpeed; }
+  }
+  if(dY < s.r+18 && s.vy>0){ s.vy = -Math.abs(s.vy)*1.05; s.vx += (s.puckX-s.youX)*0.05; clampPuckSpeed(); sfx.flip(); }
+  const dC = Math.hypot(s.puckX-s.cpuX, s.puckY-s.cpuY);
+  if(dC < s.r+18 && s.vy<0){ s.vy = Math.abs(s.vy)*1.05; s.vx += (s.puckX-s.cpuX)*0.05; clampPuckSpeed(); sfx.flip(); }
+  const airFollow = airLevel==='easy' ? 0.045 : airLevel==='hard' ? 0.15 : 0.08;
+  const airMiss = airLevel==='easy' ? 0.3 : airLevel==='hard' ? 0.06 : 0.15;
+  if(Math.random() >= airMiss){
+    if(s.puckY < canvas.height/2){ s.cpuX += (s.puckX - s.cpuX)*airFollow; }
+    else { s.cpuX += (canvas.width/2 - s.cpuX)*0.05; }
+  }
+  s.cpuX = Math.max(18, Math.min(canvas.width-18, s.cpuX));
+}
+function airhockeyCheckEnd(){
+  if(airState.youScore>=7){ airhockeyStop(); sfx.win(); setTimeout(()=>alert('مبروك! كسبت 7-'+airState.cpuScore),100); }
+  else if(airState.cpuScore>=7){ airhockeyStop(); sfx.lose(); setTimeout(()=>alert('خسرت، الكمبيوتر كسب 7-'+airState.youScore),100); }
+}
+function airhockeyDraw(){
+  const {ctx,canvas}=airState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle='#232d47';
+  ctx.beginPath(); ctx.moveTo(0,canvas.height/2); ctx.lineTo(canvas.width,canvas.height/2); ctx.stroke();
+  ctx.strokeStyle='#22d3ee'; ctx.lineWidth=3;
+  ctx.beginPath(); ctx.moveTo(canvas.width/2-airState.goalW/2,2); ctx.lineTo(canvas.width/2+airState.goalW/2,2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(canvas.width/2-airState.goalW/2,canvas.height-2); ctx.lineTo(canvas.width/2+airState.goalW/2,canvas.height-2); ctx.stroke();
+  ctx.lineWidth=1;
+  ctx.fillStyle='#22d3ee'; ctx.beginPath(); ctx.arc(airState.youX,airState.youY,18,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle='#ff5c8a'; ctx.beginPath(); ctx.arc(airState.cpuX,airState.cpuY,18,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(airState.puckX,airState.puckY,airState.r,0,Math.PI*2); ctx.fill();
+}
+function airhockeyMove(clientX, clientY){
+  const canvas = airState.canvas;
+  const rect = canvas.getBoundingClientRect();
+  const x = clientX - rect.left, y = clientY - rect.top;
+  airState.youX = Math.max(18, Math.min(canvas.width-18, x));
+  airState.youY = Math.max(canvas.height/2+18, Math.min(canvas.height-18, y));
+}
+document.getElementById('airhockeyCanvas').addEventListener('mousemove', (e)=>airhockeyMove(e.clientX,e.clientY));
+document.getElementById('airhockeyCanvas').addEventListener('touchmove', (e)=>{ const t=e.touches[0]; airhockeyMove(t.clientX,t.clientY); e.preventDefault(); },{passive:false});
+
+/* ================= مدفع الفقاعات ================= */
+const BUBBLE_COLORS = ['#e63946','#3a86ff','#2a9d8f','#ffd60a','#8338ec'];
+function bubbleActiveColors(){
+  const level = diffOf('bubble');
+  return level==='easy' ? BUBBLE_COLORS.slice(0,3) : BUBBLE_COLORS;
+}
+function bubbleFillRows(){
+  const level = diffOf('bubble');
+  return level==='easy' ? 2 : level==='hard' ? 4 : 3;
+}
+let bubbleState = { cols:8, rows:6, cell:0, grid:[], shooterX:0, shooterY:0, flying:null, current:null, score:0, canvas:null, ctx:null, running:false, raf:null };
+function bubbleStop(){ if(bubbleState.raf) cancelAnimationFrame(bubbleState.raf); bubbleState.raf=null; bubbleState.running=false; }
+function bubbleBestKey(){ return 'bubble_best_' + diffOf('bubble'); }
+function bubbleUpdateBest(){ document.getElementById('bubbleBest').textContent = localStorage.getItem(bubbleBestKey())||'--'; }
+function bubbleInit(){
+  bubbleStop();
+  const canvas = document.getElementById('bubbleCanvas');
+  bubbleState.canvas = canvas; bubbleState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  bubbleUpdateBest();
+  bubbleNewSetup();
+}
+document.getElementById('bubbleNewBtn').addEventListener('click', bubbleNewSetup);
+function bubbleNewSetup(){
+  bubbleStop();
+  const canvas = bubbleState.canvas;
+  resizeCanvasToDisplay(canvas);
+  bubbleState.cell = canvas.width / bubbleState.cols;
+  const colors = bubbleActiveColors();
+  const fillRows = bubbleFillRows();
+  bubbleState.grid = Array.from({length:bubbleState.rows}, (_, r) => Array(bubbleState.cols).fill(null).map(()=> (r < fillRows && Math.random()<0.75) ? colors[Math.floor(Math.random()*colors.length)] : null));
+  bubbleState.score = 0;
+  document.getElementById('bubbleScore').textContent = '0';
+  bubbleState.shooterX = canvas.width/2;
+  bubbleState.shooterY = canvas.height - 20;
+  bubbleState.current = colors[Math.floor(Math.random()*colors.length)];
+  bubbleState.flying = null;
+  bubbleState.running = true;
+  bubbleDraw();
+}
+function bubbleShoot(clientX, clientY){
+  if(!bubbleState.running || bubbleState.flying) return;
+  const canvas = bubbleState.canvas;
+  const rect = canvas.getBoundingClientRect();
+  const x = clientX-rect.left, y = clientY-rect.top;
+  const angle = Math.atan2(y - bubbleState.shooterY, x - bubbleState.shooterX);
+  bubbleState.flying = { x: bubbleState.shooterX, y: bubbleState.shooterY, vx: Math.cos(angle)*6, vy: Math.sin(angle)*6, color: bubbleState.current };
+  sfx.click();
+  bubbleLoop();
+}
+document.getElementById('bubbleCanvas').addEventListener('click', (e) => bubbleShoot(e.clientX, e.clientY));
+document.getElementById('bubbleCanvas').addEventListener('touchstart', (e) => { const t=e.touches[0]; bubbleShoot(t.clientX,t.clientY); e.preventDefault(); }, {passive:false});
+function bubbleLoop(){
+  if(!bubbleState.flying) return;
+  bubbleUpdate();
+  bubbleDraw();
+  if(bubbleState.flying) bubbleState.raf = requestAnimationFrame(bubbleLoop);
+}
+function bubbleUpdate(){
+  const s = bubbleState.flying; const canvas = bubbleState.canvas; const cell = bubbleState.cell;
+  s.x += s.vx; s.y += s.vy;
+  if(s.x < cell/2 || s.x > canvas.width-cell/2) s.vx *= -1;
+  let hit = s.y < cell/2;
+  if(!hit){
+    outer:
+    for(let r=0;r<bubbleState.rows;r++) for(let c=0;c<bubbleState.cols;c++){
+      if(!bubbleState.grid[r][c]) continue;
+      const cx = c*cell+cell/2, cy = r*cell+cell/2;
+      if(Math.hypot(s.x-cx, s.y-cy) < cell*0.9){ hit=true; break outer; }
+    }
+  }
+  if(hit){
+    let col = Math.min(bubbleState.cols-1, Math.max(0, Math.floor(s.x/cell)));
+    let row = Math.min(bubbleState.rows-1, Math.max(0, Math.floor(s.y/cell)));
+    while(row>0 && bubbleState.grid[row][col]) row--;
+    if(bubbleState.grid[row] && !bubbleState.grid[row][col]){ bubbleState.grid[row][col] = s.color; }
+    bubbleState.flying = null;
+    bubblePop(row, col);
+    bubbleState.current = bubbleActiveColors()[Math.floor(Math.random()*bubbleActiveColors().length)];
+    if(bubbleState.grid[bubbleState.rows-1].some(v=>v)){ bubbleGameOver(); }
+  }
+}
+function bubblePop(row,col){
+  const color = bubbleState.grid[row][col];
+  if(!color) return;
+  const visited = new Set();
+  const stack = [[row,col]];
+  const group = [];
+  while(stack.length){
+    const [r,c] = stack.pop();
+    const key = r+','+c;
+    if(visited.has(key)) continue;
+    visited.add(key);
+    if(r<0||r>=bubbleState.rows||c<0||c>=bubbleState.cols) continue;
+    if(bubbleState.grid[r][c] !== color) continue;
+    group.push([r,c]);
+    stack.push([r-1,c],[r+1,c],[r,c-1],[r,c+1]);
+  }
+  if(group.length>=3){
+    group.forEach(([r,c]) => bubbleState.grid[r][c] = null);
+    bubbleState.score += group.length*10;
+    document.getElementById('bubbleScore').textContent = bubbleState.score;
+    sfx.match();
+    const best = parseInt(localStorage.getItem(bubbleBestKey())||'0');
+    if(bubbleState.score>best) localStorage.setItem(bubbleBestKey(), bubbleState.score);
+    bubbleUpdateBest();
+  } else { sfx.flip(); }
+  bubbleDraw();
+}
+function bubbleGameOver(){
+  bubbleState.running = false;
+  sfx.buzzer();
+  setTimeout(()=>alert('خلصت! نقاطك: '+bubbleState.score),100);
+}
+function bubbleDraw(){
+  const {ctx,canvas,cell} = bubbleState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  for(let r=0;r<bubbleState.rows;r++) for(let c=0;c<bubbleState.cols;c++){
+    if(bubbleState.grid[r][c]){
+      ctx.fillStyle = bubbleState.grid[r][c];
+      ctx.beginPath(); ctx.arc(c*cell+cell/2, r*cell+cell/2, cell*0.42, 0, Math.PI*2); ctx.fill();
+    }
+  }
+  if(bubbleState.flying){
+    ctx.fillStyle = bubbleState.flying.color;
+    ctx.beginPath(); ctx.arc(bubbleState.flying.x, bubbleState.flying.y, cell*0.42, 0, Math.PI*2); ctx.fill();
+  }
+  ctx.fillStyle = bubbleState.current;
+  ctx.beginPath(); ctx.arc(bubbleState.shooterX, bubbleState.shooterY, cell*0.42, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = '#7c5cff';
+  ctx.beginPath(); ctx.arc(bubbleState.shooterX, bubbleState.shooterY, cell*0.42, 0, Math.PI*2); ctx.stroke();
+}
+
+/* ================= ترتيب الألوان ================= */
+let waterState = { tubes:[], selected:-1, moves:0 };
+function watersortBestKey(){ return 'watersort_best_' + diffOf('watersort'); }
+function watersortUpdateBest(){ document.getElementById('watersortBest').textContent = localStorage.getItem(watersortBestKey())||'--'; }
+function watersortNew(){
+  const colors = ['#e63946','#3a86ff','#2a9d8f','#ffd60a','#8338ec','#22d3ee','#fb8500'];
+  const level = diffOf('watersort');
+  const numColors = level==='easy' ? 4 : level==='hard' ? 7 : 5;
+  let segs = [];
+  colors.slice(0,numColors).forEach(c => { for(let i=0;i<4;i++) segs.push(c); });
+  segs = shuffle(segs);
+  const tubes = [];
+  for(let t=0;t<numColors;t++) tubes.push(segs.splice(0,4));
+  tubes.push([]); tubes.push([]);
+  waterState.tubes = tubes;
+  waterState.selected = -1;
+  waterState.moves = 0;
+  document.getElementById('watersortMoves').textContent = '0';
+  watersortUpdateBest();
+  watersortRender();
+}
+function watersortRender(){
+  const board = document.getElementById('watersortBoard');
+  board.innerHTML = '';
+  waterState.tubes.forEach((tube, ti) => {
+    const el = document.createElement('div');
+    el.className = 'water-tube' + (ti===waterState.selected ? ' selected' : '');
+    for(let i=0;i<=3;i++){
+      const seg = document.createElement('div');
+      seg.className = 'water-seg';
+      seg.style.background = tube[i] || 'transparent';
+      el.appendChild(seg);
+    }
+    el.addEventListener('click', () => watersortClick(ti));
+    board.appendChild(el);
+  });
+}
+function watersortClick(ti){
+  if(waterState.selected === -1){
+    if(waterState.tubes[ti].length) { waterState.selected = ti; sfx.click(); }
+  } else if(waterState.selected === ti){
+    waterState.selected = -1;
+  } else {
+    const from = waterState.tubes[waterState.selected];
+    const to = waterState.tubes[ti];
+    const color = from[from.length-1];
+    if(to.length < 4 && (to.length===0 || to[to.length-1]===color)){
+      let moved = 0;
+      while(from.length && from[from.length-1]===color && to.length<4){ to.push(from.pop()); moved++; }
+      if(moved){
+        waterState.moves++;
+        document.getElementById('watersortMoves').textContent = waterState.moves;
+        sfx.flip();
+      }
+    } else { sfx.wrong(); }
+    waterState.selected = -1;
+    watersortCheckWin();
+  }
+  watersortRender();
+}
+function watersortCheckWin(){
+  const done = waterState.tubes.every(t => t.length===0 || (t.length===4 && t.every(c=>c===t[0])));
+  if(done){
+    sfx.win();
+    const best = parseInt(localStorage.getItem(watersortBestKey())||'999999');
+    if(waterState.moves<best) localStorage.setItem(watersortBestKey(), waterState.moves);
+    watersortUpdateBest();
+    setTimeout(()=>alert('مبروك! رتبت كل الألوان في '+waterState.moves+' حركة'),100);
+  }
+}
+document.getElementById('watersortNewBtn').addEventListener('click', watersortNew);
+
+/* ================= أسئلة معلومات عامة ================= */
+const TRIVIA_BANK = [
+  { q:'إيه أكبر كوكب في المجموعة الشمسية؟', choices:['الأرض','المشتري','زحل','المريخ'], a:1 },
+  { q:'كام عدد قارات العالم؟', choices:['5','6','7','8'], a:2 },
+  { q:'مين رسم الموناليزا؟', choices:['بيكاسو','دافنشي','فان جوخ','مايكل أنجلو'], a:1 },
+  { q:'إيه عاصمة اليابان؟', choices:['بكين','سيول','طوكيو','بانكوك'], a:2 },
+  { q:'كام لون في قوس قزح؟', choices:['5','6','7','8'], a:2 },
+  { q:'إيه أطول نهر في العالم؟', choices:['النيل','الأمازون','المسيسيبي','اليانجتسي'], a:0 },
+  { q:'مين اخترع المصباح الكهربائي؟', choices:['أينشتاين','إديسون','تسلا','نيوتن'], a:1 },
+  { q:'كام عدد عظام جسم الإنسان البالغ؟', choices:['186','206','226','246'], a:1 },
+  { q:'إيه أسرع حيوان بري؟', choices:['الأسد','الفهد','النمر','الحصان'], a:1 },
+  { q:'في أي سنة انتهت الحرب العالمية الثانية؟', choices:['1943','1945','1947','1950'], a:1 },
+  { q:'إيه أصغر دولة في العالم؟', choices:['موناكو','الفاتيكان','مالطا','ليختنشتاين'], a:1 },
+  { q:'كام قلب عند الأخطبوط؟', choices:['1','2','3','4'], a:2 },
+  { q:'إيه عاصمة فرنسا؟', choices:['ليون','باريس','مارسيليا','نيس'], a:1 },
+  { q:'مين كتب رواية "الحرب والسلام"؟', choices:['تولستوي','ديستويفسكي','تشيخوف','بوشكين'], a:0 },
+  { q:'إيه أكبر محيط في العالم؟', choices:['الأطلسي','الهندي','المتجمد الشمالي','الهادئ'], a:3 },
+  { q:'كام عدد لاعبين فريق كرة القدم في الملعب؟', choices:['9','10','11','12'], a:2 },
+  { q:'إيه العملة الرسمية في اليابان؟', choices:['الوون','الين','اليوان','الروبية'], a:1 },
+  { q:'مين اكتشف الجاذبية؟', choices:['أينشتاين','نيوتن','جاليليو','كوبرنيكوس'], a:1 },
+  { q:'إيه أعلى جبل في العالم؟', choices:['كي2','إفرست','كليمنجارو','إلبروس'], a:1 },
+  { q:'كام قارة تمر بيها خط الاستواء؟', choices:['2','3','4','5'], a:1 },
+  { q:'إيه لغة البرمجة اللي سميت على اسم ثعبان؟', choices:['Java','Python','Ruby','C++'], a:1 },
+  { q:'مين غنى أغنية "Thriller"؟', choices:['برنس','مايكل جاكسون','إلفيس بريسلي','ستيفي ووندر'], a:1 },
+  { q:'إيه عدد أضلاع المثلث؟', choices:['2','3','4','5'], a:1 },
+  { q:'في أي قارة تقع مصر؟', choices:['آسيا','أفريقيا','أوروبا','أمريكا'], a:1 },
+  { q:'إيه أصغر كوكب في المجموعة الشمسية؟', choices:['المريخ','عطارد','الزهرة','بلوتو'], a:1 },
+  { q:'كام دقيقة في اليوم الواحد؟', choices:['1440','1400','1240','1000'], a:0 },
+  { q:'مين أول إنسان مشى على القمر؟', choices:['باز ألدرين','نيل أرمسترونج','يوري جاجارين','جون جلين'], a:1 },
+  { q:'إيه أكبر صحراء في العالم؟', choices:['الصحراء الكبرى','صحراء جوبي','القارة القطبية الجنوبية','صحراء كالاهاري'], a:2 },
+  { q:'كام عدد أسنان الإنسان البالغ؟', choices:['28','30','32','34'], a:2 },
+  { q:'إيه عاصمة إيطاليا؟', choices:['ميلانو','روما','نابولي','فينيسيا'], a:1 },
+  { q:'مين مؤلف سلسلة هاري بوتر؟', choices:['ج.ك. رولينج','ستيفن كينج','تولكين','رولد دال'], a:0 },
+  { q:'إيه أكبر جزيرة في العالم؟', choices:['مدغشقر','جرينلاند','بورنيو','أستراليا'], a:1 },
+  { q:'كام لاعب في فريق كرة السلة؟', choices:['5','6','7','11'], a:0 },
+  { q:'إيه المعدن الأكثر وفرة في القشرة الأرضية؟', choices:['الحديد','الألومنيوم','النحاس','الذهب'], a:1 },
+  { q:'مين رسم لوحة "الصرخة"؟', choices:['فان جوخ','مونش','بيكاسو','دالي'], a:1 },
+  { q:'إيه عملة مصر؟', choices:['الدرهم','الدينار','الجنيه','الريال'], a:2 },
+  { q:'كام سنة في القرن الواحد؟', choices:['10','100','1000','50'], a:1 },
+  { q:'إيه أسرع طائر في العالم؟', choices:['النسر','الصقر الشاهين','النعامة','البوم'], a:1 },
+  { q:'مين اخترع الهاتف؟', choices:['إديسون','جراهام بيل','تسلا','مارکوني'], a:1 },
+  { q:'إيه أطول حائط في العالم؟', choices:['سور الصين العظيم','حائط برلين','حائط المبكى','سور القدس'], a:0 },
+  { q:'كام كوكب في المجموعة الشمسية؟', choices:['7','8','9','10'], a:1 },
+  { q:'إيه عاصمة ألمانيا؟', choices:['ميونخ','هامبورج','برلين','فرانكفورت'], a:2 },
+  { q:'مين لاعب الكرة الملقب بـ"الدون"؟', choices:['ميسي','رونالدو','نيمار','مبابي'], a:1 },
+  { q:'إيه أعمق نقطة في المحيطات؟', choices:['خندق ماريانا','بحر اليابان','خليج المكسيك','البحر الأحمر'], a:0 },
+  { q:'كام ضلع للمكعب؟', choices:['6','8','10','12'], a:0 },
+  { q:'إيه الغاز اللي بيتنفسه الإنسان أساسًا؟', choices:['ثاني أكسيد الكربون','الأكسجين','النيتروجين','الهيدروجين'], a:1 },
+  { q:'مين مخترع النسبية؟', choices:['نيوتن','أينشتاين','هوكينج','بور'], a:1 },
+];
+let triviaState = { questions:[], idx:0, score:0 };
+function triviaStop(){}
+function triviaBestKey(){ return 'trivia_best_' + diffOf('trivia'); }
+function triviaUpdateBest(){ document.getElementById('triviaBest').textContent = localStorage.getItem(triviaBestKey())||'--'; }
+function triviaNew(){
+  const level = diffOf('trivia');
+  const count = level==='easy' ? 8 : level==='hard' ? 15 : 10;
+  triviaState.total = count;
+  triviaState.questions = shuffle(TRIVIA_BANK).slice(0,count);
+  triviaState.idx = 0;
+  triviaState.score = 0;
+  document.getElementById('triviaScore').textContent = '0';
+  triviaUpdateBest();
+  triviaShow();
+}
+function triviaShow(){
+  const q = triviaState.questions[triviaState.idx];
+  document.getElementById('triviaNum').textContent = `${triviaState.idx+1}/${triviaState.total}`;
+  document.getElementById('triviaQ').textContent = q.q;
+  const box = document.getElementById('triviaChoices');
+  box.innerHTML = '';
+  q.choices.forEach((choice, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = choice;
+    btn.addEventListener('click', () => triviaAnswer(i, btn));
+    box.appendChild(btn);
+  });
+}
+function triviaAnswer(i, btn){
+  const q = triviaState.questions[triviaState.idx];
+  document.querySelectorAll('#triviaChoices button').forEach(b => b.disabled = true);
+  if(i === q.a){
+    btn.classList.add('correct');
+    triviaState.score++;
+    document.getElementById('triviaScore').textContent = triviaState.score;
+    sfx.ding();
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('#triviaChoices button')[q.a].classList.add('correct');
+    sfx.wrong();
+  }
+  setTimeout(() => {
+    triviaState.idx++;
+    if(triviaState.idx >= triviaState.questions.length){
+      const best = parseInt(localStorage.getItem(triviaBestKey())||'0');
+      if(triviaState.score>best) localStorage.setItem(triviaBestKey(), triviaState.score);
+      triviaUpdateBest();
+      sfx.win();
+      document.getElementById('triviaQ').textContent = `خلصت! نقاطك: ${triviaState.score}/${triviaState.total}`;
+      document.getElementById('triviaChoices').innerHTML = '';
+    } else { triviaShow(); }
+  }, 1200);
+}
+
+/* ================= خمن الكلمة (Wordle) ================= */
+const WORDLE_WORDS = ['APPLE','BRAVE','CHESS','DANCE','EAGLE','FLAME','GRAPE','HOUSE','IMAGE','JOKER','KNIFE','LEMON','MONEY','NIGHT','OCEAN','PIANO','QUEEN','RIVER','STONE','TIGER'];
+const WORDLE_WORDS_EASY = ['CAKE','BIRD','GOLD','LAMP','MOON','RAIN','STAR','FISH','DOOR','SHIP','WIND','LEAF','SNOW','ROSE','BONE','HERO','GATE','FIRE','MILK','SOUP'];
+const WORDLE_WORDS_HARD = ['PLANET','ORANGE','SILVER','PURPLE','GARDEN','WINTER','CASTLE','BRIDGE','MARKET','ISLAND','JACKET','PENCIL','ANIMAL','FOREST','WONDER','HAMMER','VOYAGE','CIRCLE','DRAGON','FROZEN'];
+function wordleWordList(){ const l = diffOf('wordle'); return l==='easy' ? WORDLE_WORDS_EASY : l==='hard' ? WORDLE_WORDS_HARD : WORDLE_WORDS; }
+let wordleState = { word:'', guesses:[], current:'', row:0, over:false, wins:0, len:5 };
+function wordleNew(){
+  const list = wordleWordList();
+  wordleState.word = list[Math.floor(Math.random()*list.length)];
+  wordleState.len = wordleState.word.length;
+  wordleState.guesses = [];
+  wordleState.current = '';
+  wordleState.row = 0;
+  wordleState.over = false;
+  document.getElementById('wordleTries').textContent = '0/6';
+  wordleRenderGrid();
+  wordleRenderKeys();
+}
+function wordleRenderGrid(){
+  const grid = document.getElementById('wordleGrid');
+  grid.innerHTML = '';
+  for(let r=0;r<6;r++){
+    const rowEl = document.createElement('div');
+    rowEl.className = 'wordle-row';
+    rowEl.style.gridTemplateColumns = `repeat(${wordleState.len}, 1fr)`;
+    for(let c=0;c<wordleState.len;c++){
+      const cell = document.createElement('div');
+      cell.className = 'wordle-cell';
+      if(r < wordleState.guesses.length){
+        const g = wordleState.guesses[r];
+        cell.textContent = g.letters[c];
+        cell.classList.add(g.states[c]);
+      } else if(r === wordleState.row){
+        cell.textContent = wordleState.current[c] || '';
+      }
+      rowEl.appendChild(cell);
+    }
+    grid.appendChild(rowEl);
+  }
+}
+function wordleRenderKeys(){
+  const el = document.getElementById('wordleKeys');
+  el.innerHTML = '';
+  const rows = ['QWERTYUIOP','ASDFGHJKL','ZXCVBNM'];
+  rows.forEach((row,ri) => {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'wordle-keyrow';
+    if(ri===2){
+      const enter = document.createElement('button');
+      enter.className = 'wordle-key'; enter.textContent = 'ENTER'; enter.style.minWidth='50px';
+      enter.addEventListener('click', wordleSubmit);
+      rowEl.appendChild(enter);
+    }
+    row.split('').forEach(l => {
+      const btn = document.createElement('button');
+      btn.className = 'wordle-key';
+      btn.textContent = l;
+      btn.dataset.letter = l;
+      btn.addEventListener('click', () => wordleType(l));
+      rowEl.appendChild(btn);
+    });
+    if(ri===2){
+      const del = document.createElement('button');
+      del.className = 'wordle-key'; del.textContent = '⌫'; del.style.minWidth='50px';
+      del.addEventListener('click', wordleBackspace);
+      rowEl.appendChild(del);
+    }
+    el.appendChild(rowEl);
+  });
+}
+function wordleType(l){
+  if(wordleState.over || wordleState.current.length>=wordleState.len) return;
+  wordleState.current += l;
+  wordleRenderGrid();
+}
+function wordleBackspace(){
+  if(wordleState.over) return;
+  wordleState.current = wordleState.current.slice(0,-1);
+  wordleRenderGrid();
+}
+function wordleSubmit(){
+  if(wordleState.over || wordleState.current.length !== wordleState.len) return;
+  const guess = wordleState.current;
+  const word = wordleState.word;
+  const states = Array(wordleState.len).fill('absent');
+  const wordArr = word.split('');
+  const guessArr = guess.split('');
+  guessArr.forEach((l,i) => { if(l===wordArr[i]){ states[i]='correct'; wordArr[i]=null; } });
+  guessArr.forEach((l,i) => {
+    if(states[i]==='correct') return;
+    const idx = wordArr.indexOf(l);
+    if(idx !== -1){ states[i]='present'; wordArr[idx]=null; }
+  });
+  wordleState.guesses.push({ letters: guessArr, states });
+  wordleState.row++;
+  wordleState.current = '';
+  document.getElementById('wordleTries').textContent = `${wordleState.row}/6`;
+  wordleUpdateKeyColors();
+  wordleRenderGrid();
+  if(guess === word){
+    wordleState.over = true;
+    wordleState.wins++;
+    document.getElementById('wordleWins').textContent = wordleState.wins;
+    sfx.win();
+    setTimeout(()=>alert('مبروك! خمنت الكلمة صح 🎉'),100);
+  } else {
+    sfx.click();
+    if(wordleState.row >= 6){
+      wordleState.over = true;
+      sfx.buzzer();
+      setTimeout(()=>alert('خلصت المحاولات! الكلمة كانت: '+word),100);
+    }
+  }
+}
+function wordleUpdateKeyColors(){
+  const priority = {absent:0, present:1, correct:2};
+  const bestState = {};
+  wordleState.guesses.forEach(g => {
+    g.letters.forEach((l,i) => {
+      const st = g.states[i];
+      if(!bestState[l] || priority[st]>priority[bestState[l]]) bestState[l] = st;
+    });
+  });
+  document.querySelectorAll('.wordle-key').forEach(btn => {
+    const l = btn.dataset.letter;
+    if(l && bestState[l]){
+      btn.classList.remove('correct','present','absent');
+      btn.classList.add(bestState[l]);
+    }
+  });
+}
+document.getElementById('wordleNewBtn').addEventListener('click', wordleNew);
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('wordleScreen').style.display === 'none') return;
+  if(e.key === 'Enter'){ wordleSubmit(); }
+  else if(e.key === 'Backspace'){ wordleBackspace(); }
+  else if(/^[a-zA-Z]$/.test(e.key)){ wordleType(e.key.toUpperCase()); }
+});
+
+/* ================= المتاهة ================= */
+let mazeState = { cols:15, rows:15, cell:0, walls:null, px:0, py:0, timer:0, interval:null, canvas:null, ctx:null, won:false };
+function mazeStop(){ if(mazeState.interval){ clearInterval(mazeState.interval); mazeState.interval=null; } }
+function mazeBestKey(){ return 'maze_best_' + diffOf('maze'); }
+function mazeUpdateBest(){ const b=localStorage.getItem(mazeBestKey()); document.getElementById('mazeBest').textContent = b? formatTime(parseInt(b)):'--'; }
+function mazeGenerate(){
+  const {cols,rows} = mazeState;
+  const cells = Array.from({length:rows}, () => Array.from({length:cols}, () => ({top:true,right:true,bottom:true,left:true,visited:false})));
+  const stack = [[0,0]];
+  cells[0][0].visited = true;
+  while(stack.length){
+    const [r,c] = stack[stack.length-1];
+    const neighbors = [];
+    if(r>0 && !cells[r-1][c].visited) neighbors.push(['top',r-1,c]);
+    if(r<rows-1 && !cells[r+1][c].visited) neighbors.push(['bottom',r+1,c]);
+    if(c>0 && !cells[r][c-1].visited) neighbors.push(['left',r,c-1]);
+    if(c<cols-1 && !cells[r][c+1].visited) neighbors.push(['right',r,c+1]);
+    if(!neighbors.length){ stack.pop(); continue; }
+    const [dir,nr,nc] = neighbors[Math.floor(Math.random()*neighbors.length)];
+    if(dir==='top'){ cells[r][c].top=false; cells[nr][nc].bottom=false; }
+    else if(dir==='bottom'){ cells[r][c].bottom=false; cells[nr][nc].top=false; }
+    else if(dir==='left'){ cells[r][c].left=false; cells[nr][nc].right=false; }
+    else if(dir==='right'){ cells[r][c].right=false; cells[nr][nc].left=false; }
+    cells[nr][nc].visited = true;
+    stack.push([nr,nc]);
+  }
+  return cells;
+}
+function mazeNew(){
+  mazeStop();
+  const level = diffOf('maze');
+  mazeState.cols = level==='easy' ? 10 : level==='hard' ? 20 : 15;
+  mazeState.rows = mazeState.cols;
+  const canvas = document.getElementById('mazeCanvas');
+  mazeState.canvas = canvas; mazeState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  mazeState.cell = canvas.width / mazeState.cols;
+  mazeState.walls = mazeGenerate();
+  mazeState.px = 0; mazeState.py = 0;
+  mazeState.timer = 0; mazeState.won = false;
+  document.getElementById('mazeTime').textContent = '00:00';
+  mazeUpdateBest();
+  mazeDraw();
+  mazeState.interval = setInterval(() => {
+    mazeState.timer++;
+    document.getElementById('mazeTime').textContent = formatTime(mazeState.timer);
+  }, 1000);
+}
+function mazeDraw(){
+  const {ctx,canvas,cell} = mazeState;
+  ctx.fillStyle = '#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle = '#7c5cff'; ctx.lineWidth = 2;
+  for(let r=0;r<mazeState.rows;r++) for(let c=0;c<mazeState.cols;c++){
+    const x = c*cell, y = r*cell;
+    const cellData = mazeState.walls[r][c];
+    ctx.beginPath();
+    if(cellData.top){ ctx.moveTo(x,y); ctx.lineTo(x+cell,y); }
+    if(cellData.right){ ctx.moveTo(x+cell,y); ctx.lineTo(x+cell,y+cell); }
+    if(cellData.bottom){ ctx.moveTo(x,y+cell); ctx.lineTo(x+cell,y+cell); }
+    if(cellData.left){ ctx.moveTo(x,y); ctx.lineTo(x,y+cell); }
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#2a9d8f';
+  ctx.fillRect(2,2,cell-4,cell-4);
+  ctx.fillStyle = '#e63946';
+  ctx.fillRect((mazeState.cols-1)*cell+2, (mazeState.rows-1)*cell+2, cell-4, cell-4);
+  ctx.fillStyle = '#22d3ee';
+  ctx.beginPath();
+  ctx.arc(mazeState.px*cell+cell/2, mazeState.py*cell+cell/2, cell*0.3, 0, Math.PI*2);
+  ctx.fill();
+}
+function mazeMove(dx,dy){
+  if(mazeState.won) return;
+  const {px,py} = mazeState;
+  const cellData = mazeState.walls[py][px];
+  if(dx===1 && !cellData.right) mazeState.px++;
+  else if(dx===-1 && !cellData.left) mazeState.px--;
+  else if(dy===1 && !cellData.bottom) mazeState.py++;
+  else if(dy===-1 && !cellData.top) mazeState.py--;
+  else { sfx.wrong(); return; }
+  sfx.click();
+  mazeDraw();
+  if(mazeState.px === mazeState.cols-1 && mazeState.py === mazeState.rows-1){
+    mazeState.won = true;
+    mazeStop();
+    sfx.win();
+    const best = parseInt(localStorage.getItem(mazeBestKey())||'999999');
+    if(mazeState.timer<best) localStorage.setItem(mazeBestKey(), mazeState.timer);
+    mazeUpdateBest();
+    setTimeout(()=>alert('مبروك! وصلت في '+formatTime(mazeState.timer)),100);
+  }
+}
+document.addEventListener('keydown', (e) => {
+  if(document.getElementById('mazeScreen').style.display === 'none') return;
+  if(e.key==='ArrowUp'){ e.preventDefault(); mazeMove(0,-1); }
+  else if(e.key==='ArrowDown'){ e.preventDefault(); mazeMove(0,1); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); mazeMove(-1,0); }
+  else if(e.key==='ArrowRight'){ e.preventDefault(); mazeMove(1,0); }
+});
+document.querySelectorAll('#mazeTouchPad button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const d = btn.dataset.d;
+    if(d==='up') mazeMove(0,-1);
+    else if(d==='down') mazeMove(0,1);
+    else if(d==='left') mazeMove(-1,0);
+    else if(d==='right') mazeMove(1,0);
+  });
+});
+document.getElementById('mazeNewBtn').addEventListener('click', mazeNew);
+
+/* ================= شطرنج مبسط ================= */
+const CHESS_UNICODE = { wp:'♙',wr:'♖',wn:'♘',wb:'♗',wq:'♕',wk:'♔', bp:'♟',br:'♜',bn:'♞',bb:'♝',bq:'♛',bk:'♚' };
+let chessState = { board:[], selected:null, turn:'w', over:false, legalMoves:[] };
+function chessNew(){
+  chessState.board = [
+    ['br','bn','bb','bq','bk','bb','bn','br'],
+    ['bp','bp','bp','bp','bp','bp','bp','bp'],
+    [null,null,null,null,null,null,null,null],
+    [null,null,null,null,null,null,null,null],
+    [null,null,null,null,null,null,null,null],
+    [null,null,null,null,null,null,null,null],
+    ['wp','wp','wp','wp','wp','wp','wp','wp'],
+    ['wr','wn','wb','wq','wk','wb','wn','wr'],
+  ];
+  chessState.selected = null;
+  chessState.legalMoves = [];
+  chessState.turn = 'w';
+  chessState.over = false;
+  document.getElementById('chessTurn').textContent = 'أنت';
+  document.getElementById('chessMsg').textContent = 'إنت الأبيض، دوس على قطعة وبعدين المكان';
+  chessRender();
+}
+function chessPieceMoves(r,c){
+  const board = chessState.board;
+  const piece = board[r][c];
+  if(!piece) return [];
+  const color = piece[0], type = piece[1];
+  const moves = [];
+  const enemy = color==='w'?'b':'w';
+  if(type==='p'){
+    const dir = color==='w' ? -1 : 1;
+    const startRow = color==='w' ? 6 : 1;
+    if(r+dir>=0 && r+dir<8 && !board[r+dir][c]){
+      moves.push([r+dir,c]);
+      if(r===startRow && !board[r+2*dir][c]) moves.push([r+2*dir,c]);
+    }
+    [[dir,-1],[dir,1]].forEach(([dr,dc])=>{
+      const rr=r+dr, cc=c+dc;
+      if(rr>=0&&rr<8&&cc>=0&&cc<8 && board[rr][cc] && board[rr][cc][0]===enemy) moves.push([rr,cc]);
+    });
+  } else if(type==='n'){
+    const deltas = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];
+    deltas.forEach(([dr,dc])=>{
+      const rr=r+dr, cc=c+dc;
+      if(rr>=0&&rr<8&&cc>=0&&cc<8 && (!board[rr][cc] || board[rr][cc][0]===enemy)) moves.push([rr,cc]);
+    });
+  } else if(type==='b' || type==='r' || type==='q'){
+    const dirs = [];
+    if(type==='b'||type==='q') dirs.push([-1,-1],[-1,1],[1,-1],[1,1]);
+    if(type==='r'||type==='q') dirs.push([-1,0],[1,0],[0,-1],[0,1]);
+    dirs.forEach(([dr,dc])=>{
+      let rr=r+dr, cc=c+dc;
+      while(rr>=0&&rr<8&&cc>=0&&cc<8){
+        if(!board[rr][cc]){ moves.push([rr,cc]); }
+        else { if(board[rr][cc][0]===enemy) moves.push([rr,cc]); break; }
+        rr+=dr; cc+=dc;
+      }
+    });
+  } else if(type==='k'){
+    for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++){
+      if(dr===0&&dc===0) continue;
+      const rr=r+dr, cc=c+dc;
+      if(rr>=0&&rr<8&&cc>=0&&cc<8 && (!board[rr][cc] || board[rr][cc][0]===enemy)) moves.push([rr,cc]);
+    }
+  }
+  return moves;
+}
+function chessRender(){
+  const board = document.getElementById('chessBoard');
+  board.innerHTML = '';
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    const cell = document.createElement('div');
+    cell.className = 'chess-cell ' + ((r+c)%2===0 ? 'light':'dark');
+    const piece = chessState.board[r][c];
+    if(piece){
+      cell.textContent = CHESS_UNICODE[piece];
+      cell.classList.add(piece[0]==='w' ? 'white-piece':'black-piece');
+    }
+    if(chessState.selected && chessState.selected[0]===r && chessState.selected[1]===c) cell.classList.add('selected');
+    if(chessState.legalMoves.some(m=>m[0]===r&&m[1]===c)) cell.classList.add('move-hint');
+    cell.addEventListener('click', () => chessCellClick(r,c));
+    board.appendChild(cell);
+  }
+}
+function chessCellClick(r,c){
+  if(chessState.over || chessState.turn!=='w') return;
+  const piece = chessState.board[r][c];
+  if(chessState.selected){
+    const [sr,sc] = chessState.selected;
+    const isLegal = chessState.legalMoves.some(m=>m[0]===r&&m[1]===c);
+    if(isLegal){ chessMakeMove(sr,sc,r,c); return; }
+  }
+  if(piece && piece[0]==='w'){
+    chessState.selected = [r,c];
+    chessState.legalMoves = chessPieceMoves(r,c);
+    sfx.click();
+  } else {
+    chessState.selected = null;
+    chessState.legalMoves = [];
+  }
+  chessRender();
+}
+function chessMakeMove(sr,sc,r,c){
+  const board = chessState.board;
+  const captured = board[r][c];
+  const piece = board[sr][sc];
+  board[r][c] = piece;
+  board[sr][sc] = null;
+  if(piece==='wp' && r===0) board[r][c]='wq';
+  if(piece==='bp' && r===7) board[r][c]='bq';
+  sfx.click();
+  chessState.selected = null;
+  chessState.legalMoves = [];
+  if(captured && captured[1]==='k'){ chessEnd(piece[0]==='w' ? 'you':'cpu'); chessRender(); return; }
+  chessState.turn = 'b';
+  document.getElementById('chessTurn').textContent = 'الكمبيوتر';
+  document.getElementById('chessMsg').textContent = 'الكمبيوتر بيفكر...';
+  chessRender();
+  setTimeout(chessCpuMove, 500);
+}
+function chessCpuMove(){
+  if(chessState.over) return;
+  const board = chessState.board;
+  const level = diffOf('chess');
+  let allMoves = [];
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    if(board[r][c] && board[r][c][0]==='b'){
+      chessPieceMoves(r,c).forEach(m => allMoves.push({from:[r,c], to:m}));
+    }
+  }
+  if(!allMoves.length){ chessEnd('you'); chessRender(); return; }
+  const VALUES = { p:1,n:3,b:3,r:5,q:9,k:100 };
+  let move = allMoves.find(m => board[m.to[0]][m.to[1]] && board[m.to[0]][m.to[1]][1]==='k');
+  if(!move){
+    const useSmart = level!=='easy' && Math.random() < (level==='hard'?0.9:0.55);
+    if(useSmart){
+      const captures = allMoves.filter(m => board[m.to[0]][m.to[1]]);
+      if(captures.length){
+        captures.sort((a,b)=> VALUES[board[b.to[0]][b.to[1]][1]] - VALUES[board[a.to[0]][a.to[1]][1]]);
+        move = captures[0];
+      }
+    }
+  }
+  if(!move) move = allMoves[Math.floor(Math.random()*allMoves.length)];
+  const [sr,sc] = move.from, [r,c] = move.to;
+  const captured = board[r][c];
+  const piece = board[sr][sc];
+  board[r][c] = piece;
+  board[sr][sc] = null;
+  if(piece==='bp' && r===7) board[r][c]='bq';
+  sfx.click();
+  if(captured && captured[1]==='k'){ chessEnd('cpu'); chessRender(); return; }
+  chessState.turn = 'w';
+  document.getElementById('chessTurn').textContent = 'أنت';
+  document.getElementById('chessMsg').textContent = 'دورك';
+  chessRender();
+}
+function chessEnd(winner){
+  chessState.over = true;
+  if(winner==='you'){ sfx.win(); document.getElementById('chessMsg').textContent = 'مبروك! أكلت شاه الكمبيوتر 🎉'; }
+  else { sfx.lose(); document.getElementById('chessMsg').textContent = 'خسرت! الكمبيوتر أكل شاهك 🤖'; }
+}
+document.getElementById('chessNewBtn').addEventListener('click', chessNew);
+
+/* ================= دامة ================= */
+let checkersState = { board:[], selected:null, turn:'you', legalMoves:[] };
+function checkersNew(){
+  const board = Array.from({length:8},()=>Array(8).fill(null));
+  for(let r=0;r<3;r++) for(let c=0;c<8;c++) if((r+c)%2===1) board[r][c] = {owner:'cpu', king:false};
+  for(let r=5;r<8;r++) for(let c=0;c<8;c++) if((r+c)%2===1) board[r][c] = {owner:'you', king:false};
+  checkersState.board = board;
+  checkersState.selected = null;
+  checkersState.turn = 'you';
+  checkersState.legalMoves = [];
+  document.getElementById('checkersYou').textContent = '12';
+  document.getElementById('checkersCpu').textContent = '12';
+  document.getElementById('checkersMsg').textContent = 'دورك';
+  checkersRender();
+}
+function checkersPieceMoves(r,c){
+  const board = checkersState.board;
+  const piece = board[r][c];
+  if(!piece) return [];
+  const dirs = piece.king ? [[-1,-1],[-1,1],[1,-1],[1,1]] : (piece.owner==='you' ? [[-1,-1],[-1,1]] : [[1,-1],[1,1]]);
+  const moves = [];
+  dirs.forEach(([dr,dc]) => {
+    const rr=r+dr, cc=c+dc;
+    if(rr>=0&&rr<8&&cc>=0&&cc<8){
+      if(!board[rr][cc]) moves.push({to:[rr,cc], capture:null});
+      else if(board[rr][cc].owner !== piece.owner){
+        const jr = rr+dr, jc = cc+dc;
+        if(jr>=0&&jr<8&&jc>=0&&jc<8 && !board[jr][jc]) moves.push({to:[jr,jc], capture:[rr,cc]});
+      }
+    }
+  });
+  return moves;
+}
+function checkersRender(){
+  const board = document.getElementById('checkersBoard');
+  board.innerHTML = '';
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    const cell = document.createElement('div');
+    cell.className = 'checkers-cell ' + ((r+c)%2===0?'light':'dark');
+    const piece = checkersState.board[r][c];
+    if(piece){
+      const p = document.createElement('div');
+      p.className = 'checkers-piece ' + piece.owner + (piece.king?' king':'');
+      cell.appendChild(p);
+    }
+    if(checkersState.selected && checkersState.selected[0]===r && checkersState.selected[1]===c) cell.classList.add('selected');
+    if(checkersState.legalMoves.some(m=>m.to[0]===r&&m.to[1]===c)) cell.classList.add('move-hint');
+    cell.addEventListener('click', () => checkersCellClick(r,c));
+    board.appendChild(cell);
+  }
+}
+function checkersCellClick(r,c){
+  if(checkersState.turn!=='you') return;
+  const piece = checkersState.board[r][c];
+  if(checkersState.selected){
+    const move = checkersState.legalMoves.find(m=>m.to[0]===r&&m.to[1]===c);
+    if(move){ checkersMakeMove(checkersState.selected, move); return; }
+  }
+  if(piece && piece.owner==='you'){
+    checkersState.selected = [r,c];
+    checkersState.legalMoves = checkersPieceMoves(r,c);
+    sfx.click();
+  } else {
+    checkersState.selected = null; checkersState.legalMoves = [];
+  }
+  checkersRender();
+}
+function checkersMakeMove(from, move){
+  const board = checkersState.board;
+  const [fr,fc] = from; const [tr,tc] = move.to;
+  const piece = board[fr][fc];
+  board[tr][tc] = piece;
+  board[fr][fc] = null;
+  if(move.capture){ const [cr,cc] = move.capture; board[cr][cc] = null; }
+  if((piece.owner==='you' && tr===0) || (piece.owner==='cpu' && tr===7)) piece.king = true;
+  sfx.click();
+  checkersState.selected = null; checkersState.legalMoves = [];
+  checkersUpdateCounts();
+  if(checkersCheckWin()){ checkersRender(); return; }
+  checkersState.turn = 'cpu';
+  document.getElementById('checkersMsg').textContent = 'دور الكمبيوتر...';
+  checkersRender();
+  setTimeout(checkersCpuMove, 500);
+}
+function checkersUpdateCounts(){
+  let you=0, cpu=0;
+  checkersState.board.forEach(row => row.forEach(p => { if(p){ if(p.owner==='you') you++; else cpu++; } }));
+  document.getElementById('checkersYou').textContent = you;
+  document.getElementById('checkersCpu').textContent = cpu;
+}
+function checkersCheckWin(){
+  let you=0, cpu=0;
+  checkersState.board.forEach(row => row.forEach(p => { if(p){ if(p.owner==='you') you++; else cpu++; } }));
+  if(cpu===0){ sfx.win(); document.getElementById('checkersMsg').textContent='مبروك! كسبت 🎉'; return true; }
+  if(you===0){ sfx.lose(); document.getElementById('checkersMsg').textContent='خسرت! 🤖'; return true; }
+  return false;
+}
+function checkersCpuMove(){
+  const board = checkersState.board;
+  const level = diffOf('checkers');
+  let allMoves = [];
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    if(board[r][c] && board[r][c].owner==='cpu'){
+      checkersPieceMoves(r,c).forEach(m => allMoves.push({from:[r,c], move:m}));
+    }
+  }
+  if(!allMoves.length){ sfx.win(); document.getElementById('checkersMsg').textContent='مبروك! كسبت 🎉'; return; }
+  let chosen;
+  const captures = allMoves.filter(m=>m.move.capture);
+  if(captures.length && Math.random() < (level==='hard'?0.95:level==='medium'?0.6:0.3)){
+    chosen = captures[Math.floor(Math.random()*captures.length)];
+  } else {
+    chosen = allMoves[Math.floor(Math.random()*allMoves.length)];
+  }
+  checkersMakeMoveCpu(chosen.from, chosen.move);
+}
+function checkersMakeMoveCpu(from, move){
+  const board = checkersState.board;
+  const [fr,fc]=from; const [tr,tc]=move.to;
+  const piece = board[fr][fc];
+  board[tr][tc]=piece; board[fr][fc]=null;
+  if(move.capture){ const [cr,cc]=move.capture; board[cr][cc]=null; }
+  if(piece.owner==='cpu' && tr===7) piece.king=true;
+  sfx.click();
+  checkersUpdateCounts();
+  if(checkersCheckWin()){ checkersRender(); return; }
+  checkersState.turn = 'you';
+  document.getElementById('checkersMsg').textContent = 'دورك';
+  checkersRender();
+}
+document.getElementById('checkersNewBtn').addEventListener('click', checkersNew);
+
+/* ================= أوثيلو ================= */
+let othelloState = { board:[], turn:'you' };
+const OTHELLO_DIRS = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+function othelloNew(){
+  const board = Array.from({length:8},()=>Array(8).fill(null));
+  board[3][3]='cpu'; board[3][4]='you'; board[4][3]='you'; board[4][4]='cpu';
+  othelloState.board = board;
+  othelloState.turn = 'you';
+  document.getElementById('othelloMsg').textContent = 'دورك';
+  othelloUpdateScores();
+  othelloRender();
+}
+function othelloValidMove(board, r, c, player){
+  if(board[r][c]) return null;
+  const opp = player==='you'?'cpu':'you';
+  let flips = [];
+  for(const [dr,dc] of OTHELLO_DIRS){
+    let rr=r+dr, cc=c+dc; const line=[];
+    while(rr>=0&&rr<8&&cc>=0&&cc<8 && board[rr][cc]===opp){ line.push([rr,cc]); rr+=dr; cc+=dc; }
+    if(line.length && rr>=0&&rr<8&&cc>=0&&cc<8 && board[rr][cc]===player) flips = flips.concat(line);
+  }
+  return flips.length ? flips : null;
+}
+function othelloValidMoves(board, player){
+  const moves = [];
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    const flips = othelloValidMove(board,r,c,player);
+    if(flips) moves.push({r,c,flips});
+  }
+  return moves;
+}
+function othelloRender(){
+  const board = document.getElementById('othelloBoard');
+  board.innerHTML = '';
+  const moves = othelloState.turn==='you' ? othelloValidMoves(othelloState.board,'you') : [];
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){
+    const cell = document.createElement('div');
+    cell.className = 'othello-cell';
+    const v = othelloState.board[r][c];
+    if(v){ const d = document.createElement('div'); d.className='othello-disc '+v; cell.appendChild(d); }
+    else if(moves.some(m=>m.r===r&&m.c===c)) cell.classList.add('hint');
+    cell.addEventListener('click', () => othelloClick(r,c));
+    board.appendChild(cell);
+  }
+}
+function othelloUpdateScores(){
+  let you=0,cpu=0;
+  othelloState.board.forEach(row=>row.forEach(v=>{ if(v==='you')you++; if(v==='cpu')cpu++; }));
+  document.getElementById('othelloYou').textContent = you;
+  document.getElementById('othelloCpu').textContent = cpu;
+}
+function othelloClick(r,c){
+  if(othelloState.turn!=='you') return;
+  const flips = othelloValidMove(othelloState.board,r,c,'you');
+  if(!flips) return;
+  othelloState.board[r][c] = 'you';
+  flips.forEach(([fr,fc]) => othelloState.board[fr][fc]='you');
+  sfx.click();
+  othelloUpdateScores();
+  othelloAdvanceTurn();
+}
+function othelloAdvanceTurn(){
+  const cpuMoves = othelloValidMoves(othelloState.board,'cpu');
+  const youMoves = othelloValidMoves(othelloState.board,'you');
+  if(!cpuMoves.length && !youMoves.length){ othelloEnd(); return; }
+  if(cpuMoves.length){
+    othelloState.turn = 'cpu';
+    document.getElementById('othelloMsg').textContent = 'دور الكمبيوتر...';
+    othelloRender();
+    setTimeout(othelloCpuMove, 500);
+  } else {
+    othelloState.turn = 'you';
+    document.getElementById('othelloMsg').textContent = 'الكمبيوتر معندوش حركة، دورك تاني';
+    othelloRender();
+  }
+}
+function othelloCpuMove(){
+  const moves = othelloValidMoves(othelloState.board,'cpu');
+  if(!moves.length){ othelloState.turn='you'; document.getElementById('othelloMsg').textContent='دورك'; othelloRender(); return; }
+  const level = diffOf('othello');
+  let chosen;
+  if(level==='hard'){ moves.sort((a,b)=>b.flips.length-a.flips.length); chosen = moves[0]; }
+  else if(level==='medium'){ moves.sort((a,b)=>b.flips.length-a.flips.length); chosen = Math.random()<0.6?moves[0]:moves[Math.floor(Math.random()*moves.length)]; }
+  else { chosen = moves[Math.floor(Math.random()*moves.length)]; }
+  othelloState.board[chosen.r][chosen.c] = 'cpu';
+  chosen.flips.forEach(([fr,fc]) => othelloState.board[fr][fc]='cpu');
+  sfx.click();
+  othelloUpdateScores();
+  const youMoves = othelloValidMoves(othelloState.board,'you');
+  const cpuMoves2 = othelloValidMoves(othelloState.board,'cpu');
+  if(!youMoves.length && !cpuMoves2.length){ othelloEnd(); return; }
+  if(youMoves.length){
+    othelloState.turn='you';
+    document.getElementById('othelloMsg').textContent='دورك';
+    othelloRender();
+  } else {
+    document.getElementById('othelloMsg').textContent='معندكش حركة، دور الكمبيوتر تاني';
+    othelloRender();
+    setTimeout(othelloCpuMove, 500);
+  }
+}
+function othelloEnd(){
+  let you=0,cpu=0;
+  othelloState.board.forEach(row=>row.forEach(v=>{ if(v==='you')you++; if(v==='cpu')cpu++; }));
+  if(you>cpu){ sfx.win(); document.getElementById('othelloMsg').textContent=`مبروك! كسبت ${you}-${cpu} 🎉`; }
+  else if(cpu>you){ sfx.lose(); document.getElementById('othelloMsg').textContent=`خسرت ${cpu}-${you} 🤖`; }
+  else { sfx.draw(); document.getElementById('othelloMsg').textContent='تعادل!'; }
+}
+document.getElementById('othelloNewBtn').addEventListener('click', othelloNew);
+
+/* ================= حرب السفن ================= */
+const BS_SIZE = 7;
+const BS_SHIPS = [4,3,3,2];
+let battleshipState = { youGrid:[], cpuGrid:[], youShots:[], cpuShots:[], over:false, cpuHunt:[] };
+function bsEmptyGrid(){ return Array.from({length:BS_SIZE},()=>Array(BS_SIZE).fill(null)); }
+function bsPlaceShipsRandom(grid){
+  BS_SHIPS.forEach(len => {
+    let placed = false;
+    while(!placed){
+      const horiz = Math.random()<0.5;
+      const r = Math.floor(Math.random()*BS_SIZE);
+      const c = Math.floor(Math.random()*BS_SIZE);
+      const cells = [];
+      let ok = true;
+      for(let i=0;i<len;i++){
+        const rr = horiz? r : r+i;
+        const cc = horiz? c+i : c;
+        if(rr>=BS_SIZE||cc>=BS_SIZE || grid[rr][cc]){ ok=false; break; }
+        cells.push([rr,cc]);
+      }
+      if(ok){ cells.forEach(([rr,cc])=>grid[rr][cc]='ship'); placed=true; }
+    }
+  });
+}
+function battleshipNew(){
+  battleshipState.youGrid = bsEmptyGrid();
+  battleshipState.cpuGrid = bsEmptyGrid();
+  bsPlaceShipsRandom(battleshipState.youGrid);
+  bsPlaceShipsRandom(battleshipState.cpuGrid);
+  battleshipState.youShots = bsEmptyGrid();
+  battleshipState.cpuShots = bsEmptyGrid();
+  battleshipState.over = false;
+  battleshipState.cpuHunt = [];
+  document.getElementById('battleshipYouHits').textContent = '0';
+  document.getElementById('battleshipCpuHits').textContent = '0';
+  document.getElementById('battleshipMsg').textContent = 'دوس على شبكة الكمبيوتر عشان تضرب';
+  battleshipRender();
+}
+function battleshipRender(){
+  const youBoard = document.getElementById('battleshipYouBoard');
+  const cpuBoard = document.getElementById('battleshipCpuBoard');
+  youBoard.innerHTML=''; cpuBoard.innerHTML='';
+  for(let r=0;r<BS_SIZE;r++) for(let c=0;c<BS_SIZE;c++){
+    const cell = document.createElement('div');
+    cell.className = 'bs-cell';
+    const shot = battleshipState.cpuShots[r][c];
+    if(shot==='hit') cell.classList.add('hit');
+    else if(shot==='miss') cell.classList.add('miss');
+    else if(battleshipState.youGrid[r][c]==='ship') cell.classList.add('ship');
+    youBoard.appendChild(cell);
+  }
+  for(let r=0;r<BS_SIZE;r++) for(let c=0;c<BS_SIZE;c++){
+    const cell = document.createElement('div');
+    cell.className = 'bs-cell';
+    const shot = battleshipState.youShots[r][c];
+    if(shot==='hit'){ cell.classList.add('hit'); cell.textContent='💥'; }
+    else if(shot==='miss'){ cell.classList.add('miss'); cell.textContent='•'; }
+    else { cell.addEventListener('click', () => battleshipYouShoot(r,c)); }
+    cpuBoard.appendChild(cell);
+  }
+}
+function battleshipYouShoot(r,c){
+  if(battleshipState.over || battleshipState.youShots[r][c]) return;
+  const hit = battleshipState.cpuGrid[r][c]==='ship';
+  battleshipState.youShots[r][c] = hit?'hit':'miss';
+  sfx[hit?'match':'click']();
+  if(hit){
+    const hits = battleshipState.youShots.flat().filter(v=>v==='hit').length;
+    document.getElementById('battleshipYouHits').textContent = hits;
+    if(hits >= BS_SHIPS.reduce((a,b)=>a+b,0)){ battleshipEnd('you'); battleshipRender(); return; }
+  }
+  battleshipRender();
+  document.getElementById('battleshipMsg').textContent = 'دور الكمبيوتر...';
+  setTimeout(battleshipCpuShoot, 500);
+}
+function battleshipCpuShoot(){
+  if(battleshipState.over) return;
+  let r,c;
+  if(battleshipState.cpuHunt.length){
+    [r,c] = battleshipState.cpuHunt.pop();
+  } else {
+    do{ r=Math.floor(Math.random()*BS_SIZE); c=Math.floor(Math.random()*BS_SIZE); } while(battleshipState.cpuShots[r][c]);
+  }
+  const hit = battleshipState.youGrid[r][c]==='ship';
+  battleshipState.cpuShots[r][c] = hit?'hit':'miss';
+  sfx[hit?'wrong':'click']();
+  if(hit){
+    const hits = battleshipState.cpuShots.flat().filter(v=>v==='hit').length;
+    document.getElementById('battleshipCpuHits').textContent = hits;
+    [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dr,dc]) => {
+      const rr=r+dr, cc=c+dc;
+      if(rr>=0&&rr<BS_SIZE&&cc>=0&&cc<BS_SIZE&&!battleshipState.cpuShots[rr][cc]) battleshipState.cpuHunt.push([rr,cc]);
+    });
+    if(hits >= BS_SHIPS.reduce((a,b)=>a+b,0)){ battleshipEnd('cpu'); battleshipRender(); return; }
+  }
+  battleshipRender();
+  document.getElementById('battleshipMsg').textContent = 'دوس على شبكة الكمبيوتر عشان تضرب';
+}
+function battleshipEnd(winner){
+  battleshipState.over = true;
+  if(winner==='you'){ sfx.win(); document.getElementById('battleshipMsg').textContent='مبروك! غرقت كل سفن الكمبيوتر 🎉'; }
+  else { sfx.lose(); document.getElementById('battleshipMsg').textContent='خسرت! الكمبيوتر غرق كل سفنك 🤖'; }
+}
+document.getElementById('battleshipNewBtn').addEventListener('click', battleshipNew);
+
+/* ================= ماتش 3 ================= */
+const MATCH3_ITEMS = ['🍬','🍭','🍩','🍫','🍪','🧁'];
+let match3State = { grid:[], rows:7, cols:7, selected:null, score:0, moves:20, resolving:false };
+function match3BestKey(){ return 'match3_best'; }
+function match3UpdateBest(){ document.getElementById('match3Best').textContent = localStorage.getItem(match3BestKey())||'--'; }
+function match3New(){
+  match3State.grid = [];
+  for(let r=0;r<match3State.rows;r++){
+    const row = [];
+    for(let c=0;c<match3State.cols;c++){
+      let item;
+      do{ item = MATCH3_ITEMS[Math.floor(Math.random()*MATCH3_ITEMS.length)]; }
+      while(c>=2 && row[c-1]===item && row[c-2]===item);
+      row.push(item);
+    }
+    match3State.grid.push(row);
+  }
+  match3State.selected = null;
+  match3State.score = 0;
+  match3State.moves = 20;
+  match3State.resolving = false;
+  document.getElementById('match3Score').textContent = '0';
+  document.getElementById('match3Moves').textContent = '20';
+  match3UpdateBest();
+  match3Render();
+}
+function match3Render(){
+  const board = document.getElementById('match3Board');
+  board.innerHTML = '';
+  for(let r=0;r<match3State.rows;r++) for(let c=0;c<match3State.cols;c++){
+    const cell = document.createElement('div');
+    cell.className = 'match3-cell';
+    cell.textContent = match3State.grid[r][c] || '';
+    if(match3State.selected && match3State.selected[0]===r && match3State.selected[1]===c) cell.classList.add('selected');
+    cell.addEventListener('click', () => match3Click(r,c));
+    board.appendChild(cell);
+  }
+}
+function match3Click(r,c){
+  if(match3State.moves<=0 || match3State.resolving) return;
+  if(!match3State.selected){ match3State.selected=[r,c]; sfx.click(); match3Render(); return; }
+  const [sr,sc] = match3State.selected;
+  if(sr===r && sc===c){ match3State.selected=null; match3Render(); return; }
+  const adjacent = Math.abs(sr-r)+Math.abs(sc-c) === 1;
+  if(!adjacent){ match3State.selected=[r,c]; match3Render(); return; }
+  [match3State.grid[sr][sc], match3State.grid[r][c]] = [match3State.grid[r][c], match3State.grid[sr][sc]];
+  const matches = match3FindMatches();
+  if(matches.length){
+    match3State.selected = null;
+    match3State.moves--;
+    document.getElementById('match3Moves').textContent = match3State.moves;
+    match3State.resolving = true;
+    match3ResolveMatches();
+  } else {
+    [match3State.grid[sr][sc], match3State.grid[r][c]] = [match3State.grid[r][c], match3State.grid[sr][sc]];
+    match3State.selected = null;
+    sfx.wrong();
+    match3Render();
+  }
+}
+function match3FindMatches(){
+  const matched = new Set();
+  const {rows,cols,grid} = match3State;
+  for(let r=0;r<rows;r++){
+    let count=1;
+    for(let c=1;c<=cols;c++){
+      if(c<cols && grid[r][c] && grid[r][c]===grid[r][c-1]) count++;
+      else { if(count>=3) for(let k=c-count;k<c;k++) matched.add(r+','+k); count=1; }
+    }
+  }
+  for(let c=0;c<cols;c++){
+    let count=1;
+    for(let r=1;r<=rows;r++){
+      if(r<rows && grid[r][c] && grid[r][c]===grid[r-1][c]) count++;
+      else { if(count>=3) for(let k=r-count;k<r;k++) matched.add(k+','+c); count=1; }
+    }
+  }
+  return Array.from(matched).map(s=>s.split(',').map(Number));
+}
+function match3ResolveMatches(){
+  const matches = match3FindMatches();
+  if(!matches.length){ match3State.resolving=false; match3Render(); match3CheckEnd(); return; }
+  matches.forEach(([r,c]) => { match3State.grid[r][c]=null; });
+  match3State.score += matches.length*10;
+  document.getElementById('match3Score').textContent = match3State.score;
+  sfx.match();
+  for(let c=0;c<match3State.cols;c++){
+    let col = [];
+    for(let r=0;r<match3State.rows;r++) if(match3State.grid[r][c]) col.push(match3State.grid[r][c]);
+    while(col.length<match3State.rows) col.unshift(MATCH3_ITEMS[Math.floor(Math.random()*MATCH3_ITEMS.length)]);
+    for(let r=0;r<match3State.rows;r++) match3State.grid[r][c] = col[r];
+  }
+  match3Render();
+  setTimeout(match3ResolveMatches, 300);
+}
+function match3CheckEnd(){
+  const best = parseInt(localStorage.getItem(match3BestKey())||'0');
+  if(match3State.score>best) localStorage.setItem(match3BestKey(), match3State.score);
+  match3UpdateBest();
+  if(match3State.moves<=0){
+    sfx.buzzer();
+    setTimeout(()=>alert('خلصت الحركات! نقاطك: '+match3State.score),100);
+  }
+}
+document.getElementById('match3NewBtn').addEventListener('click', match3New);
+
+/* ================= تصويب كورة السلة ================= */
+let basketballState = { canvas:null, ctx:null, ballX:0, ballY:0, vx:0, vy:0, flying:false, dragging:false, dragStart:null, score:0, tries:10, hoopX:0, hoopY:0, raf:null };
+function basketballStop(){ if(basketballState.raf) cancelAnimationFrame(basketballState.raf); basketballState.raf=null; }
+function basketballBestKey(){ return 'basketball_best'; }
+function basketballUpdateBest(){ document.getElementById('basketballBest').textContent = localStorage.getItem(basketballBestKey())||'--'; }
+function basketballInit(){
+  basketballStop();
+  const canvas = document.getElementById('basketballCanvas');
+  basketballState.canvas = canvas; basketballState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  basketballState.hoopX = canvas.width*0.7;
+  basketballState.hoopY = canvas.height*0.25;
+  basketballResetBall();
+  basketballState.score = 0; basketballState.tries = 10;
+  document.getElementById('basketballScore').textContent='0';
+  document.getElementById('basketballTries').textContent='10';
+  basketballUpdateBest();
+  basketballDraw();
+}
+function basketballResetBall(){
+  const canvas = basketballState.canvas;
+  basketballState.ballX = canvas.width*0.25;
+  basketballState.ballY = canvas.height*0.85;
+  basketballState.flying = false;
+  basketballState.vx=0; basketballState.vy=0;
+}
+document.getElementById('basketballStartBtn').addEventListener('click', () => { basketballInit(); });
+function basketballDraw(){
+  const {ctx,canvas} = basketballState;
+  ctx.fillStyle = '#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle = '#ff5c8a'; ctx.lineWidth=4;
+  ctx.beginPath(); ctx.moveTo(basketballState.hoopX-22, basketballState.hoopY); ctx.lineTo(basketballState.hoopX+22, basketballState.hoopY); ctx.stroke();
+  ctx.strokeStyle='#8b93ab'; ctx.lineWidth=3;
+  ctx.beginPath(); ctx.moveTo(basketballState.hoopX+22, basketballState.hoopY-30); ctx.lineTo(basketballState.hoopX+22, basketballState.hoopY); ctx.stroke();
+  ctx.fillStyle = '#fb8500';
+  ctx.beginPath(); ctx.arc(basketballState.ballX, basketballState.ballY, 14, 0, Math.PI*2); ctx.fill();
+  if(basketballState.dragging && basketballState.dragStart){
+    ctx.strokeStyle='#22d3ee'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(basketballState.ballX,basketballState.ballY);
+    ctx.lineTo(basketballState.dragStart.x, basketballState.dragStart.y);
+    ctx.stroke();
+  }
+}
+function basketballLoop(){
+  if(!basketballState.flying) return;
+  const s = basketballState;
+  s.vy += 0.35;
+  s.ballX += s.vx; s.ballY += s.vy;
+  basketballDraw();
+  const dx = s.ballX - s.hoopX, dy = s.ballY - s.hoopY;
+  if(Math.abs(dx) < 14 && Math.abs(dy) < 10 && s.vy>0){
+    s.score++;
+    document.getElementById('basketballScore').textContent = s.score;
+    sfx.win();
+    const best = parseInt(localStorage.getItem(basketballBestKey())||'0');
+    if(s.score>best) localStorage.setItem(basketballBestKey(), s.score);
+    basketballUpdateBest();
+    basketballNextTry();
+    return;
+  }
+  if(s.ballY > s.canvas.height+30 || s.ballX < -30 || s.ballX > s.canvas.width+30){
+    sfx.wrong();
+    basketballNextTry();
+    return;
+  }
+  s.raf = requestAnimationFrame(basketballLoop);
+}
+function basketballNextTry(){
+  basketballState.tries--;
+  document.getElementById('basketballTries').textContent = basketballState.tries;
+  basketballResetBall();
+  basketballDraw();
+  if(basketballState.tries<=0){
+    setTimeout(()=>alert('خلصت الرميات! نقاطك: '+basketballState.score), 200);
+  }
+}
+function basketballPointerDown(x,y){
+  if(basketballState.flying || basketballState.tries<=0) return;
+  const dx = x-basketballState.ballX, dy = y-basketballState.ballY;
+  if(Math.hypot(dx,dy) < 40){ basketballState.dragging = true; basketballState.dragStart = {x,y}; }
+}
+function basketballPointerMove(x,y){
+  if(!basketballState.dragging) return;
+  basketballState.dragStart = {x,y};
+  basketballDraw();
+}
+function basketballPointerUp(){
+  if(!basketballState.dragging) return;
+  const s = basketballState;
+  const dx = s.ballX - s.dragStart.x, dy = s.ballY - s.dragStart.y;
+  s.vx = dx*0.18; s.vy = dy*0.18;
+  s.dragging = false;
+  s.flying = true;
+  sfx.click();
+  basketballLoop();
+}
+const bbCanvas = document.getElementById('basketballCanvas');
+bbCanvas.addEventListener('mousedown', e => { const r=bbCanvas.getBoundingClientRect(); basketballPointerDown(e.clientX-r.left, e.clientY-r.top); });
+bbCanvas.addEventListener('mousemove', e => { const r=bbCanvas.getBoundingClientRect(); basketballPointerMove(e.clientX-r.left, e.clientY-r.top); });
+window.addEventListener('mouseup', basketballPointerUp);
+bbCanvas.addEventListener('touchstart', e => { const r=bbCanvas.getBoundingClientRect(); const t=e.touches[0]; basketballPointerDown(t.clientX-r.left, t.clientY-r.top); e.preventDefault(); }, {passive:false});
+bbCanvas.addEventListener('touchmove', e => { const r=bbCanvas.getBoundingClientRect(); const t=e.touches[0]; basketballPointerMove(t.clientX-r.left, t.clientY-r.top); e.preventDefault(); }, {passive:false});
+bbCanvas.addEventListener('touchend', basketballPointerUp);
+
+/* ================= سهام ================= */
+let dartsState = { canvas:null, ctx:null, score:0, tries:5, cx:0, cy:0, radius:0 };
+function dartsStop(){}
+function dartsBestKey(){ return 'darts_best'; }
+function dartsUpdateBest(){ document.getElementById('dartsBest').textContent = localStorage.getItem(dartsBestKey())||'--'; }
+function dartsInit(){
+  const canvas = document.getElementById('dartsCanvas');
+  dartsState.canvas = canvas; dartsState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  dartsState.cx = canvas.width/2; dartsState.cy = canvas.height/2;
+  dartsState.radius = Math.min(canvas.width,canvas.height)/2 - 10;
+  dartsState.score = 0; dartsState.tries = 5;
+  document.getElementById('dartsScore').textContent='0';
+  document.getElementById('dartsTries').textContent='5';
+  dartsUpdateBest();
+  dartsDraw();
+}
+document.getElementById('dartsStartBtn').addEventListener('click', dartsInit);
+function dartsDraw(hitX,hitY){
+  const {ctx,canvas,cx,cy,radius} = dartsState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  const rings = [
+    {r:radius, color:'#e63946'}, {r:radius*0.8, color:'#f1f1f1'}, {r:radius*0.6, color:'#e63946'},
+    {r:radius*0.4, color:'#f1f1f1'}, {r:radius*0.2, color:'#ffd60a'}, {r:radius*0.08, color:'#2a9d8f'},
+  ];
+  rings.forEach(ring => { ctx.beginPath(); ctx.arc(cx,cy,ring.r,0,Math.PI*2); ctx.fillStyle=ring.color; ctx.fill(); });
+  if(hitX!==undefined){ ctx.fillStyle='#111'; ctx.beginPath(); ctx.arc(hitX,hitY,4,0,Math.PI*2); ctx.fill(); }
+}
+function dartsRingValue(dist){
+  const {radius} = dartsState;
+  if(dist > radius) return 0;
+  if(dist > radius*0.8) return 1;
+  if(dist > radius*0.6) return 3;
+  if(dist > radius*0.4) return 5;
+  if(dist > radius*0.2) return 10;
+  if(dist > radius*0.08) return 25;
+  return 50;
+}
+document.getElementById('dartsCanvas').addEventListener('click', (e) => {
+  if(dartsState.tries<=0) return;
+  const rect = dartsState.canvas.getBoundingClientRect();
+  let x = e.clientX-rect.left, y = e.clientY-rect.top;
+  x += (Math.random()-0.5)*18;
+  y += (Math.random()-0.5)*18;
+  const dist = Math.hypot(x-dartsState.cx, y-dartsState.cy);
+  const val = dartsRingValue(dist);
+  dartsState.score += val;
+  dartsState.tries--;
+  document.getElementById('dartsScore').textContent = dartsState.score;
+  document.getElementById('dartsTries').textContent = dartsState.tries;
+  sfx[val>=25?'win':val>0?'ding':'wrong']();
+  dartsDraw(x,y);
+  if(dartsState.tries<=0){
+    const best = parseInt(localStorage.getItem(dartsBestKey())||'0');
+    if(dartsState.score>best) localStorage.setItem(dartsBestKey(), dartsState.score);
+    dartsUpdateBest();
+    setTimeout(()=>alert('خلصت الرميات! نقاطك: '+dartsState.score),200);
+  }
+});
+
+/* ================= بولينج ================= */
+let bowlingState = { canvas:null, ctx:null, ballX:0, ballY:0, pins:[], frame:1, totalScore:0, rolling:false, raf:null, rows:4 };
+function bowlingStop(){ if(bowlingState.raf) cancelAnimationFrame(bowlingState.raf); bowlingState.raf=null; }
+function bowlingBestKey(){ return 'bowling_best'; }
+function bowlingUpdateBest(){ document.getElementById('bowlingBest').textContent = localStorage.getItem(bowlingBestKey())||'--'; }
+function bowlingSetupPins(){
+  const canvas = bowlingState.canvas;
+  const pins = [];
+  const rows = [1,2,3,4];
+  const startY = canvas.height*0.12;
+  rows.forEach((count,rowIdx) => {
+    const spacing = canvas.width*0.09;
+    const rowWidth = (count-1)*spacing;
+    for(let i=0;i<count;i++){
+      pins.push({ x: canvas.width/2 - rowWidth/2 + i*spacing, y: startY + rowIdx*canvas.height*0.07, alive:true });
+    }
+  });
+  bowlingState.pins = pins;
+}
+function bowlingInit(){
+  bowlingStop();
+  const canvas = document.getElementById('bowlingCanvas');
+  bowlingState.canvas = canvas; bowlingState.ctx = canvas.getContext('2d');
+  resizeCanvasToDisplay(canvas);
+  bowlingState.frame = 1; bowlingState.totalScore = 0;
+  document.getElementById('bowlingScore').textContent='0';
+  document.getElementById('bowlingFrame').textContent='1/10';
+  bowlingUpdateBest();
+  bowlingNewFrame();
+}
+document.getElementById('bowlingStartBtn').addEventListener('click', bowlingInit);
+function bowlingNewFrame(){
+  const canvas = bowlingState.canvas;
+  bowlingState.ballX = canvas.width/2;
+  bowlingState.ballY = canvas.height*0.9;
+  bowlingState.rolling = false;
+  bowlingSetupPins();
+  bowlingDraw();
+}
+function bowlingDraw(){
+  const {ctx,canvas} = bowlingState;
+  ctx.fillStyle='#0c1120'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle='#232d47';
+  ctx.beginPath(); ctx.moveTo(canvas.width*0.15,0); ctx.lineTo(canvas.width*0.15,canvas.height); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(canvas.width*0.85,0); ctx.lineTo(canvas.width*0.85,canvas.height); ctx.stroke();
+  bowlingState.pins.forEach(p => { if(p.alive){ ctx.fillStyle='#f1f1f1'; ctx.beginPath(); ctx.arc(p.x,p.y,9,0,Math.PI*2); ctx.fill(); } });
+  ctx.fillStyle='#fb8500';
+  ctx.beginPath(); ctx.arc(bowlingState.ballX, bowlingState.ballY, 12, 0, Math.PI*2); ctx.fill();
+}
+function bowlingMove(x){
+  if(bowlingState.rolling) return;
+  const canvas = bowlingState.canvas;
+  bowlingState.ballX = Math.max(canvas.width*0.15+15, Math.min(canvas.width*0.85-15, x));
+  bowlingDraw();
+}
+function bowlingRoll(){
+  if(bowlingState.rolling) return;
+  bowlingState.rolling = true;
+  sfx.click();
+  bowlingLoop();
+}
+function bowlingLoop(){
+  const s = bowlingState;
+  s.ballY -= 8;
+  bowlingDraw();
+  s.pins.forEach(p => { if(p.alive && Math.hypot(p.x-s.ballX, p.y-s.ballY) < 16){ p.alive = false; sfx.match(); } });
+  if(s.ballY > 20){ s.raf = requestAnimationFrame(bowlingLoop); }
+  else { bowlingFrameEnd(); }
+}
+function bowlingFrameEnd(){
+  const knocked = bowlingState.pins.filter(p=>!p.alive).length;
+  bowlingState.totalScore += knocked;
+  document.getElementById('bowlingScore').textContent = bowlingState.totalScore;
+  bowlingState.frame++;
+  document.getElementById('bowlingFrame').textContent = `${Math.min(bowlingState.frame,10)}/10`;
+  if(bowlingState.frame > 10){
+    const best = parseInt(localStorage.getItem(bowlingBestKey())||'0');
+    if(bowlingState.totalScore>best) localStorage.setItem(bowlingBestKey(), bowlingState.totalScore);
+    bowlingUpdateBest();
+    sfx.win();
+    setTimeout(()=>alert('خلصت! نتيجتك النهائية: '+bowlingState.totalScore),200);
+    return;
+  }
+  setTimeout(bowlingNewFrame, 800);
+}
+const bwCanvas = document.getElementById('bowlingCanvas');
+bwCanvas.addEventListener('mousemove', e => { const r=bwCanvas.getBoundingClientRect(); bowlingMove(e.clientX-r.left); });
+bwCanvas.addEventListener('touchmove', e => { const r=bwCanvas.getBoundingClientRect(); bowlingMove(e.touches[0].clientX-r.left); e.preventDefault(); }, {passive:false});
+bwCanvas.addEventListener('click', bowlingRoll);
+bwCanvas.addEventListener('touchend', bowlingRoll);
+
+/* ================= ترتيب الحروف ================= */
+const ANAGRAM_WORDS = [
+  {w:'PYTHON', hint:'لغة برمجة شهيرة'}, {w:'GUITAR', hint:'آلة موسيقية وترية'}, {w:'PLANET', hint:'جسم يدور حول الشمس'},
+  {w:'BRIDGE', hint:'يوصل بين ضفتين'}, {w:'CAMERA', hint:'بتاخد بيها صور'}, {w:'PENCIL', hint:'بتكتب بيه'},
+  {w:'ORANGE', hint:'فاكهة برتقالية'}, {w:'GARDEN', hint:'مكان فيه نباتات وزهور'}, {w:'ROCKET', hint:'بيسافر بيه رواد الفضاء'},
+  {w:'CASTLE', hint:'قصر قديم فيه أبراج'}, {w:'JACKET', hint:'هدوم بتلبسها فوق'},
+  {w:'MARKET', hint:'مكان بتشتري منه'}, {w:'WINDOW', hint:'بتفتحه عشان الهوا يدخل'}, {w:'YELLOW', hint:'لون زي الليمون'},
+];
+let anagramState = { word:'', hint:'', scrambled:[], answer:[], usedIdx:[], score:0, timeLeft:60, interval:null };
+function anagramStop(){ if(anagramState.interval){ clearInterval(anagramState.interval); anagramState.interval=null; } }
+function anagramBestKey(){ return 'anagram_best'; }
+function anagramUpdateBest(){ document.getElementById('anagramBest').textContent = localStorage.getItem(anagramBestKey())||'--'; }
+function anagramInit(){
+  anagramStop();
+  anagramState.score = 0; anagramState.timeLeft = 60;
+  document.getElementById('anagramScore').textContent='0';
+  document.getElementById('anagramTime').textContent='60';
+  anagramUpdateBest();
+  document.getElementById('anagramHint').textContent = 'دوس ابدأ';
+  document.getElementById('anagramAnswer').innerHTML='';
+  document.getElementById('anagramLetters').innerHTML='';
+}
+document.getElementById('anagramStartBtn').addEventListener('click', () => {
+  anagramStop();
+  anagramState.score = 0; anagramState.timeLeft = 60;
+  document.getElementById('anagramScore').textContent='0';
+  document.getElementById('anagramTime').textContent='60';
+  anagramNextWord();
+  anagramState.interval = setInterval(() => {
+    anagramState.timeLeft--;
+    document.getElementById('anagramTime').textContent = anagramState.timeLeft;
+    if(anagramState.timeLeft<=0) anagramEnd();
+  }, 1000);
+});
+function anagramNextWord(){
+  const pick = ANAGRAM_WORDS[Math.floor(Math.random()*ANAGRAM_WORDS.length)];
+  anagramState.word = pick.w;
+  anagramState.hint = pick.hint;
+  anagramState.scrambled = shuffle(pick.w.split(''));
+  anagramState.answer = [];
+  anagramState.usedIdx = [];
+  anagramRender();
+}
+function anagramRender(){
+  document.getElementById('anagramHint').textContent = 'تلميح: ' + anagramState.hint;
+  const answerEl = document.getElementById('anagramAnswer');
+  answerEl.innerHTML = '';
+  for(let i=0;i<anagramState.word.length;i++){
+    const slot = document.createElement('div');
+    slot.className='slot';
+    slot.textContent = anagramState.answer[i] || '';
+    slot.addEventListener('click', () => anagramRemoveLetter(i));
+    answerEl.appendChild(slot);
+  }
+  const lettersEl = document.getElementById('anagramLetters');
+  lettersEl.innerHTML = '';
+  anagramState.scrambled.forEach((l,i) => {
+    const tile = document.createElement('div');
+    tile.className = 'tile' + (anagramState.usedIdx.includes(i)?' used':'');
+    tile.textContent = l;
+    tile.addEventListener('click', () => anagramPickLetter(i));
+    lettersEl.appendChild(tile);
+  });
+}
+function anagramPickLetter(i){
+  if(anagramState.usedIdx.includes(i) || anagramState.answer.length>=anagramState.word.length) return;
+  anagramState.answer.push(anagramState.scrambled[i]);
+  anagramState.usedIdx.push(i);
+  sfx.click();
+  anagramRender();
+  if(anagramState.answer.length === anagramState.word.length){
+    if(anagramState.answer.join('') === anagramState.word){
+      anagramState.score++;
+      document.getElementById('anagramScore').textContent = anagramState.score;
+      sfx.win();
+      setTimeout(anagramNextWord, 500);
+    } else {
+      sfx.wrong();
+      setTimeout(() => { anagramState.answer=[]; anagramState.usedIdx=[]; anagramRender(); }, 500);
+    }
+  }
+}
+function anagramRemoveLetter(i){
+  if(i>=anagramState.answer.length) return;
+  const removedCount = anagramState.answer.length - i;
+  anagramState.usedIdx.splice(anagramState.usedIdx.length-removedCount, removedCount);
+  anagramState.answer.splice(i);
+  anagramRender();
+}
+document.getElementById('anagramSkipBtn').addEventListener('click', () => {
+  if(!anagramState.interval) return;
+  anagramNextWord();
+});
+function anagramEnd(){
+  anagramStop();
+  sfx.buzzer();
+  const best = parseInt(localStorage.getItem(anagramBestKey())||'0');
+  if(anagramState.score>best) localStorage.setItem(anagramBestKey(), anagramState.score);
+  anagramUpdateBest();
+  document.getElementById('anagramHint').textContent = `خلص الوقت! جبت ${anagramState.score} كلمة صح`;
+}
+
+/* ================= كلمات متقاطعة ================= */
+const CROSSWORD_PUZZLES = [
+  { size:3, words:[ {answer:'CAT', row:0, col:0, dir:'across', clue:'حيوان أليف بيموء'}, {answer:'ART', row:0, col:1, dir:'down', clue:'فن وإبداع'} ]},
+  { size:3, words:[ {answer:'SUN', row:0, col:0, dir:'across', clue:'بيطلع الصبح ويدفينا'}, {answer:'NET', row:0, col:2, dir:'down', clue:'شبكة زي شبكة الصيد'} ]},
+  { size:3, words:[ {answer:'DOG', row:0, col:0, dir:'across', clue:'حيوان أليف بينبح'}, {answer:'GEM', row:0, col:2, dir:'down', clue:'حجر كريم'} ]},
+];
+let crosswordState = { puzzle:null, cells:{}, found:0 };
+function crosswordNew(){
+  const puzzle = CROSSWORD_PUZZLES[Math.floor(Math.random()*CROSSWORD_PUZZLES.length)];
+  crosswordState.puzzle = puzzle;
+  crosswordState.found = 0;
+  document.getElementById('crosswordFound').textContent = `0/${puzzle.words.length}`;
+  crosswordRender();
+}
+function crosswordRender(){
+  const puzzle = crosswordState.puzzle;
+  const size = puzzle.size;
+  const grid = Array.from({length:size},()=>Array(size).fill(null));
+  puzzle.words.forEach(w => {
+    for(let i=0;i<w.answer.length;i++){
+      const r = w.dir==='down' ? w.row+i : w.row;
+      const c = w.dir==='across' ? w.col+i : w.col;
+      grid[r][c] = w.answer[i];
+    }
+  });
+  const board = document.getElementById('crosswordBoard');
+  board.style.gridTemplateColumns = `repeat(${size},1fr)`;
+  board.innerHTML = '';
+  crosswordState.cells = {};
+  for(let r=0;r<size;r++) for(let c=0;c<size;c++){
+    const cell = document.createElement('div');
+    if(!grid[r][c]){ cell.className='cw-cell blocked'; board.appendChild(cell); continue; }
+    cell.className = 'cw-cell';
+    const input = document.createElement('input');
+    input.maxLength = 1;
+    input.addEventListener('input', (e) => { e.target.value = e.target.value.toUpperCase(); crosswordCheck(); });
+    cell.appendChild(input);
+    crosswordState.cells[r+','+c] = { input, letter: grid[r][c] };
+    board.appendChild(cell);
+  }
+  const clues = document.getElementById('crosswordClues');
+  clues.innerHTML = puzzle.words.map((w,i) => `<div><b>${w.dir==='across'?'أفقي':'رأسي'} ${i+1}:</b> ${w.clue}</div>`).join('');
+}
+function crosswordCheck(){
+  const puzzle = crosswordState.puzzle;
+  let found = 0;
+  puzzle.words.forEach(w => {
+    let correct = true;
+    for(let i=0;i<w.answer.length;i++){
+      const r = w.dir==='down' ? w.row+i : w.row;
+      const c = w.dir==='across' ? w.col+i : w.col;
+      const cellData = crosswordState.cells[r+','+c];
+      if(!cellData || cellData.input.value !== w.answer[i]) correct=false;
+    }
+    if(correct) found++;
+  });
+  if(found !== crosswordState.found){
+    crosswordState.found = found;
+    document.getElementById('crosswordFound').textContent = `${found}/${puzzle.words.length}`;
+    sfx.ding();
+    if(found === puzzle.words.length){
+      sfx.win();
+      setTimeout(()=>alert('مبروك! حليت الكلمات المتقاطعة كلها 🎉'),100);
+    }
+  }
+}
+document.getElementById('crosswordNewBtn').addEventListener('click', crosswordNew);
+
+/* ================= يمين النرد ================= */
+const YAHTZEE_CATS = [
+  {key:'ones', label:'واحدات'}, {key:'twos', label:'اتنينات'}, {key:'threes', label:'تلاتات'},
+  {key:'fours', label:'أربعات'}, {key:'fives', label:'خماسات'}, {key:'sixes', label:'سداسات'},
+  {key:'threeKind', label:'ثلاثة متشابهة'}, {key:'fourKind', label:'أربعة متشابهة'},
+  {key:'fullHouse', label:'فل هاوس'}, {key:'smallStraight', label:'تتابع صغير'},
+  {key:'largeStraight', label:'تتابع كبير'}, {key:'yahtzee', label:'ياهتزي (5 متشابهة)'},
+  {key:'chance', label:'تشانس (مجموع كل النرد)'},
+];
+let yahtzeeState = { dice:[1,1,1,1,1], held:[false,false,false,false,false], rollsLeft:3, scores:{}, total:0 };
+const YAHTZEE_FACES = ['','⚀','⚁','⚂','⚃','⚄','⚅'];
+function yahtzeeBestKey(){ return 'yahtzee_best'; }
+function yahtzeeUpdateBest(){ document.getElementById('yahtzeeBest').textContent = localStorage.getItem(yahtzeeBestKey())||'--'; }
+function yahtzeeNew(){
+  yahtzeeState.dice = [1,1,1,1,1];
+  yahtzeeState.held = [false,false,false,false,false];
+  yahtzeeState.rollsLeft = 3;
+  yahtzeeState.scores = {};
+  yahtzeeState.total = 0;
+  document.getElementById('yahtzeeRolls').textContent = '3';
+  document.getElementById('yahtzeeTotal').textContent = '0';
+  yahtzeeUpdateBest();
+  yahtzeeRenderDice();
+  yahtzeeRenderScores();
+}
+function yahtzeeRenderDice(){
+  const el = document.getElementById('yahtzeeDice');
+  el.innerHTML = '';
+  yahtzeeState.dice.forEach((v,i) => {
+    const die = document.createElement('div');
+    die.className = 'yahtzee-die' + (yahtzeeState.held[i]?' held':'');
+    die.textContent = YAHTZEE_FACES[v];
+    die.addEventListener('click', () => {
+      if(yahtzeeState.rollsLeft===3) return;
+      yahtzeeState.held[i] = !yahtzeeState.held[i];
+      sfx.click();
+      yahtzeeRenderDice();
+    });
+    el.appendChild(die);
+  });
+  const rollBtn = document.getElementById('yahtzeeRollBtn');
+  rollBtn.disabled = yahtzeeState.rollsLeft<=0;
+  rollBtn.style.opacity = yahtzeeState.rollsLeft<=0 ? 0.5 : 1;
+}
+document.getElementById('yahtzeeRollBtn').addEventListener('click', () => {
+  if(yahtzeeState.rollsLeft<=0) return;
+  yahtzeeState.dice = yahtzeeState.dice.map((v,i) => yahtzeeState.held[i] ? v : Math.floor(Math.random()*6)+1);
+  yahtzeeState.rollsLeft--;
+  document.getElementById('yahtzeeRolls').textContent = yahtzeeState.rollsLeft;
+  sfx.click();
+  yahtzeeRenderDice();
+  yahtzeeRenderScores();
+});
+function yahtzeeCalcScore(key, dice){
+  const counts = [0,0,0,0,0,0,0];
+  dice.forEach(d => counts[d]++);
+  const sum = dice.reduce((a,b)=>a+b,0);
+  switch(key){
+    case 'ones': return counts[1]*1;
+    case 'twos': return counts[2]*2;
+    case 'threes': return counts[3]*3;
+    case 'fours': return counts[4]*4;
+    case 'fives': return counts[5]*5;
+    case 'sixes': return counts[6]*6;
+    case 'threeKind': return counts.some(c=>c>=3) ? sum : 0;
+    case 'fourKind': return counts.some(c=>c>=4) ? sum : 0;
+    case 'fullHouse': return (counts.includes(3) && counts.includes(2)) ? 25 : 0;
+    case 'smallStraight': {
+      const set = new Set(dice);
+      const seqs = [[1,2,3,4],[2,3,4,5],[3,4,5,6]];
+      return seqs.some(seq => seq.every(n=>set.has(n))) ? 30 : 0;
+    }
+    case 'largeStraight': {
+      const sorted = [...dice].sort().join('');
+      return (sorted==='12345'||sorted==='23456') ? 40 : 0;
+    }
+    case 'yahtzee': return counts.some(c=>c===5) ? 50 : 0;
+    case 'chance': return sum;
+  }
+  return 0;
+}
+function yahtzeeRenderScores(){
+  const el = document.getElementById('yahtzeeScores');
+  el.innerHTML = '';
+  YAHTZEE_CATS.forEach(cat => {
+    const used = yahtzeeState.scores[cat.key] !== undefined;
+    const btn = document.createElement('div');
+    btn.className = 'yz-score-btn' + (used?' used':'');
+    const preview = used ? yahtzeeState.scores[cat.key] : (yahtzeeState.rollsLeft<3 ? yahtzeeCalcScore(cat.key, yahtzeeState.dice) : 0);
+    btn.innerHTML = `<span>${cat.label}</span><span class="val">${preview}</span>`;
+    if(!used){ btn.addEventListener('click', () => yahtzeePickCategory(cat.key)); }
+    el.appendChild(btn);
+  });
+}
+function yahtzeePickCategory(key){
+  if(yahtzeeState.rollsLeft===3) return;
+  if(yahtzeeState.scores[key] !== undefined) return;
+  const score = yahtzeeCalcScore(key, yahtzeeState.dice);
+  yahtzeeState.scores[key] = score;
+  yahtzeeState.total += score;
+  document.getElementById('yahtzeeTotal').textContent = yahtzeeState.total;
+  sfx.ding();
+  yahtzeeState.rollsLeft = 3;
+  yahtzeeState.held = [false,false,false,false,false];
+  document.getElementById('yahtzeeRolls').textContent = '3';
+  yahtzeeRenderDice();
+  yahtzeeRenderScores();
+  if(Object.keys(yahtzeeState.scores).length === YAHTZEE_CATS.length){
+    sfx.win();
+    const best = parseInt(localStorage.getItem(yahtzeeBestKey())||'0');
+    if(yahtzeeState.total>best) localStorage.setItem(yahtzeeBestKey(), yahtzeeState.total);
+    yahtzeeUpdateBest();
+    setTimeout(()=>alert('خلصت اللعبة! مجموعك النهائي: '+yahtzeeState.total),200);
+  }
+}
+document.getElementById('yahtzeeNewBtn').addEventListener('click', yahtzeeNew);
 
 /* ================= بناء شاشة الإعدادات ================= */
 const catGrid = document.getElementById('catGrid');
